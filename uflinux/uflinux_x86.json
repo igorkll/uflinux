@@ -1,0 +1,90 @@
+[
+    // building custom kernel
+    {
+        "type": "kernel",
+        "name": "kernel.img",
+        "export": false,
+
+        "modules_name": "kernel_modules",
+        "modules_export": false,
+
+        "result_config_name": "kernel_config",
+        "result_config_export": false,
+
+        "kernel_source_url": "https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-6.6.tar.xz",
+        "kernel_output_file": "bzImage",
+
+        "patches": [
+            "patches/disable_vt_swithing_from_keyboard.patch",
+            "patches/disable_sysrq.patch",
+            "patches/disable_cad.patch"//,
+            //"patches/disable_printk.patch"
+        ],
+
+        "kernel_config_changes_files": [
+            "kernel_config_changes.txt",
+            "kernel_config_changes_x86.txt"
+        ]
+    },
+
+    // extract initramfs
+    {
+        "type": "debian-export-initramfs",
+        "name": "initramfs.img",
+        "export": false,
+
+        "kernel_config": "kernel_config",
+        "source": "rootfs directory"
+    },
+
+    // rootfs with kernel
+    {
+        "type": "directory",
+        "name": "rootfs directory x2",
+        "export": false,
+
+        "items": [
+            ["rootfs directory", "."],
+            ["kernel.img", "/kernel.img", [0, 0, "0755"]],
+            ["initramfs.img", "/initramfs.img", [0, 0, "0755"]]
+        ]
+    },
+    {
+        "type": "filesystem",
+        "name": "rootfs.img",
+        "export": false,
+
+        "source": "rootfs directory x2",
+
+        "fs_type": "ext4",
+        "size": "(auto * 1.2) + (100 * 1024 * 1024)",
+        "label": "uflinux"
+    },
+
+    // pack bootable image
+    {
+        "type": "full-disk-image",
+        "name": "uflinux v1.img",
+        "export": true,
+
+        "size": "auto + (1 * 1024 * 1024)",
+
+        "partitionTable": "dos",
+        "partitions": [
+            ["rootfs.img", "linux"]
+        ],
+
+        "bootloader": {
+            "type": "grub",
+            "config": "files/grub.cfg",
+            "boot": 0,
+            "modules": [
+                "normal",
+                "part_msdos",
+                "part_gpt",
+                "ext2",
+                "configfile"
+            ]
+        }
+    }
+]

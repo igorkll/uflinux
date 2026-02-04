@@ -1,0 +1,70 @@
+{
+    "min-syslbuild-version": [0, 7, 0],
+    
+    "architectures": [
+        "amd64"
+    ],
+
+    "builditems": [
+        {
+            "type": "include",
+            "file": "uflinux_base.json"
+        },
+        {
+            "architectures": [
+                "amd64",
+                "i386"
+            ],
+            
+            "type": "include",
+            "file": "uflinux_x86.json"
+        },
+
+        // create system directory
+        {
+            "type": "directory",
+            "name": "rootfs directory",
+            "export": false,
+
+            "items": [
+                ["debian directory", "."],
+                ["kernel_modules", "/usr"],
+                ["files/custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
+                ["files/custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
+            ]
+        },
+        
+        // extract initramfs
+        {
+            "type": "debian-export-initramfs",
+            "name": "initrd.img",
+            "export": false,
+
+            "kernel_config": "kernel_config",
+            "source": "rootfs directory"
+        },
+
+        // pack rootfs to the initramfs
+        {
+            "type": "smart-chroot",
+            "name": "rootfs directory x2",
+            "export": false,
+
+            "source": "rootfs directory",
+            "scripts": [
+                "chroot/cleanup.sh"
+            ]
+        },
+        {
+            "type": "filesystem",
+            "name": "rootfs.img",
+            "export": false,
+
+            "source": "rootfs directory x2",
+
+            "fs_type": "ext4",
+            "size": "(auto * 1.2) + (100 * 1024 * 1024)",
+            "label": "mikonanoOS"
+        }
+    ]
+}

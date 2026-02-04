@@ -1,0 +1,47 @@
+[
+    // install basic debian system
+    {
+        "type": "debian",
+        "name": "debian directory",
+        "export": false,
+
+        "include": [
+            "initramfs-tools",
+            "plymouth",
+            "plymouth-themes",
+            "fdisk",
+            "python3",
+            "lua5.3",
+            "w3m",
+            "w3m-img",
+            "dialog",
+            "e2fsprogs",
+            "cloud-guest-utils",
+            "mawk",
+            "sed",
+            "gdisk",
+            "uuid-runtime",
+            "kexec-tools",
+            "libdrm-tests",
+            "less"
+        ],
+
+        "variant": "minbase",
+        "suite": "bookworm",
+        "url": "http://snapshot.debian.org/archive/debian/20250809T133719Z",
+
+        "hook-directory": "hooks"
+    },
+
+    // setup rootfs
+    {
+        "type": "smart-chroot",
+        "name": "rootfs directory",
+        "export": false,
+
+        "source": "debian directory",
+        "scripts": [
+            "chroot/setup.sh"
+        ]
+    }
+]

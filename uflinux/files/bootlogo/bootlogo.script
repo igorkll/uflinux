@@ -1,0 +1,29 @@
+mode = Plymouth.GetMode();
+if (mode == "system-upgrade") {
+    Window.SetBackgroundTopColor(0.5, 0, 0.5);
+    Window.SetBackgroundBottomColor(0, 0.5, 0.5);
+} else {
+    Window.SetBackgroundTopColor(1, 1, 1);
+    Window.SetBackgroundBottomColor(0.4, 0.70980392156863, 0.98039215686275);
+}
+
+image = Image("logo.png");
+
+window_width = Window.GetWidth();
+window_height = Window.GetHeight();
+
+img_width = image.GetWidth();
+img_height = image.GetHeight();
+img_scale = Math.Min(window_width / img_width, window_height / img_height) * 0.7;
+
+scaled_width = Math.Int(img_width * img_scale);
+scaled_height = Math.Int(img_height * img_scale);
+scaled_image = image.Scale(scaled_width, scaled_height);
+
+x = (window_width - scaled_width) / 2;
+y = (window_height - scaled_height) / 2;
+
+image_sprite = Sprite(scaled_image);
+image_sprite.SetX(x);
+image_sprite.SetY(y);
+image_sprite.SetZ(-1);
