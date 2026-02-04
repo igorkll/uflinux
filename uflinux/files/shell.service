@@ -4,7 +4,7 @@ After=systemd-logind.service dbus.service
 Wants=systemd-logind.service
 
 [Service]
-User=username
+User=user
 PAMName=login
 Environment=XDG_SESSION_TYPE=wayland
 Environment=XDG_SESSION_CLASS=user
