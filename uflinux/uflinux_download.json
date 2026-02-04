@@ -1,0 +1,70 @@
+[
+    {
+        "type": "gitclone",
+        "name": "linux-embedded-patchs",
+        "export": false,
+
+        "git_url": "https://github.com/igorkll/linux-embedded-patchs",
+        "git_checkout": "2.1"
+    },
+    {
+        "type": "gitclone",
+        "name": "custom-debian-initramfs-init",
+        "export": false,
+
+        "git_url": "https://github.com/igorkll/custom-debian-initramfs-init",
+        "git_checkout": "1.4.0"
+    },
+
+    // extract "linux-embedded-patchs"
+    {
+        "type": "from-directory",
+        "name": "disable_cad.patch",
+        "export": true,
+
+        "source": "linux-embedded-patchs",
+        "path": "/disable_cad.patch"
+    },
+    {
+        "type": "from-directory",
+        "name": "disable_sysrq.patch",
+        "export": true,
+
+        "source": "linux-embedded-patchs",
+        "path": "/disable_sysrq.patch"
+    },
+    {
+        "type": "from-directory",
+        "name": "disable_printk.patch",
+        "export": true,
+
+        "source": "linux-embedded-patchs",
+        "path": "/disable_printk.patch"
+    },
+    {
+        "type": "from-directory",
+        "name": "disable_vt_swithing_from_keyboard.patch",
+        "export": true,
+
+        "source": "linux-embedded-patchs",
+        "path": "/disable_vt_swithing_from_keyboard.patch"
+    },
+
+    // extract "custom-debian-initramfs-init"
+    {
+        "type": "from-directory",
+        "name": "custom_init.sh",
+        "export": true,
+
+        "source": "custom-debian-initramfs-init",
+        "path": "/custom_init.sh"
+    },
+    {
+        "type": "from-directory",
+        "name": "custom_init_hook.sh",
+        "export": true,
+
+        "source": "custom-debian-initramfs-init",
+        "path": "/custom_init_hook.sh"
+    }
+]

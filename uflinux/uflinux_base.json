@@ -33,13 +33,26 @@
         "hook-directory": "hooks"
     },
 
+    // add files to rootfs
+    {
+        "type": "directory",
+        "name": "rootfs directory with files",
+        "export": false,
+
+        "items": [
+            ["debian directory", "."],
+            ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
+            ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
+        ]
+    },
+
     // setup rootfs
     {
         "type": "smart-chroot",
         "name": "rootfs directory",
         "export": false,
 
-        "source": "debian directory",
+        "source": "rootfs directory with files",
         "scripts": [
             "chroot/setup.sh"
         ]

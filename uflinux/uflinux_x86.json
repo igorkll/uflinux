@@ -15,10 +15,10 @@
         "kernel_output_file": "bzImage",
 
         "patches": [
-            "patches/disable_vt_swithing_from_keyboard.patch",
-            "patches/disable_sysrq.patch",
-            "patches/disable_cad.patch"//,
-            //"patches/disable_printk.patch"
+            "disable_vt_swithing_from_keyboard.patch",
+            "disable_sysrq.patch",
+            "disable_cad.patch"//,
+            //"disable_printk.patch"
         ],
 
         "kernel_config_changes_files": [
@@ -45,6 +45,7 @@
 
         "items": [
             ["rootfs directory", "."],
+            ["kernel_modules", "/usr"],
             ["kernel.img", "/kernel.img", [0, 0, "0755"]],
             ["initramfs.img", "/initramfs.img", [0, 0, "0755"]]
         ]
@@ -64,7 +65,7 @@
     // pack bootable image
     {
         "type": "full-disk-image",
-        "name": "uflinux v1.img",
+        "name": "uflinux v1 OEM image.img",
         "export": true,
 
         "size": "auto + (1 * 1024 * 1024)",
