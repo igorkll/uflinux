@@ -23,4 +23,3 @@ apt install --no-install-recommends \
 # setup DE
 systemctl set-default graphical.target
 systemctl enable shell.service
-apt purge baloo-file
