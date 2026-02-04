@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 # set root password (for debug)
 echo "root:root" | chpasswd
