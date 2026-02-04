@@ -23,6 +23,9 @@
             //"wireplumber",
 
             // graphic
+            "plasma-workspace",
+            "plasma-workspace-wayland",
+            "kwin-wayland",
             "fonts-dejavu",
 
             // other

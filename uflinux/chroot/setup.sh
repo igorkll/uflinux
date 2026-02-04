@@ -13,13 +13,6 @@ usermod -aG video,input,audio,render user
 passwd -d user
 loginctl enable-linger user
 
-# install DE
-apt install --no-install-recommends \
-  plasma-workspace \
-  plasma-workspace-wayland \
-  kwin-wayland \
-  plasma-session
-
 # setup DE
 systemctl set-default graphical.target
 systemctl enable shell.service
