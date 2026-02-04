@@ -20,7 +20,7 @@
     {
         "type": "from-directory",
         "name": "disable_cad.patch",
-        "export": true,
+        "export": false,
 
         "source": "linux-embedded-patchs",
         "path": "/disable_cad.patch"
@@ -28,7 +28,7 @@
     {
         "type": "from-directory",
         "name": "disable_sysrq.patch",
-        "export": true,
+        "export": false,
 
         "source": "linux-embedded-patchs",
         "path": "/disable_sysrq.patch"
@@ -36,7 +36,7 @@
     {
         "type": "from-directory",
         "name": "disable_printk.patch",
-        "export": true,
+        "export": false,
 
         "source": "linux-embedded-patchs",
         "path": "/disable_printk.patch"
@@ -44,7 +44,7 @@
     {
         "type": "from-directory",
         "name": "disable_vt_swithing_from_keyboard.patch",
-        "export": true,
+        "export": false,
 
         "source": "linux-embedded-patchs",
         "path": "/disable_vt_swithing_from_keyboard.patch"
@@ -54,7 +54,7 @@
     {
         "type": "from-directory",
         "name": "custom_init.sh",
-        "export": true,
+        "export": false,
 
         "source": "custom-debian-initramfs-init",
         "path": "/custom_init.sh"
@@ -62,7 +62,7 @@
     {
         "type": "from-directory",
         "name": "custom_init_hook.sh",
-        "export": true,
+        "export": false,
 
         "source": "custom-debian-initramfs-init",
         "path": "/custom_init_hook.sh"

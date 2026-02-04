@@ -9,6 +9,11 @@
             "initramfs-tools",
             "plymouth",
             "plymouth-themes",
+
+            "systemd",
+            "systemd-sysv",
+            "dbus",
+
             "fdisk",
             "python3",
             "lua5.3",
