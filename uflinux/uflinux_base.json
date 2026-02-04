@@ -10,15 +10,19 @@
             "plymouth",
             "plymouth-themes",
 
+            // systemd
             "systemd",
             "systemd-sysv",
             "dbus",
 
+            // audio
+            //"pipewire",
+            //"pipewire-alsa",
+            //"pipewire-pulse",
+            //"wireplumber",
+
+            // other
             "fdisk",
-            "python3",
-            "lua5.3",
-            "w3m",
-            "w3m-img",
             "dialog",
             "e2fsprogs",
             "cloud-guest-utils",
