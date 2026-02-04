@@ -69,6 +69,7 @@
         "name": "rootfs directory",
         "export": false,
 
+        "use_systemd_container": true,
         "source": "rootfs directory with files",
         "scripts": [
             "chroot/setup.sh"
