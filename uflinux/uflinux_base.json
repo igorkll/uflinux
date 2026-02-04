@@ -14,12 +14,16 @@
             "systemd",
             "systemd-sysv",
             "dbus",
+            "dbus-user-session",
 
             // audio
             //"pipewire",
             //"pipewire-alsa",
             //"pipewire-pulse",
             //"wireplumber",
+
+            // graphic
+            "fonts-dejavu",
 
             // other
             "fdisk",
