@@ -1,0 +1,16 @@
+[Unit]
+Description=Run shell
+After=systemd-logind.service dbus.service
+Wants=systemd-logind.service
+
+[Service]
+User=username
+PAMName=login
+Environment=XDG_SESSION_TYPE=wayland
+Environment=XDG_SESSION_CLASS=user
+ExecStart=/usr/bin/startplasma-wayland
+Restart=on-failure
+
+[Install]
+WantedBy=graphical.target
+
