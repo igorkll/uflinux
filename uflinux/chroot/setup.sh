@@ -22,11 +22,9 @@ else
 fi
 
 # ------------ setup DE
-if [ "$DEBUG" != "true" ]; then
-    systemctl enable sddm
-    echo "sddm shared/default-display-manager select sddm" | debconf-set-selections
-    systemctl set-default graphical.target
-fi
+systemctl enable sddm
+echo "sddm shared/default-display-manager select sddm" | debconf-set-selections
+systemctl set-default graphical.target
 
 # ------------ remove trash
 
