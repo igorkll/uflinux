@@ -7,40 +7,36 @@ if [ "$DEBUG" = "true" ]; then
     # ------------ set root password (for debug)
     echo "root:root" | chpasswd
     usermod -s /bin/bash root
-else
-    # ------------ disable getty
-    systemctl disable getty.target
-    systemctl mask getty.target
-
-    systemctl disable getty@tty1.service
-    systemctl mask getty@tty1.service
-
-    systemctl disable getty@tty2.service
-    systemctl mask getty@tty2.service
-
-    systemctl disable getty@tty3.service
-    systemctl mask getty@tty3.service
-
-    systemctl disable getty@tty4.service
-    systemctl mask getty@tty4.service
-
-    systemctl disable getty@tty5.service
-    systemctl mask getty@tty5.service
-
-    systemctl disable getty@tty6.service
-    systemctl mask getty@tty6.service
-
-    chmod -x /sbin/agetty
 fi
+
+# ------------ disable getty
+systemctl disable getty.target
+systemctl mask getty.target
+
+systemctl disable getty@tty1.service
+systemctl mask getty@tty1.service
+
+systemctl disable getty@tty2.service
+systemctl mask getty@tty2.service
+
+systemctl disable getty@tty3.service
+systemctl mask getty@tty3.service
+
+systemctl disable getty@tty4.service
+systemctl mask getty@tty4.service
+
+systemctl disable getty@tty5.service
+systemctl mask getty@tty5.service
+
+systemctl disable getty@tty6.service
+systemctl mask getty@tty6.service
+
+chmod -x /sbin/agetty
 
 # ------------ create user
 useradd -m -s /bin/bash user
 usermod -aG video,input,audio,render user
-if [ "$DEBUG" = "true" ]; then
-    echo "user:user" | chpasswd
-else
-    passwd -d user
-fi
+passwd -d user
 
 # ------------ setup DE
 systemctl enable sddm
