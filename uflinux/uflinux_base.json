@@ -23,6 +23,7 @@
             //"wireplumber",
 
             // graphic
+            "plasma-desktop",
             "plasma-workspace",
             "plasma-workspace-wayland",
             "kwin-wayland",
