@@ -9,14 +9,9 @@ usermod -s /bin/bash root
 # systemctl mask getty.target
 
 # ------------ create user
-useradd -m -s /bin/bash user
+useradd -m -s /shell.sh user
 usermod -aG video,input,audio,render user
 # passwd -d user
 echo "user:user" | chpasswd
-loginctl enable-linger user
-
-# ------------ setup DE
-systemctl set-default graphical.target
-sudo -u user systemctl --user enable shell.service
 
 # ------------ remove trash
