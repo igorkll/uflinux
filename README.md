@@ -29,7 +29,9 @@ the distribution can be comfortably used by people who have no idea what linux i
 * user != an expert. in this OS, the user will never see the terminal (he does not know what a terminal is at all), he will never change the configs himself (he does not know about their existence)
 * administrator != root. root access is simply not available here
 ### power behavior
-* 
+* when you close the laptop lid, the screen simply goes out, but it will never turn off on its own or go into sleep mode.
+* pressing the power button once turns off the screen
+* when you hold it down, the Power management menu appears
 
 ## for whom is this distribution probably not suitable
 * i want complete freedom and flexibility in configuration: no, uflinux is specially designed so as not to give the user the opportunity to break anything, you will not be able to fine-tune anything here
