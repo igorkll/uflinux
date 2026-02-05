@@ -3,7 +3,7 @@ if (mode == "system-upgrade") {
     Window.SetBackgroundTopColor(0.5, 0, 0.5);
     Window.SetBackgroundBottomColor(0, 0.5, 0.5);
 } else {
-    Window.SetBackgroundTopColor(1, 1, 1);
+    Window.SetBackgroundTopColor(0.4, 0.70980392156863, 0.98039215686275);
     Window.SetBackgroundBottomColor(0.4, 0.70980392156863, 0.98039215686275);
 }
 
