@@ -7,8 +7,8 @@ sleep 2
 MOUNTPOINT=$(findmnt -rn -S "$DEV" -o TARGET)
 [ -z "$MOUNTPOINT" ] && exit 0
 
-mkdir -m 000 -p "$MOUNTPOINT.orig"
-mount --bind "$MOUNTPOINT" "$MOUNTPOINT.orig"
+mkdir -m 700 -p "$MOUNTPOINT.orig"
+mount --move "$MOUNTPOINT" "$MOUNTPOINT.orig"
 umount "$MOUNTPOINT"
 
 bindfs \

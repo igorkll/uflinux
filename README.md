@@ -20,8 +20,12 @@ the distribution can be comfortably used by people who have no idea what linux i
 * there is no multiuser system
 * there is no root access here
 * there is no package manager that modifies rootfs and runs from root
-* all external media is mounted via overlayfs so that all files are perceived as 777 and everything is accessible without root
+* all external media is mounted via "bindfs" so that all files are perceived as 777 and everything is accessible without root
 * the user can't customize anything, everything is nailed down and the system can't be changed
+### philosophy
+* each device (including PC) is updated separately with single updates FROM THE DEVICE MANUFACTURER and not from the OS author. updates are never made in single packages, this is always the case: the manufacturer has assembled a new image separately for each device and distributed
+* each system image is already supplied with embedded drivers for a specific device, the drivers are updated in a single way along with the OS itself with updates from the device manufacturer
+* user != an expert. in this OS, the user will never see the terminal (he does not know what a terminal is at all), he will never change the configs himself (he does not know about their existence)
 
 ## important
 * currently, the OS does not support OTA updates

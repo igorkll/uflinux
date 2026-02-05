@@ -23,12 +23,14 @@
             //"wireplumber",
 
             // graphic
+            "kde-standard",
             "xdg-desktop-portal",
             "xdg-desktop-portal-kde",
             "xdg-utils",
             "plasma-desktop",
             "plasma-workspace",
             "plasma-workspace-wayland",
+            "plasma-desktop-data",
             "kwin-wayland",
             "fonts-dejavu",
             "sddm",
@@ -70,7 +72,8 @@
         "export": false,
 
         "directories": [
-            ["/system", [0, 0, "0700"]]
+            ["/system", [0, 0, "0700"]],
+            ["/systemtest", [0, 0, "0700"]]
         ],
 
         "items": [
