@@ -59,19 +59,11 @@
         "name": "rootfs directory with files",
         "export": false,
 
-        "deleteBeforeAdd": [
-            "/usr/share/plasma/look-and-feel"
-        ],
-
-        "directories": [
-            ["/usr/share/plasma/look-and-feel", [0, 0, "0755"]]
-        ],
-
         "items": [
             ["debian directory", "."],
             ["files/locale", "/etc/default/locale", [0, 0, "0644"]],
             ["files/sddm.conf", "/etc/sddm.conf", [0, 0, "0644"]],
-            ["files/org.igorkll.uflinux", "/usr/share/plasma/look-and-feel/org.igorkll.uflinux", [0, 0, "0755"]],
+            ["files/org.igorkll.uflinux.desktop", "/usr/share/plasma/look-and-feel/org.igorkll.uflinux.desktop", [0, 0, "0755"]],
             ["files/ksplashrc", "/etc/skel/.config/ksplashrc", [0, 0, "0755"]],
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
             ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
