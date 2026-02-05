@@ -7,6 +7,9 @@ if [ "$DEBUG" = "true" ]; then
     # ------------ set root password (for debug)
     echo "root:root" | chpasswd
     usermod -s /bin/bash root
+else
+    passwd -l root
+    usermod -s /usr/sbin/nologin root
 fi
 
 # ------------ disable getty

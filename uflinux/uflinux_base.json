@@ -23,12 +23,19 @@
             //"wireplumber",
 
             // graphic
+            "xdg-desktop-portal",
+            "xdg-desktop-portal-kde",
+            "xdg-utils",
             "plasma-desktop",
             "plasma-workspace",
             "plasma-workspace-wayland",
             "kwin-wayland",
             "fonts-dejavu",
             "sddm",
+
+            // system
+            "bindfs",
+            "udisks2",
 
             // apps
             "konsole",
@@ -62,11 +69,19 @@
         "name": "rootfs directory with files",
         "export": false,
 
+        "directories": [
+            ["/system", [0, 0, "0700"]]
+        ],
+
         "items": [
             ["debian directory", "."],
+            ["files/system", "/system", [0, 0, "0700"]],
+
             ["files/locale", "/etc/default/locale", [0, 0, "0644"]],
             ["files/sddm.conf", "/etc/sddm.conf", [0, 0, "0644"]],
             ["files/logind.conf", "/etc/systemd/logind.conf", [0, 0, "0644"]],
+            ["files/99-bindfs.rules", "/etc/udev/rules.d/99-bindfs.rules", [0, 0, "0644"]],
+
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
             ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
         ]
