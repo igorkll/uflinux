@@ -15,6 +15,7 @@ the distribution can be comfortably used by people who have no idea what linux i
 * at the first boot, the system increases the size of the data partition to the maximum possible. since the OS is being built in an image format for writing to disk, and I do not know what disk size it will be written to
 ### userspace
 * there is no terminal
+* the "/var" directory is mounted as tmpfs and its contents are reset on shutdown
 * getty has been disabled
 * there is no multiuser system
 * there is no root access here
