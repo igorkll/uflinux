@@ -22,3 +22,5 @@ the distribution can be comfortably used by people who have no idea what linux i
 * all external media is mounted via overlayfs so that all files are perceived as 777 and everything is accessible without root
 * the user can't customize anything, everything is nailed down and the system can't be changed
 
+## important
+* currently, the OS does not support OTA updates
