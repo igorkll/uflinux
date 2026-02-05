@@ -16,6 +16,7 @@
 
         "patches": [
             "disable_vt_swithing_from_keyboard.patch",
+            "disable_vt_swithing_from_ioctl.patch",
             "disable_sysrq.patch",
             "disable_cad.patch"//,
             //"disable_printk.patch"
