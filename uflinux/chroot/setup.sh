@@ -1,18 +1,22 @@
 #!/bin/sh
 set -e
 
-# set root password (for debug)
+# ------------ set root password (for debug)
 echo "root:root" | chpasswd
 usermod -s /bin/bash root
 
-# disable getty
+# ------------ disable getty
 # systemctl mask getty.target
 
-# create user
+# ------------ create user
 useradd -m -s /bin/bash user
 usermod -aG video,input,audio,render user
-passwd -d user
+# passwd -d user
+echo "user:user" | chpasswd
+loginctl enable-linger user
 
-# setup DE
+# ------------ setup DE
 systemctl set-default graphical.target
-systemctl enable shell.service
+sudo -u user systemctl --user enable plasma.service
+
+# ------------ remove trash

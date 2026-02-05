@@ -1,18 +1,11 @@
 [Unit]
 Description=Run shell
-After=systemd-logind.service dbus.service
-Wants=systemd-logind.service
+After=graphical.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/systemd-run \
-  --uid=user \
-  --pty \
-  --property=TTYPath=/dev/tty1 \
-  --property=PAMName=login \
-  /usr/bin/startplasma-wayland
-
+ExecStart=/usr/bin/startplasma-wayland
 Restart=on-failure
 
 [Install]
-WantedBy=graphical.target
+WantedBy=default.target
