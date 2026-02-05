@@ -5,7 +5,6 @@ provides an android-like experience but is not android, the distribution is base
 the distribution is suitable for: computers, laptops, tablets, smartphones  
 the distribution can be comfortably used by people who have no idea what linux is  
 
-
 ## what has been changed compared to traditional linux
 ### kernel / boot
 * virtual TTY have been deleted
