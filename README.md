@@ -1,6 +1,10 @@
 # uflinux
-this is the most userfriendly distribution
-this will be the linux of the future
+this is the most userfriendly distribution  
+this will be the linux of the future  
+provides an android-like experience but is not android, the distribution is based on debian  
+the distribution is suitable for: computers, laptops, tablets, smartphones  
+the distribution can be comfortably used by people who have no idea what linux is  
+
 
 ## what has been changed compared to traditional linux
 ### kernel / boot
@@ -8,8 +12,12 @@ this will be the linux of the future
 * sysrq is disabled
 * ctrl+alt+del is disabled
 * the log is not displayed on the screen during the boot
+* there is no bootloader menu and it is impossible to get into the bootloader somehow
 ### userspace
+* there is no terminal
 * getty has been disabled
+* there is no multiuser system
+* there is no root access here
 * there is no package manager that modifies rootfs and runs from root
 * all external media is mounted via overlayfs so that all files are perceived as 777 and everything is accessible without root
 
