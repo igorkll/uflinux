@@ -45,3 +45,14 @@ rm -rf /var/lib/apt
 rm -rf /var/lib/dpkg
 rm -rf /etc/apt
 rm -rf /etc/dpkg
+
+# remove user system
+rm -f /usr/sbin/adduser
+rm -f /usr/sbin/addgroup
+rm -f /usr/sbin/deluser
+rm -f /usr/sbin/delgroup
+rm -f /usr/sbin/useradd
+rm -f /usr/sbin/usermod
+rm -f /usr/sbin/userdel
+rm -f /etc/default/useradd
+rm -rf /etc/skel
