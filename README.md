@@ -13,6 +13,7 @@ the distribution can be comfortably used by people who have no idea what linux i
 * ctrl+alt+del is disabled
 * the log is not displayed on the screen during the boot
 * there is no bootloader menu and it is impossible to get into the bootloader somehow
+* at the first boot, the system increases the size of the data partition to the maximum possible. since the OS is being built in an image format for writing to disk, and I do not know what disk size it will be written to
 ### userspace
 * there is no terminal
 * getty has been disabled
