@@ -1,5 +1,5 @@
 diff --git a/drivers/tty/vt/vt_ioctl.c b/drivers/tty/vt/vt_ioctl.c
-index 8c685b501..2bd891dde 100755
+index 8c685b501..47c09dedf 100755
 --- a/drivers/tty/vt/vt_ioctl.c
 +++ b/drivers/tty/vt/vt_ioctl.c
 @@ -844,14 +844,16 @@ int vt_ioctl(struct tty_struct *tty,
@@ -14,7 +14,7 @@ index 8c685b501..2bd891dde 100755
 -		if (ret)
 -			return ret;
 -		set_console(arg);
-+		if (7 == 7) {
++		if (vc->vc_mode != KD_GRAPHICS) {
 +			arg--;
 +			arg = array_index_nospec(arg, MAX_NR_CONSOLES);
 +			console_lock();
