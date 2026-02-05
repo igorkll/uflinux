@@ -67,10 +67,23 @@
         "hook-directory": "hooks"
     },
 
+    // setup rootfs
+    {
+        "type": "smart-chroot",
+        "name": "rootfs directory with setup",
+        "export": false,
+
+        "use_systemd_container": true,
+        "source": "debian directory",
+        "scripts": [
+            "chroot/setup.sh"
+        ]
+    },
+
     // add files to rootfs
     {
         "type": "directory",
-        "name": "rootfs directory with files",
+        "name": "rootfs directory",
         "export": false,
 
         "directories": [
@@ -78,30 +91,17 @@
         ],
 
         "items": [
-            ["debian directory", "."],
+            ["rootfs directory with setup", "."],
             ["files/system", "/system", [0, 0, "0700"]],
 
             ["files/locale", "/etc/default/locale", [0, 0, "0644"]],
             ["files/sddm.conf", "/etc/sddm.conf", [0, 0, "0644"]],
             ["files/logind.conf", "/etc/systemd/logind.conf", [0, 0, "0644"]],
             ["files/99-bindfs.rules", "/etc/udev/rules.d/99-bindfs.rules", [0, 0, "0644"]],
-            ["files/xdg_configs", "/etc/xdg", [0, 0, "0644"]],
+            ["files/.config", "/home/user/.config", [0, 0, "0644"]],
 
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
             ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
-        ]
-    },
-
-    // setup rootfs
-    {
-        "type": "smart-chroot",
-        "name": "rootfs directory",
-        "export": false,
-
-        "use_systemd_container": true,
-        "source": "rootfs directory with files",
-        "scripts": [
-            "chroot/setup.sh"
         ]
     }
 ]
