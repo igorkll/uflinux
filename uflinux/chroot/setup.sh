@@ -17,6 +17,6 @@ loginctl enable-linger user
 
 # ------------ setup DE
 systemctl set-default graphical.target
-sudo -u user systemctl --user enable plasma.service
+sudo -u user systemctl --user enable shell.service
 
 # ------------ remove trash
