@@ -10,7 +10,7 @@ if [ "$DEBUG" = "true" ]; then
 else
     # ------------ disable getty
     systemctl mask getty.target
-end
+fi
 
 # ------------ create user
 useradd -m -s /bin/bash user
