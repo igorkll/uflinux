@@ -40,7 +40,8 @@
             "kexec-tools",
             "libdrm-tests",
             "less",
-            "sudo"
+            "sudo",
+            "nano"
         ],
 
         "variant": "minbase",
@@ -60,6 +61,7 @@
             ["debian directory", "."],
             ["files/shell.sh", "/shell.sh", [0, 0, "0755"]],
             ["files/locale", "/etc/default/locale", [0, 0, "0644"]],
+            ["files/autologin.conf", "/etc/systemd/system/getty@tty1.service.d/autologin.conf", [0, 0, "0644"]],
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
             ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
         ]
