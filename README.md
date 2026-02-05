@@ -1,4 +1,4 @@
-# uflinux
+# uflinux: user-friendly linux
 this is the most userfriendly distribution  
 this will be the linux of the future  
 provides an android-like experience but is not android, the distribution is based on debian  
