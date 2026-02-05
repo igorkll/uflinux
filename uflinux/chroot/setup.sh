@@ -57,8 +57,8 @@ EOF
 
 # ------------ locked down system settings
 chown -R root:root /home/user/.config
+chmod -R 755 /home/user/.config
 find /home/user/.config -type f -exec chmod 644 {} \;
-find /home/user/.config -type d -exec chmod 755 {} \;
 
 # ------------ remove trash
 

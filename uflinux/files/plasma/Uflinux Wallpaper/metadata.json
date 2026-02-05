@@ -1,0 +1,9 @@
+{
+    "KPlugin": {
+        "Id": "Uflinux Wallpaper",
+        "Name": "Uflinux Wallpaper"
+    },
+    "X-KDE-PlasmaImageWallpaper-AccentColor": {
+        "Dark": "#000000"
+    }
+}

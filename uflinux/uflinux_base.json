@@ -43,6 +43,11 @@
             "konsole",
             "dolphin",
 
+            // libs
+            "libkf5itemmodels5",
+            "qml-module-qt-labs-platform",
+            "qml6-module-qt-labs-platform",
+
             // other
             "fdisk",
             "dialog",
@@ -100,7 +105,9 @@
             ["files/user_config", "/home/user/.config", [0, 0, "0644"]],
 
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
-            ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
+            ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]],
+
+            ["files/plasma/Uflinux Wallpaper", "/usr/share/wallpapers/Uflinux Wallpaper", [0, 0, "0755"]]
         ]
     }
 ]
