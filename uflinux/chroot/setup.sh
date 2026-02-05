@@ -12,7 +12,6 @@ usermod -s /bin/bash root
 useradd -m -s /bin/bash user
 usermod -aG video,input,audio,render user
 passwd -d user
-loginctl enable-linger user
 
 # setup DE
 systemctl set-default graphical.target

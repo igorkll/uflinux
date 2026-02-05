@@ -4,13 +4,15 @@ After=systemd-logind.service dbus.service
 Wants=systemd-logind.service
 
 [Service]
-User=user
-PAMName=login
-Environment=XDG_SESSION_TYPE=wayland
-Environment=XDG_SESSION_CLASS=user
-ExecStart=/usr/bin/startplasma-wayland
+Type=simple
+ExecStart=/usr/bin/systemd-run \
+  --uid=user \
+  --pty \
+  --property=TTYPath=/dev/tty1 \
+  --property=PAMName=login \
+  /usr/bin/startplasma-wayland
+
 Restart=on-failure
 
 [Install]
 WantedBy=graphical.target
-
