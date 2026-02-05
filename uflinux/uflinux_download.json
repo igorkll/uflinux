@@ -5,7 +5,7 @@
         "export": false,
 
         "git_url": "https://github.com/igorkll/linux-embedded-patchs",
-        "git_checkout": "2.1"
+        "git_checkout": "2.2"
     },
     {
         "type": "gitclone",
@@ -48,6 +48,14 @@
 
         "source": "linux-embedded-patchs",
         "path": "/disable_vt_swithing_from_keyboard.patch"
+    },
+    {
+        "type": "from-directory",
+        "name": "disable_vt_swithing_from_wayland.patch",
+        "export": false,
+
+        "source": "linux-embedded-patchs",
+        "path": "/disable_vt_swithing_from_wayland.patch"
     },
 
     // extract "custom-debian-initramfs-init"
