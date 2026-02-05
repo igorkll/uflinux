@@ -46,6 +46,19 @@ systemctl enable sddm
 echo "sddm shared/default-display-manager select sddm" | debconf-set-selections
 systemctl set-default graphical.target
 
+# ------------ setting the windows compatible time format
+ln -sf /usr/share/zoneinfo/UTC /etc/localtime
+
+cat > /etc/adjtime <<'EOF'
+0.0 0 0.0
+0
+LOCAL
+EOF
+
+# ------------ locked down system settings
+chown -R root:root /home/user/.config
+chmod -R 700 /home/user/.config
+
 # ------------ remove trash
 
 # remove documentation

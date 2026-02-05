@@ -22,12 +22,14 @@ the distribution can be comfortably used by people who have no idea what linux i
 * there is no package manager that modifies rootfs and runs from root
 * all external media is mounted via "bindfs" so that all files are perceived as 777 and everything is accessible without root
 * the user can't customize anything, everything is nailed down and the system can't be changed
+* by default, the system uses a Windows-compatible time format
 ### philosophy
 * each device (including PC) is updated separately with single updates FROM THE DEVICE MANUFACTURER and not from the OS author. updates are never made in single packages, this is always the case: the manufacturer has assembled a new image separately for each device and distributed
 * each system image is already supplied with embedded drivers for a specific device, the drivers are updated in a single way along with the OS itself with updates from the device manufacturer
 * user != an expert. in this OS, the user will never see the terminal (he does not know what a terminal is at all), he will never change the configs himself (he does not know about their existence)
 * administrator != root. root access is simply not available here
 ### power behavior
+* 
 
 ## for whom is this distribution probably not suitable
 * i want complete freedom and flexibility in configuration: no, uflinux is specially designed so as not to give the user the opportunity to break anything, you will not be able to fine-tune anything here
