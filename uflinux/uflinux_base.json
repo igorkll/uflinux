@@ -108,7 +108,7 @@
             ["files/sddm.conf", "/etc/sddm.conf", [0, 0, "0644"]],
             ["files/logind.conf", "/etc/systemd/logind.conf", [0, 0, "0644"]],
             ["files/99-bindfs.rules", "/etc/udev/rules.d/99-bindfs.rules", [0, 0, "0644"]],
-            ["files/user_config", "/home/user/.config", [0, 0, "0644"]],
+            ["files/user_config", "/home/user/.config", [10000, 10000, "0600"]],
 
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
             ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]],
