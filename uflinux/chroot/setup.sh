@@ -66,7 +66,7 @@ if [ "$DEBUG" != "true" ]; then
     apt remove --purge -y nano
 fi
 
-apt remove --purge -y udisks2
+dpkg --remove --force-depends udisks2
 
 # remove documentation
 rm -rf /usr/share/man
