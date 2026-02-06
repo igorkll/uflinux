@@ -66,6 +66,8 @@ if [ "$DEBUG" != "true" ]; then
     apt purge nano
 fi
 
+apt purge udisks2
+
 # remove documentation
 rm -rf /usr/share/man
 rm -rf /usr/share/doc

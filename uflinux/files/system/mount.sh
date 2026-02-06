@@ -2,15 +2,14 @@
 
 DEV="$1"
 
-if [ -n "$(findmnt "$DEV")" ]; then
+if [ -n "$(findmnt -n "$DEV")" ]; then
     exit
 fi
 
 MOUNTDIR_REAL="/system/media"
 MOUNTDIR_USER="/run/media"
 
-if [ ! -d "$MOUNTDIR_REAL" ]; then
-    mkdir -p "$MOUNTDIR_REAL"
+if [ -z "$(findmnt -n "$MOUNTDIR_REAL")" ]; then
     mount -t tmpfs -o size=100M tmpfs "$MOUNTDIR_REAL"
 fi
 
