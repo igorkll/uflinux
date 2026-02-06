@@ -12,15 +12,18 @@ fi
 
 if [ ! -d "$MOUNTDIR_USER" ]; then
     mkdir -p "$MOUNTDIR_USER"
-    mount -t tmpfs -o size=100M tmpfs "$MOUNTDIR_USER"
 fi
 
 MOUNTNAME="$(blkid -s LABEL -o value "$DEV" || echo $(basename $DEV))"
+if [ -z "$MOUNTNAME" ]; then
+    MOUNTNAME="$(basename $DEV)"
+fi
 
-MOUNTPOINT_REAL=""
+MOUNTPOINT_REAL="${MOUNTDIR_REAL}/${MOUNTNAME}"
+MOUNTPOINT_USER="${MOUNTDIR_USER}/${MOUNTNAME}"
 
-mkdir -m 700 -p "$MOUNTPOINT.orig"
-mount --move "$MOUNTPOINT" "$MOUNTPOINT.orig"
+mkdir -m 700 -p "$MOUNTPOINT_REAL"
+
 umount "$MOUNTPOINT"
 
 bindfs \

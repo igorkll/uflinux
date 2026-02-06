@@ -4,6 +4,7 @@ this will be the linux of the future
 provides an android-like experience but is not android, the distribution is based on debian  
 the distribution is suitable for: computers, laptops, tablets, smartphones, embedded  
 the distribution can be comfortably used by people who have no idea what linux is  
+i'm making this distribution to gain experience in linux before developing a more scalable SkyOS project that should completely lose compatibility with gnu/linux software and switch to an electron applications and its own framework
 
 ## what has been changed compared to traditional linux
 ### kernel / boot
