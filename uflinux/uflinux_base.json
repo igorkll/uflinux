@@ -29,7 +29,13 @@
             "plasma-desktop",
             "plasma-workspace",
             "plasma-workspace-wayland",
+            "plasma-widgets-addons",
             "plasma-desktop-data",
+            "qml-module-org-kde-kirigami2",
+            "qml-module-org-kde-kquickcontrolsaddons",
+            "qml-module-org-kde-qqc2desktopstyle",
+            "qml-module-qtquick-controls2",
+            "qml-module-qtquick-layouts",
             "kwin-wayland",
             "fonts-dejavu",
             "sddm",
@@ -58,7 +64,6 @@
             "gdisk",
             "uuid-runtime",
             "kexec-tools",
-            "libdrm-tests",
             "less",
             "sudo",
             "nano"
@@ -91,7 +96,8 @@
         "export": false,
 
         "directories": [
-            ["/system", [0, 0, "0700"]]
+            ["/system", [0, 0, "0700"]],
+            ["/home/user/.config", [10000, 10000, "0700"]]
         ],
 
         "items": [

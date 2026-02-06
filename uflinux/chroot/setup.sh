@@ -37,9 +37,13 @@ systemctl mask getty@tty6.service
 chmod -x /sbin/agetty
 
 # ------------ create user
-useradd -m -s /bin/bash user
+useradd -m -u 10000 -s /bin/bash user
 usermod -aG video,input,audio,render user
 passwd -d user
+
+if [ "$DEBUG" = "true" ]; then
+    usermod -aG sudo user
+fi
 
 # ------------ setup DE
 systemctl enable sddm
@@ -55,12 +59,12 @@ cat > /etc/adjtime <<'EOF'
 LOCAL
 EOF
 
-# ------------ locked down system settings
-chown -R root:root /home/user/.config
-chmod -R 755 /home/user/.config
-find /home/user/.config -type f -exec chmod 644 {} \;
-
 # ------------ remove trash
+
+if [ "$DEBUG" != "true" ]; then
+    apt purge sudo
+    apt purge nano
+fi
 
 # remove documentation
 rm -rf /usr/share/man
