@@ -62,11 +62,11 @@ EOF
 # ------------ remove trash
 
 if [ "$DEBUG" != "true" ]; then
-    apt purge sudo
-    apt purge nano
+    apt remove --purge -y sudo
+    apt remove --purge -y nano
 fi
 
-apt purge udisks2
+apt remove --purge -y udisks2
 
 # remove documentation
 rm -rf /usr/share/man
