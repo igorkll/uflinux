@@ -26,7 +26,7 @@ MOUNTPOINT_REAL="${MOUNTDIR_REAL}/${MOUNTNAME}"
 MOUNTPOINT_USER="${MOUNTDIR_USER}/${MOUNTNAME}"
 
 mkdir -m 700 -p "$MOUNTPOINT_REAL"
-mount -o rw,uid=0,gid=0,umask=0000,nosuid,nodev,noexec,sync "$DEV" "$MOUNTPOINT_REAL"
+mount -o rw,uid=10000,gid=10000,umask=0000,nosuid,nodev,noexec,sync "$DEV" "$MOUNTPOINT_REAL"
 
 mkdir -m 777 -p "$MOUNTPOINT_USER"
 bindfs \
