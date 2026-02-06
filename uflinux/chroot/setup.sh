@@ -59,14 +59,18 @@ cat > /etc/adjtime <<'EOF'
 LOCAL
 EOF
 
+# ------------ disable udisks2
+
+systemctl disable udisks2
+systemctl mask udisks2
+dpkg --remove --force-depends udisks2
+
 # ------------ remove trash
 
 if [ "$DEBUG" != "true" ]; then
     apt remove --purge -y sudo
     apt remove --purge -y nano
 fi
-
-dpkg --remove --force-depends udisks2
 
 # remove documentation
 rm -rf /usr/share/man
