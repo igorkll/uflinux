@@ -22,6 +22,7 @@ i'm making this distribution to gain experience in linux before developing a mor
 * there is no root access here
 * there is no package manager that modifies rootfs and runs from root
 * all external media is mounted via "bindfs" so that all files are perceived as 777 and everything is accessible without root
+* all external media are mounted with "sync" so as not to lose data
 * the user can't customize anything, everything is nailed down and the system can't be changed
 * by default, the system uses a Windows-compatible time format
 ### philosophy

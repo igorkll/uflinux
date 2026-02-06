@@ -1,1 +1,2 @@
 ACTION=="add", ENV{ID_FS_USAGE}=="filesystem", RUN+="/system/mount.sh %E{DEVNAME}"
+ACTION=="remove", ENV{ID_FS_USAGE}=="filesystem", RUN+="/system/umount.sh %E{DEVNAME}"

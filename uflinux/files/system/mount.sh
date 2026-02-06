@@ -23,9 +23,9 @@ MOUNTPOINT_REAL="${MOUNTDIR_REAL}/${MOUNTNAME}"
 MOUNTPOINT_USER="${MOUNTDIR_USER}/${MOUNTNAME}"
 
 mkdir -m 700 -p "$MOUNTPOINT_REAL"
+mount -o rw,uid=0,gid=0,umask=0000,nosuid,nodev,noexec,sync "$DEV" "$MOUNTPOINT_REAL"
 
-umount "$MOUNTPOINT"
-
+mkdir -m 777 -p "$MOUNTPOINT_USER"
 bindfs \
   -u 0 \
   -g 0 \
@@ -33,4 +33,4 @@ bindfs \
   --create-for-user=0 \
   --create-for-group=0 \
   --chmod-ignore \
-  "$MOUNTPOINT.orig" "$MOUNTPOINT"
+  "$MOUNTPOINT_REAL" "$MOUNTPOINT_USER"
