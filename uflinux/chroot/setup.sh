@@ -65,6 +65,10 @@ systemctl disable udisks2
 systemctl mask udisks2
 dpkg --remove --force-depends udisks2
 
+# ------------ setup shell
+
+sudo -u user systemctl --user enable shell.service
+
 # ------------ remove trash
 
 if [ "$DEBUG" != "true" ]; then
