@@ -23,21 +23,7 @@
             //"wireplumber",
 
             // graphic
-            "xdg-desktop-portal",
-            "xdg-desktop-portal-kde",
-            "xdg-utils",
-            "plasma-desktop",
-            "plasma-workspace",
-            "plasma-workspace-wayland",
-            "plasma-widgets-addons",
-            "plasma-desktop-data",
-            "qml-module-org-kde-kirigami2",
-            "qml-module-org-kde-kquickcontrolsaddons",
-            "qml-module-org-kde-qqc2desktopstyle",
-            "qml-module-qtquick-controls2",
-            "qml-module-qtquick-layouts",
-            "qml-module-org-kde-kitemmodels",
-            "kwin-wayland",
+            "weston",
             "fonts-dejavu",
             "sddm",
 
@@ -112,9 +98,7 @@
             //["files/user_config", "/home/user/.config", [10000, 10000, "0600"]],
 
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
-            ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]],
-
-            ["files/plasma/Uflinux Wallpaper", "/usr/share/wallpapers/Uflinux Wallpaper", [0, 0, "0755"]]
+            ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
         ]
     }
 ]
