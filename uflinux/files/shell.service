@@ -1,0 +1,11 @@
+[Unit]
+Description=System shell
+After=weston@user.service
+Requires=weston@user.service
+
+[Service]
+ExecStart=dolphin
+Restart=always
+
+[Install]
+WantedBy=default.target
