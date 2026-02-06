@@ -2,6 +2,10 @@
 
 DEV="$1"
 
+if [ -n "$(findmnt "$DEV")" ]; then
+    exit
+fi
+
 MOUNTDIR_REAL="/system/media"
 MOUNTDIR_USER="/run/media"
 
