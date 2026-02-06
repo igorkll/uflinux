@@ -18,8 +18,7 @@
             "disable_vt_swithing_from_keyboard.patch",
             "disable_vt_swithing_from_wayland.patch",
             "disable_sysrq.patch",
-            "disable_cad.patch",
-            "disable_console_full.patch"//,
+            "disable_cad.patch"//,
             //"disable_printk.patch"
         ],
 
