@@ -93,10 +93,9 @@
 
         "items": [
             ["rootfs directory with setup", "."],
-            ["files/system", "/system", [0, 0, "0700"]],
+            ["files/system", "/system", [0, 0, "0755"]],
 
             ["files/99-mount.rules", "/etc/udev/rules.d/99-mount.rules", [0, 0, "0644"]],
-            ["files/shell.service", "/etc/systemd/user/shell.service", [0, 0, "0644"]],
 
             ["files/user_config", "/home/user/.config", [10000, 10000, "0600"]],
             ["files/etc", "/etc", [10000, 10000, "0600"]],
