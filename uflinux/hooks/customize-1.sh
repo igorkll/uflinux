@@ -12,17 +12,17 @@ install_dir() {
     local src="$1"
     local dst="$2"
 
-    local tmp
-    tmp=$(mktemp -d)
+    local tmp=$(mktemp -d)
 
+    mkdir -p "$tmp"
     cp -r "$src"/. "$tmp"/
     chown -R 0:0 "$tmp"
-    chmod -R 1755 "$tmp"
+    chmod -R 0755 "$tmp"
     chmod --reference="$src" "$tmp"
     chown --reference="$src" "$tmp"
 
-    mkdir -p "$dst"
-    cp "$tmp" "$dst"
+    mkdir -m 0755 -p "$dst"
+    cp -r "$tmp"/. "$dst"/
 
     rm -rf "$tmp"
 }
