@@ -67,11 +67,18 @@ dpkg --remove --force-depends udisks2
 
 # ------------ setup plymouth
 
-# systemctl disable plymouth-quit.service
-# systemctl mask plymouth-quit.service
-
-# systemctl disable plymouth-quit-wait.service
-# systemctl mask plymouth-quit-wait.service
+systemctl mask plymouth-start.service
+systemctl mask plymouth-read-write.service
+systemctl mask plymouth-switch-root-initramfs.service
+systemctl mask plymouth-reboot.service
+systemctl mask plymouth-poweroff.service
+systemctl mask plymouth-quit-wait.service
+systemctl mask plymouth-quit.service
+systemctl mask plymouth-kexec.service
+systemctl mask plymouth-switch-root.service
+systemctl mask plymouth-halt.service
+systemctl mask plymouth-log.service
+systemctl mask plymouth.service
 
 # ------------ remove trash
 
