@@ -65,9 +65,7 @@ systemctl disable udisks2
 systemctl mask udisks2
 dpkg --remove --force-depends udisks2
 
-# ------------ setup shell
-
-sudo -u user systemctl --user enable shell.service
+# ------------ setup plymouth
 
 # systemctl disable plymouth-quit.service
 # systemctl mask plymouth-quit.service
