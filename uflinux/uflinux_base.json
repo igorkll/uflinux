@@ -7,6 +7,8 @@
 
         "include": [
             "initramfs-tools",
+            "plymouth",
+            "plymouth-themes",
 
             // systemd
             "systemd",
@@ -92,7 +94,6 @@
         "items": [
             ["rootfs directory with setup", "."],
             ["files/system", "/system", [0, 0, "0755"]],
-
             ["files/99-mount.rules", "/etc/udev/rules.d/99-mount.rules", [0, 0, "0644"]],
 
             ["files/user_config", "/home/user/.config", [10000, 10000, "0600"]],
