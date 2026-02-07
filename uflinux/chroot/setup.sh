@@ -1,5 +1,4 @@
 #!/bin/sh
-set -e
 
 DEBUG=true
 
@@ -65,20 +64,24 @@ systemctl disable udisks2
 systemctl mask udisks2
 dpkg --remove --force-depends udisks2
 
+# ------------ install npm packages
+
+npm install -g electron@39.2.7
+
 # ------------ setup plymouth
 
-ln -s /dev/null /etc/systemd/system/plymouth-start.service
-ln -s /dev/null /etc/systemd/system/plymouth-read-write.service
-ln -s /dev/null /etc/systemd/system/plymouth-switch-root-initramfs.service
-ln -s /dev/null /etc/systemd/system/plymouth-reboot.service
-ln -s /dev/null /etc/systemd/system/plymouth-poweroff.service
-ln -s /dev/null /etc/systemd/system/plymouth-quit-wait.service
-ln -s /dev/null /etc/systemd/system/plymouth-quit.service
-ln -s /dev/null /etc/systemd/system/plymouth-kexec.service
-ln -s /dev/null /etc/systemd/system/plymouth-switch-root.service
-ln -s /dev/null /etc/systemd/system/plymouth-halt.service
-ln -s /dev/null /etc/systemd/system/plymouth-log.service
-ln -s /dev/null /etc/systemd/system/plymouth.service
+systemctl mask plymouth-start.service
+systemctl mask plymouth-read-write.service
+systemctl mask plymouth-switch-root-initramfs.service
+systemctl mask plymouth-reboot.service
+systemctl mask plymouth-poweroff.service
+systemctl mask plymouth-quit-wait.service
+systemctl mask plymouth-quit.service
+systemctl mask plymouth-kexec.service
+systemctl mask plymouth-switch-root.service
+systemctl mask plymouth-halt.service
+systemctl mask plymouth-log.service
+systemctl mask plymouth.service
 
 # ------------ remove trash
 
