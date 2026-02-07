@@ -4,7 +4,7 @@ libdir=${exec_prefix}/lib
 includedir=${prefix}/include
 pluginsdir=/usr/lib/plymouth/
 themesdir=/usr/share/plymouth/themes/
-confdir=/usr/etc/plymouth/
+confdir=/etc/plymouth/
 policydir=/usr/share/plymouth/
 
 Name: Plymouth

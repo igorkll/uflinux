@@ -4,7 +4,7 @@ set -e
 
 [ -z "$PLYMOUTH_LIBEXECDIR" ] && PLYMOUTH_LIBEXECDIR="/usr/libexec"
 [ -z "$PLYMOUTH_DATADIR" ] && PLYMOUTH_DATADIR="/usr/share"
-[ -z "$PLYMOUTH_CONFDIR" ] && PLYMOUTH_CONFDIR="/usr/etc/plymouth/"
+[ -z "$PLYMOUTH_CONFDIR" ] && PLYMOUTH_CONFDIR="/etc/plymouth/"
 [ -z "$PLYMOUTH_POLICYDIR" ] && PLYMOUTH_POLICYDIR="/usr/share/plymouth/"
 if [ -z "$PLYMOUTH_PLUGIN_PATH" ]; then
     if [ -z "$LIB" ]; then
