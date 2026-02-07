@@ -86,9 +86,9 @@
         "export": false,
 
         "directories": [
-            ["/system", [0, 0, "0700"]],
+            ["/system", [0, 0, "0755"]],
             ["/system/media", [0, 0, "0700"]],
-            ["/home/user/.config", [10000, 10000, "0755"]]
+            ["/home/user/.config", [10000, 10000, "0700"]]
         ],
 
         "items": [
