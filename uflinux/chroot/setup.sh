@@ -69,6 +69,12 @@ dpkg --remove --force-depends udisks2
 
 sudo -u user systemctl --user enable shell.service
 
+# systemctl disable plymouth-quit.service
+# systemctl mask plymouth-quit.service
+
+# systemctl disable plymouth-quit-wait.service
+# systemctl mask plymouth-quit-wait.service
+
 # ------------ remove trash
 
 if [ "$DEBUG" != "true" ]; then
