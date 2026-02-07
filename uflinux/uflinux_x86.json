@@ -60,7 +60,8 @@
             ["rootfs directory x2", "."],
             ["kernel_modules", "/usr"],
             ["kernel.img", "/kernel.img", [0, 0, "0755"]],
-            ["initramfs.img", "/initramfs.img", [0, 0, "0755"]]
+            ["initramfs.img", "/initramfs.img", [0, 0, "0755"]],
+            ["files/embedded-plymouth/amd64", "/", [0, 0, "0755"]]
         ]
     },
     {

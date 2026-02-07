@@ -7,8 +7,6 @@
 
         "include": [
             "initramfs-tools",
-            "plymouth",
-            "plymouth-themes",
 
             // systemd
             "systemd",
