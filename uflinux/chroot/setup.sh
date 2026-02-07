@@ -1,6 +1,6 @@
 #!/bin/sh
 
-DEBUG=true
+DEBUG=false
 
 if [ "$DEBUG" = "true" ]; then
     # ------------ set root password (for debug)

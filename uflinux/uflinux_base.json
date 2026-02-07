@@ -35,14 +35,12 @@
             "nodejs",
             "npm",
 
+            // runtimes
+            "flatpak",
+
             // apps
-            "konsole",
-            "dolphin",
 
             // libs
-            "libkf5itemmodels5",
-            "qml-module-qt-labs-platform",
-            "qml6-module-qt-labs-platform",
 
             // other
             "fdisk",
