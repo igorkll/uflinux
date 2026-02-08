@@ -1,3 +1,5 @@
+const path = require('path');
+
 function mergeTables(tbl, def) {
     for (let key in def) {
         if (!(key in tbl)) {
