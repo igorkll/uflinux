@@ -7,15 +7,21 @@
 
 .contentLayer {
     margin: 15px;
-    display: flex;
-    flex-wrap: wrap;
+    gap: 15px;
     flex: 1;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
 }
 
 .desktopTile {
     width: 200px;
     height: 200px;
 
-    background-color: 0xff0000;
+    background-color: #ff0000;
 
 }
