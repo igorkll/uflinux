@@ -19,15 +19,20 @@ function updateWallpaper() {
 
     let wallpaperImg = document.getElementById("wallpaperImg");
     let wallpaperVideo = document.getElementById("wallpaperVideo");
-    if (isVideo) {
-        wallpaperVideo.src = src;
-        wallpaperVideo.style.objectFit = objectFit;
-        wallpaperVideo.style.display = 'initial';
-        wallpaperImg.style.display = 'none';
+    if (src) {
+        if (isVideo) {
+            wallpaperVideo.src = src;
+            wallpaperVideo.style.objectFit = objectFit;
+            wallpaperVideo.style.display = 'initial';
+            wallpaperImg.style.display = 'none';
+        } else {
+            wallpaperImg.src = src;
+            wallpaperImg.style.objectFit = objectFit;
+            wallpaperImg.style.display = 'initial';
+            wallpaperVideo.style.display = 'none';
+        }
     } else {
-        wallpaperImg.src = src;
-        wallpaperImg.style.objectFit = objectFit;
-        wallpaperImg.style.display = 'initial';
+        wallpaperImg.style.display = 'none';
         wallpaperVideo.style.display = 'none';
     }
 }
