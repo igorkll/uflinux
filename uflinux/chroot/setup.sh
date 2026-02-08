@@ -86,7 +86,11 @@ systemctl mask plymouth.service
 # ------------ remove trash
 
 if [ "$DEBUG" != "true" ]; then
-    dpkg --purge --force-depends sudo
+    rm -f /usr/bin/sudo
+    rm -f /usr/libexec/sudo
+    rm -rf /etc/sudo*
+    rm -rf /var/lib/sudo
+
     apt remove --purge -y nano
 fi
 
