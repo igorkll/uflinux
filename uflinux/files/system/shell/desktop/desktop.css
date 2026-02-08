@@ -1,0 +1,21 @@
+.desktopMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.contentLayer {
+    margin: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.desktopTile {
+    width: 200px;
+    height: 200px;
+
+    background-color: 0xff0000;
+
+}

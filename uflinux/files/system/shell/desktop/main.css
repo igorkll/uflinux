@@ -39,16 +39,3 @@ body {
     width: 100%;
     height: 100%;
 }
-
-.desktopMain {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-}
-
-.contentLayer {
-    
-    
-    display: flex;
-    
-}
