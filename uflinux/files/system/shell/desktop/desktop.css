@@ -3,15 +3,15 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-
-    overflow-x: auto;
-    overflow-y: hidden;
 }
 
 .contentLayer {
     padding: 15px;
     gap: 15px;
     flex: 1;
+
+    overflow-x: auto;
+    overflow-y: hidden;
 
     height: 100%;
 
@@ -30,4 +30,13 @@
     backdrop-filter: blur(10px);
     border-radius: 4px;
 
+}
+
+.desktopHeader {
+    background-color: white;
+    height: 40px;
+
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
 }
