@@ -9,6 +9,7 @@
 }
 
 .contentLayer {
+    padding: 15px;
     gap: 15px;
     flex: 1;
 

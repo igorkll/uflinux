@@ -7,6 +7,7 @@ function createWindow () {
     const win = new BrowserWindow({
         frame: DEBUG,
         fullscreen: !DEBUG,
+        backgroundColor: "#000000",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,
