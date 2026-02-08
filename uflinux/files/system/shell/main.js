@@ -1,19 +1,24 @@
+const DEBUG = true;
+
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
 
 function createWindow () {
-  const win = new BrowserWindow({
-    frame: false,
-    fullscreen: true,
-    webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false
+    const win = new BrowserWindow({
+        frame: DEBUG,
+        fullscreen: !DEBUG,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            devTools: DEBUG
+        }
+    });
+
+    globalShortcut.register('F11', () => {});
+    win.loadFile(path.join(__dirname, 'desktop/main.html'));
+    if (DEBUG) {
+        win.webContents.openDevTools();
     }
-  });
-
-  globalShortcut.register('F11', () => {});
-
-  win.loadFile(path.join(__dirname, 'desktop/main.html'));
 }
 
 app.whenReady().then(createWindow);
