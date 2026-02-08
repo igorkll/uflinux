@@ -14,7 +14,7 @@ function updateTime() {
 //none
 //scale-down
 
-let videoExtensions = [".mp4", "."]
+let videoExtensions = [".mp4", ".webm", ".ogv", ".mov", ".avi", ".mkv"]
 
 function updateWallpaper() {
     let file = storage.background.file
