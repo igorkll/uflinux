@@ -62,7 +62,7 @@ EOF
 
 systemctl disable udisks2
 systemctl mask udisks2
-dpkg --remove --force-depends udisks2
+dpkg --purge --force-depends udisks2
 
 # ------------ install npm packages
 
@@ -86,7 +86,7 @@ systemctl mask plymouth.service
 # ------------ remove trash
 
 if [ "$DEBUG" != "true" ]; then
-    apt remove --purge -y sudo
+    dpkg --purge --force-depends sudo
     apt remove --purge -y nano
 fi
 
