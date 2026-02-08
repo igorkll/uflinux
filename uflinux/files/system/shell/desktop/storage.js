@@ -3,6 +3,7 @@ let defaultStorage = {
         defaultBackgroundLoaded: false,
         file: null,
         objectFit: "cover",
+        backgroundColor: "#474747"
     }
 }
 
@@ -12,14 +13,14 @@ function storage_setWallpaperFile(file) {
     let fileName = "wallpaper" + path.extname(file)
     let filePath = "/data/" + fileName
 
-    
+    fs.copyFileSync(file, filePath)
 
     storage.background.file = filePath
 }
 
 function storage_loadDefaultWallpaper() {
     if (!storage.background.defaultBackgroundLoaded) {
-        storage_setWallpaperFile("wallpapers/1.jpg")
+        storage_setWallpaperFile(path.join(__dirname, "wallpapers/1.jpg"))
         storage.background.defaultBackgroundLoaded = true;
     }
 }

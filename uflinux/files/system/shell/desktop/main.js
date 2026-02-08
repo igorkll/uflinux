@@ -15,10 +15,10 @@ function updateTime() {
 //scale-down
 
 function updateWallpaper() {
-    let src = "wallpapers/1.jpg"
+    let src = storage.background.file
     let isVideo = false
-    let objectFit = 'contain'
-    let background = '#ff0000'
+    let objectFit = storage.background.objectFit
+    let background = storage.background.backgroundColor
 
     let wallpaperBase = document.getElementById("wallpaperBase")
     wallpaperBase.style.background = background

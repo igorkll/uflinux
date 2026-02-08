@@ -1,4 +1,6 @@
 const path = require('path');
+const fs = require('fs');
+const { app } = require('electron');
 
 function mergeTables(tbl, def) {
     for (let key in def) {
