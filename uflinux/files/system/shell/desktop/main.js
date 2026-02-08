@@ -8,8 +8,14 @@ function updateTime() {
     document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
 }
 
+//contain
+//cover
+//fill
+//none
+//scale-down
+
 function updateWallpaper() {
-    let src = "wallpapers/12.jpg";
+    let src = "wallpapers/1.jpg";
     let isVideo = false;
     let objectFit = 'contain';
     let background = '#ff0000';
