@@ -1,11 +1,14 @@
 {
 
-function updateTime() {
+window.updateTime = function () {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
     const seconds = String(now.getSeconds()).padStart(2, "0")
-    document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`
+    
+    document.querySelectorAll(".timelabel").forEach(element => {
+        element.textContent = `${hours}:${minutes}:${seconds}`
+    })
 }
 
 //contain
@@ -16,7 +19,7 @@ function updateTime() {
 
 let videoExtensions = [".mp4", ".webm", ".ogv", ".mov", ".avi", ".mkv"]
 
-function updateWallpaper() {
+window.updateWallpaper = function () {
     let file = storage.background.file
     let fileExt = path.extname(file)
     let isVideo = videoExtensions.includes(fileExt)
