@@ -14,25 +14,28 @@ function updateTime() {
 //none
 //scale-down
 
+let videoExtensions = [".mp4", "."]
+
 function updateWallpaper() {
-    let src = storage.background.file
-    let isVideo = false
+    let file = storage.background.file
+    let fileExt = path.extname(file)
+    let isVideo = videoExtensions.includes(fileExt)
     let objectFit = storage.background.objectFit
-    let background = storage.background.backgroundColor
+    let backgroundColor = storage.background.backgroundColor
 
     let wallpaperBase = document.getElementById("wallpaperBase")
-    wallpaperBase.style.background = background
+    wallpaperBase.style.background = backgroundColor
 
     let wallpaperImg = document.getElementById("wallpaperImg")
     let wallpaperVideo = document.getElementById("wallpaperVideo")
-    if (src) {
+    if (file) {
         if (isVideo) {
-            wallpaperVideo.src = src
+            wallpaperVideo.src = file
             wallpaperVideo.style.objectFit = objectFit
             wallpaperVideo.style.display = 'initial'
             wallpaperImg.style.display = 'none'
         } else {
-            wallpaperImg.src = src
+            wallpaperImg.src = file
             wallpaperImg.style.objectFit = objectFit
             wallpaperImg.style.display = 'initial'
             wallpaperVideo.style.display = 'none'
