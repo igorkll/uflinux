@@ -1,3 +1,3 @@
 #!/bin/bash
 
-weston-terminal
+electron /system/shell --enable-features=UseOzonePlatform --ozone-platform=wayland

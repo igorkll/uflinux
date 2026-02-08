@@ -49,6 +49,10 @@ systemctl enable sddm
 echo "sddm shared/default-display-manager select sddm" | debconf-set-selections
 systemctl set-default graphical.target
 
+# ------------ enable pipewire
+
+sudo -u user systemctl --user enable pipewire pipewire-pulse wireplumber
+
 # ------------ setting the windows compatible time format
 ln -sf /usr/share/zoneinfo/UTC /etc/localtime
 
@@ -67,6 +71,7 @@ dpkg --purge --force-depends udisks2
 # ------------ install npm packages
 
 npm install -g electron@39.2.7
+chmod 4755 /usr/local/lib/node_modules/electron/dist/chrome-sandbox
 
 # ------------ setup plymouth
 

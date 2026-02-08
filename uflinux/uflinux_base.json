@@ -17,10 +17,11 @@
             "dbus-user-session",
 
             // audio
-            //"pipewire",
-            //"pipewire-alsa",
-            //"pipewire-pulse",
-            //"wireplumber",
+            "pipewire",
+            "pipewire-alsa",
+            "pipewire-pulse",
+            "wireplumber",
+            "libpipewire-0.3-0",
 
             // graphic
             "weston",
@@ -41,6 +42,21 @@
             // apps
 
             // libs
+            "libnspr4",
+            "libnss3",
+            "libxss1",
+            "libasound2",
+            "libatk1.0-0",
+            "libatk-bridge2.0-0",
+            "libxcomposite1",
+            "libxcursor1",
+            "libxdamage1",
+            "libxrandr2",
+            "libxkbcommon0",
+            "libwayland-client0",
+            "libwayland-egl1",
+            "libgbm1",
+            "libgtk-3-0",
 
             // other
             "fdisk",

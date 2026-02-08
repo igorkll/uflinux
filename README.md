@@ -26,7 +26,7 @@ i'm making this distribution to gain experience in linux before developing a mor
 * the user can't customize anything, everything is nailed down and the system can't be changed
 * by default, the system uses a Windows-compatible time format
 ### philosophy
-* each device (including PC) is updated separately with single updates FROM THE DEVICE MANUFACTURER and not from the OS author. updates are never made in single packages, this is always the case: the manufacturer has assembled a new image separately for each device and distributed
+* each device (including PC) is updated separately with single updates FROM THE DEVICE MANUFACTURER and not from the OS author. updates are never made in single packages, this is always the case: the manufacturer has assembled a new image separately for each device and distributed (currently, OTA updates have not been implemented yet)
 * each system image is already supplied with embedded drivers for a specific device, the drivers are updated in a single way along with the OS itself with updates from the device manufacturer
 * user != an expert. in this OS, the user will never see the terminal (he does not know what a terminal is at all), he will never change the configs himself (he does not know about their existence)
 * administrator != root. root access is simply not available here
@@ -38,6 +38,3 @@ i'm making this distribution to gain experience in linux before developing a mor
 ## for whom is this distribution probably not suitable
 * i want complete freedom and flexibility in configuration: no, uflinux is specially designed so as not to give the user the opportunity to break anything, you will not be able to fine-tune anything here
 * i want freedom and to do what I want with my OS: no, uflinux does not give you the opportunity to "do what you want", it does not give root access and flexible settings
-
-## important
-* currently, the OS does not support OTA updates
