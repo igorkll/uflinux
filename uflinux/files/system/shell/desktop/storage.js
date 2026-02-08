@@ -9,20 +9,20 @@ let defaultStorage = {
 let storage = {}
 
 function storage_load() {
-    let storageData = localStorage.getItem("storageData");
+    let storageData = localStorage.getItem("storageData")
     if (storageData) {
         try {
-            storage = JSON.parse(storageData);
+            storage = JSON.parse(storageData)
         } catch (e) {
-            storage = {};
+            storage = {}
         }
     } else {
-        storage = {};
+        storage = {}
     }
 
-    mergeTables(storage, defaultStorage);
+    mergeTables(storage, defaultStorage)
 }
 
 function storage_save() {
-    localStorage.setItem("storageData", JSON.stringify(storage));
+    localStorage.setItem("storageData", JSON.stringify(storage))
 }
