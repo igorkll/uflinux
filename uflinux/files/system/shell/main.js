@@ -13,7 +13,7 @@ function createWindow () {
 
   globalShortcut.register('F11', () => {});
 
-  win.loadFile(path.join(__dirname, 'main.html'));
+  win.loadFile(path.join(__dirname, 'desktop/main.html'));
 }
 
 app.whenReady().then(createWindow);
