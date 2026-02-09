@@ -1,6 +1,7 @@
 {
 
 let appsTabHost = document.getElementById("appsTabHost")
+let mainAppsHost = document.getElementById("mainAppsHost")
 
 function addIcon(appsTab, x, y, imgPath) {
     let appIcon = document.createElement("div")
@@ -9,16 +10,18 @@ function addIcon(appsTab, x, y, imgPath) {
     appsTab.appendChild(appIcon)
 }
 
-function addAppsTab() {
+function addAppsTab(tabHost) {
     let appsTab = document.createElement("div")
     appsTab.classList.add("appsTab")
 
     addIcon(appsTab, 2, 2, "wallpapers/1.jpg")
 
-    appsTabHost.appendChild(appsTab)
+    tabHost.appendChild(appsTab)
 }
 
-addAppsTab()
-addAppsTab()
+addAppsTab(appsTabHost)
+addAppsTab(appsTabHost)
+
+addAppsTab(mainAppsHost)
 
 }
