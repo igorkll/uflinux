@@ -36,6 +36,9 @@
     grid-template-rows: repeat(auto-fill, 100px);
 
     flex-shrink: 0;
+
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
 }
 
 .appIcon {
