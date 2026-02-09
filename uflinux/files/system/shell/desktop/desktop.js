@@ -42,8 +42,10 @@ function addMainAppTab(appsInfo, desktopFileName) {
 }
 
 function addMainAppsTab(appsInfo) {
-    addMainAppTab(appsInfo, "discord.desktop")
-    addMainAppTab(appsInfo, "telegram.desktop")
+    addMainAppTab(appsInfo, "org.telegram.desktop.Discord")
+    addMainAppTab(appsInfo, "com.discordapp.Discord")
+    addMainAppTab(appsInfo, "com.valvesoftware.Steam.desktop")
+    addMainAppTab(appsInfo, "org.mozilla.firefox.desktop")
 }
 
 function refreshDefaultApps() {
