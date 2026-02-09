@@ -29,16 +29,7 @@ function addAppsTab(tabHost, tab=null) {
 
 // ----------------- register default apps
 function addMainAppTab(appsInfo, desktopFileName) {
-    let appInfo
-    for (const _appInfo of appsInfo) {
-        console.log(path.basename(_appInfo.desktopFile))
-        console.log(desktopFileName)
-        
-        if (path.basename(_appInfo.desktopFile) == desktopFileName) {
-            appInfo = _appInfo
-            break
-        }
-    }
+    let appInfo = getAppInfoFromDesktopFileName(appsInfo, desktopFileName)
 
     if (appInfo) {
         const icon = {

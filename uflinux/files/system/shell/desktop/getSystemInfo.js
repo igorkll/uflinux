@@ -7,20 +7,20 @@ const applicationsDirs = [
 ];
 
 window.getAllDesktopFiles = function() {
-    const apps = [];
+    const desktopFiles = [];
 
     applicationsDirs.forEach(dir => {
         if (fs.existsSync(dir) && fs.statSync(dir).isDirectory()) {
             const files = fs.readdirSync(dir);
             files.forEach(file => {
                 if (file.endsWith(".desktop")) {
-                    apps.push(path.join(dir, file));
+                    desktopFiles.push(path.join(dir, file));
                 }
             });
         }
     });
 
-    return apps;
+    return desktopFiles;
 }
 
 window.getAllApps = function() {
@@ -35,6 +35,22 @@ window.getAllApps = function() {
     }
 
     return allApps
+}
+
+window.getAppInfoFromDesktopFile = function(allApps, desktopFile) {
+    for (const appInfo of allApps) {
+        if (appInfo.desktopFile == desktopFile) {
+            return appInfo
+        }
+    }
+}
+
+window.getAppInfoFromDesktopFileName = function(allApps, desktopFileName) {
+    for (const appInfo of allApps) {
+        if (path.basename(appInfo.desktopFile) == desktopFileName) {
+            return appInfo
+        }
+    }
 }
 
 }
