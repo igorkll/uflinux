@@ -9,10 +9,19 @@ function addIcon(appsTab, icon) {
     appIcon.style.gridColumn = icon.x;
     appIcon.style.gridRow = icon.y;
 
-    let appImg = document.createElement("img")
-    appImg.src = icon.info
+    let appImgDiv = document.createElement("div")
+    appImgDiv.classList.add("appIconImgContainer");
+    appIcon.appendChild(appImgDiv)
 
-    appIcon.appendChild(appImg)
+    let appImg = document.createElement("img")
+    appImg.classList.add("appIconImg")
+    appImg.src = icon.appInfo.iconPath
+    appImgDiv.appendChild(appImg)
+
+    let titleObj = document.createElement("p")
+    titleObj.textContent = icon.appInfo.appName
+    appIcon.appendChild(titleObj)
+
     appsTab.appendChild(appIcon)
 }
 
@@ -35,7 +44,7 @@ function addMainAppTab(appsInfo, desktopFileName) {
         const icon = {
             x: storage.desktop.mainAppsTab.length + 1,
             y: 1,
-            info: appInfo
+            appInfo
         }
         storage.desktop.mainAppsTab.push(icon)
     }
@@ -50,7 +59,6 @@ function addMainAppsTab(appsInfo) {
 
 function refreshDefaultApps() {
     const appsInfo = getAllApps()
-    console.log(appsInfo)
 
     let x = 1
     let y = 1
@@ -64,7 +72,7 @@ function refreshDefaultApps() {
         const icon = {
             x,
             y,
-            info: appInfo
+            appInfo
         }
         tab.push(icon)
         
