@@ -1,0 +1,7 @@
+{
+
+window.getAllApps = function() {
+    
+}
+
+}
