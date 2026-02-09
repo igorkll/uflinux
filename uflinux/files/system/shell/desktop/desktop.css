@@ -25,6 +25,8 @@
 }
 
 .timelabel {
+    font-family: "DejaVu Sans Mono";
+
     color: white;
     font-size: 20px;
 }
