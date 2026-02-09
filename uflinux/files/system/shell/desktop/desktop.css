@@ -16,10 +16,20 @@
     align-items: center;
 }
 
+.appsTabHost {
+    flex: 1;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
 .appsTab {
     padding: 15px;
     gap: 15px;
-    flex: 1;
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
