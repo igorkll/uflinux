@@ -1,5 +1,11 @@
 {
 
+window.addEventListener("keydown", e => {
+    if (e.key === "Tab") {
+        e.preventDefault();
+    }
+});
+
 window.updateTime = function () {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")

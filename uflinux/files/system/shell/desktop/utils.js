@@ -13,7 +13,7 @@ function mergeTables(tbl, def) {
 }
 
 function calcAppsGridSize() {
-    const grid = document.querySelector('.appsTab');
+    const grid = document.getElementById('templateAppsTab');
     const style = getComputedStyle(grid);
 
     const colGap = parseFloat(style.columnGap);

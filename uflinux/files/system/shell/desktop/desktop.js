@@ -28,8 +28,26 @@ function addAppsTab(tabHost, tab=null) {
 }
 
 // ----------------- register default apps
+function addMainAppTab(appsInfo, desktopFileName) {
+    let appInfo
+    for (const _appInfo of appsInfo) {
+        if (path.basename(_appInfo.desktopFile) == desktopFileName) {
+            appInfo = _appInfo
+            break
+        }
+    }
+
+    
+}
+
+function addMainAppsTab(appsInfo) {
+    addMainAppTab(appsInfo, "discord.desktop")
+    addMainAppTab(appsInfo, "telegram.desktop")
+}
+
 function refreshDefaultApps() {
     const appsInfo = getAllApps()
+    console.log(appsInfo)
 
     let x = 1
     let y = 1
@@ -59,6 +77,9 @@ function refreshDefaultApps() {
             }
         }
     }
+
+    storage.desktop.mainAppsTab = []
+    addMainAppsTab(storage.desktop.mainAppsTab)
 
     storage.desktop.defaultAppsTabsLoaded = true
     storage_save()
