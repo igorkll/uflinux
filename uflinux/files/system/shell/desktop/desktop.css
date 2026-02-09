@@ -1,3 +1,8 @@
+:root {
+    --main-color: rgba(217, 217, 217, 0.288);
+    --text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
 .desktopMain {
     display: flex;
     flex-direction: column;
@@ -9,7 +14,7 @@
     padding: 5px;
 
     backdrop-filter: blur(10px);
-    background-color: rgba(217, 217, 217, 0.288);
+    background-color: var(--main-color);
     height: 40px;
 
     display: flex;
@@ -20,6 +25,8 @@
 }
 
 .timelabel {
+    color: white;
+    font-size: 20px;
 }
 
 .systemlabel {
@@ -33,7 +40,7 @@
     align-items: center;
     justify-content: center;
 
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-shadow: var(--text-shadow);
     font-size: 40px;
 }
 
@@ -96,7 +103,7 @@
 
 .appIcon > p {
     color: white;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    text-shadow: var(--text-shadow);
     text-align: center;
     overflow: hidden;
     white-space: nowrap;
