@@ -28,11 +28,13 @@ function addAppsTab(tabHost, tab=null) {
 }
 
 // ----------------- register default apps
-if (!storage.desktop.defaultAppsTabsLoaded || true) {
+function refreshDefaultApps() {
     const appsInfo = getAllApps()
 
     let x = 1
     let y = 1
+    let appsGridSize = calcAppsGridSize()
+    console.log(appsGridSize)
     let sizeX = 4
     let sizeY = 4
     let tab = []
@@ -62,17 +64,29 @@ if (!storage.desktop.defaultAppsTabsLoaded || true) {
     storage_save()
 }
 
+if (!storage.desktop.defaultAppsTabsLoaded || true) {
+    refreshDefaultApps()
+}
+
 // ----------------- add tabs
-let tabAdded = false
-for (const tab of storage.desktop.appsTabs) {
-    addAppsTab(appsTabHost, tab)
-    tabAdded = true
+function refreshApps() {
+    document.querySelectorAll(".appsTab").forEach(element => {
+        element.remove()
+    })
+
+    let tabAdded = false
+    for (const tab of storage.desktop.appsTabs) {
+        addAppsTab(appsTabHost, tab)
+        tabAdded = true
+    }
+
+    if (!tabAdded) {
+        addAppsTab(appsTabHost)
+    }
+
+    addAppsTab(mainAppsHost, storage.desktop.mainAppsTab)
 }
 
-if (!tabAdded) {
-    addAppsTab(appsTabHost)
-}
-
-addAppsTab(mainAppsHost, storage.desktop.mainAppsTab)
+refreshApps()
 
 }

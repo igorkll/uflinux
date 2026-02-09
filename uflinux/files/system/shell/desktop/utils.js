@@ -11,3 +11,21 @@ function mergeTables(tbl, def) {
         }
     }
 }
+
+function calcAppsGridSize() {
+    const grid = document.querySelector('.appsTab');
+    const style = getComputedStyle(grid);
+
+    const colGap = parseFloat(style.columnGap);
+    const rowGap = parseFloat(style.rowGap);
+    const padX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
+    const padY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+
+    const usableWidth = grid.clientWidth - padX;
+    const usableHeight = grid.clientHeight - padY;
+
+    const cellW = 100;
+    const cellH = 100;
+
+    return [Math.floor((usableHeight + rowGap) / (cellH + rowGap)), Math.floor((usableWidth + colGap) / (cellW + colGap))]
+}
