@@ -23,16 +23,27 @@ function addAppsTab(tabHost) {
     tabHost.appendChild(appsTab)
 }
 
+// register default apps
 if (!storage.desktop.defaultAppsTabsLoaded) {
     let apps = getAllApps()
 
-    
+    for (app in apps) {
+        
+    }
 
     storage.desktop.defaultAppsTabsLoaded = true;
 }
 
-addAppsTab(appsTabHost)
-addAppsTab(appsTabHost)
+// add tabs
+let tabAdded = false
+for (tab in storage) {
+    addAppsTab(appsTabHost)
+    tabAdded = true
+}
+
+if (!tabAdded) {
+    addAppsTab(appsTabHost)
+}
 
 addAppsTab(mainAppsHost)
 
