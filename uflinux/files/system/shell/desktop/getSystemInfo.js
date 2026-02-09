@@ -38,14 +38,6 @@ window.getAllApps = function() {
     return allApps
 }
 
-window.getAppInfoFromDesktopFile = function(allApps, desktopFile) {
-    for (const appInfo of allApps) {
-        if (appInfo.desktopFile == desktopFile) {
-            return appInfo
-        }
-    }
-}
-
 window.getAppInfoFromDesktopFileName = function(allApps, desktopFileName) {
     for (const appInfo of allApps) {
         if (path.basename(appInfo.desktopFile) == desktopFileName) {
