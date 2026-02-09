@@ -86,6 +86,7 @@
         "name": "rootfs directory with setup",
         "export": false,
 
+        "manual_validation": true,
         "use_systemd_container": true,
         "source": "debian directory",
         "scripts": [
