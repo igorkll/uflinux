@@ -3,9 +3,11 @@
 let appsTabHost = document.getElementById("appsTabHost")
 let mainAppsHost = document.getElementById("mainAppsHost")
 
-function addIcon(appsTab, x, y, imgPath) {
+function addIcon(appsTab, icon) {
     let appIcon = document.createElement("div")
     appIcon.classList.add("appIcon")
+    appIcon.style.gridColumn = icon.x;
+    appIcon.style.gridRow = icon.y;
 
     let appImg = document.createElement("img")
     appImg.src = imgPath
@@ -18,7 +20,9 @@ function addAppsTab(tabHost, tab=null) {
     let appsTab = document.createElement("div")
     appsTab.classList.add("appsTab")
 
-    console.log(tab)
+    for (const icon of tab) {
+
+    }
 
     tabHost.appendChild(appsTab)
 }

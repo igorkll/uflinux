@@ -40,8 +40,6 @@
 
 .appIcon {
     position: relative;
-    
-
     grid-column: 1;
     grid-row: 1;
 }
