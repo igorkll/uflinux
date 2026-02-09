@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+img {
+    -webkit-user-drag: none;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -20,7 +24,6 @@ body {
 
     position: relative;
     user-select: none;
-    -webkit-user-drag: none;
 }
 
 .layer {
