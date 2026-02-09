@@ -48,12 +48,12 @@
     align-items: stretch;
 }
 
-.appIconImgContainer {
+.appIcon > div {
     position: relative;
     flex: 1;
 }
 
-.appIconImg {
+.appIcon > div > img {
     position: absolute;
     top: 0;
     left: 0;

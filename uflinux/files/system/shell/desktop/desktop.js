@@ -10,11 +10,9 @@ function addIcon(appsTab, icon) {
     appIcon.style.gridRow = icon.y;
 
     let appImgDiv = document.createElement("div")
-    appImgDiv.classList.add("appIconImgContainer");
     appIcon.appendChild(appImgDiv)
 
     let appImg = document.createElement("img")
-    appImg.classList.add("appIconImg")
     appImg.src = icon.appInfo.iconPath
     appImgDiv.appendChild(appImg)
 
