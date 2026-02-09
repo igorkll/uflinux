@@ -2,7 +2,7 @@ let defaultStorage = {
     desktop: {
         defaultAppsTabsLoaded: false,
         appsTabs: [],
-        mainAppsTab: {}
+        mainAppsTab: []
     },
     background: {
         defaultBackgroundLoaded: false,

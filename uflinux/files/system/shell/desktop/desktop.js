@@ -27,13 +27,33 @@ function addAppsTab(tabHost, tab=null) {
 if (!storage.desktop.defaultAppsTabsLoaded) {
     let appsInfo = getAllApps()
 
-    let x = 0
-    let y = 0
+    let x = 1
+    let y = 1
+    let sizeX = 4
+    let sizeY = 4
+    let tab = {}
+
     for (appInfo in appsInfo) {
+        let icon = {
+            x,
+            y,
+            info: appInfo
+        }
+        tab.push(icon)
         
+        x++
+        if (x > sizeX) {
+            x = 1
+            y++
+            if (y > sizeY) {
+                y = 1
+                storage.desktop.appsTabs.push(tab)
+            }
+        }
     }
 
-    storage.desktop.defaultAppsTabsLoaded = true;
+    storage.desktop.defaultAppsTabsLoaded = true
+    storage_save()
 }
 
 // ----------------- add tabs
