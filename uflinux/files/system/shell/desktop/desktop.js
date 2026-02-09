@@ -24,17 +24,18 @@ function addAppsTab(tabHost, tab=null) {
 }
 
 // ----------------- register default apps
-if (!storage.desktop.defaultAppsTabsLoaded) {
-    let appsInfo = getAllApps()
+if (!storage.desktop.defaultAppsTabsLoaded || true) {
+    const appsInfo = getAllApps()
 
     let x = 1
     let y = 1
     let sizeX = 4
     let sizeY = 4
-    let tab = {}
+    let tab = []
 
-    for (appInfo in appsInfo) {
-        let icon = {
+    storage.desktop.appsTabs = []
+    for (const appInfo of appsInfo) {
+        const icon = {
             x,
             y,
             info: appInfo
@@ -48,7 +49,7 @@ if (!storage.desktop.defaultAppsTabsLoaded) {
             if (y > sizeY) {
                 y = 1
                 storage.desktop.appsTabs.push(tab)
-                tab = {}
+                tab = []
             }
         }
     }
@@ -59,7 +60,7 @@ if (!storage.desktop.defaultAppsTabsLoaded) {
 
 // ----------------- add tabs
 let tabAdded = false
-for (tab in storage.desktop.appsTabs) {
+for (const tab of storage.desktop.appsTabs) {
     addAppsTab(appsTabHost, tab)
     tabAdded = true
 }
