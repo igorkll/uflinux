@@ -1,7 +1,10 @@
-const DEBUG = true;
+let DEBUG = true;
 
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
+const fs = require('fs');
+
+if (fs.existsSync("/uflinux.flag") && !fs.existsSync("/uflinux_debug.flag")) DEBUG = false;
 
 function createWindow () {
     const win = new BrowserWindow({

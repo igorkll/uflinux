@@ -2,7 +2,11 @@
 
 DEBUG=false
 
+mkdir -p -m 000 uflinux.flag
+
 if [ "$DEBUG" = "true" ]; then
+    mkdir -p -m 000 uflinux_debug.flag
+
     # ------------ set root password (for debug)
     echo "root:root" | chpasswd
     usermod -s /bin/bash root
