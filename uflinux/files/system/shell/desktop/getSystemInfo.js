@@ -30,7 +30,7 @@ window.getAllApps = function() {
     for (const desktopFile of desktopFiles) {
         allApps.push({
             desktopFile: desktopFile,
-            
+            appName: path.basename(appInfo.desktopFile)
         })
     }
 
