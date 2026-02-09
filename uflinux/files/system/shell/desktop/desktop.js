@@ -14,7 +14,7 @@ function addIcon(appsTab, x, y, imgPath) {
     appsTab.appendChild(appIcon)
 }
 
-function addAppsTab(tabHost) {
+function addAppsTab(tabHost, tab=null) {
     let appsTab = document.createElement("div")
     appsTab.classList.add("appsTab")
 
@@ -23,21 +23,23 @@ function addAppsTab(tabHost) {
     tabHost.appendChild(appsTab)
 }
 
-// register default apps
+// ----------------- register default apps
 if (!storage.desktop.defaultAppsTabsLoaded) {
-    let apps = getAllApps()
+    let appsInfo = getAllApps()
 
-    for (app in apps) {
+    let x = 0
+    let y = 0
+    for (appInfo in appsInfo) {
         
     }
 
     storage.desktop.defaultAppsTabsLoaded = true;
 }
 
-// add tabs
+// ----------------- add tabs
 let tabAdded = false
-for (tab in storage) {
-    addAppsTab(appsTabHost)
+for (tab in storage.desktop.appsTabs) {
+    addAppsTab(appsTabHost, tab)
     tabAdded = true
 }
 
@@ -45,6 +47,6 @@ if (!tabAdded) {
     addAppsTab(appsTabHost)
 }
 
-addAppsTab(mainAppsHost)
+addAppsTab(mainAppsHost, storage.desktop.mainAppsTab)
 
 }
