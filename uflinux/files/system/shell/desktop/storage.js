@@ -18,7 +18,13 @@ function storage_setWallpaperFile(file) {
     let fileName = "wallpaper" + path.extname(file)
     let filePath = "/data/" + fileName
 
-    fs.copyFileSync(file, filePath)
+    // я создаю хардлинк на обоину, на мой взляд самый идиальный вариант нежели копировать, особено для больших видео
+    fs.link(file, filePath, err => {
+        if (err) {
+            // если не получилось (например это другой диск) то просто копирую
+            fs.copyFileSync(file, filePath)
+        }
+    });
 
     storage.background.file = filePath
 }
