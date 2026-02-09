@@ -10,19 +10,28 @@ window.getAllDesktopFiles = function() {
     const apps = [];
 
     applicationsDirs.forEach(dir => {
-        const files = fs.readdirSync(dir);
-        files.forEach(file => {
-            if (file.endsWith(".desktop")) {
-                apps.push(path.join(dir, file));
-            }
-        });
+        if (fs.existsSync(dir) && fs.statSync(dir).isDirectory()) {
+            const files = fs.readdirSync(dir);
+            files.forEach(file => {
+                if (file.endsWith(".desktop")) {
+                    apps.push(path.join(dir, file));
+                }
+            });
+        }
     });
 
     return apps;
 }
 
 window.getAllApps = function() {
-    
+    const desktopFiles = getAllDesktopFiles()
+    const allApps = []
+
+    for (desktopFile in desktopFiles) {
+        
+    }
+
+    return allApps
 }
 
 }

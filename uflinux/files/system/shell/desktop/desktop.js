@@ -18,7 +18,7 @@ function addAppsTab(tabHost, tab=null) {
     let appsTab = document.createElement("div")
     appsTab.classList.add("appsTab")
 
-    addIcon(appsTab, 2, 2, "wallpapers/18.jpg")
+    console.log(tab)
 
     tabHost.appendChild(appsTab)
 }
@@ -48,6 +48,7 @@ if (!storage.desktop.defaultAppsTabsLoaded) {
             if (y > sizeY) {
                 y = 1
                 storage.desktop.appsTabs.push(tab)
+                tab = {}
             }
         }
     }
