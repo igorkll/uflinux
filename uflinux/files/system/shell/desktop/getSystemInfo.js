@@ -28,7 +28,10 @@ window.getAllApps = function() {
     const allApps = []
 
     for (const desktopFile of desktopFiles) {
-        allApps.push(desktopFile)
+        allApps.push({
+            desktopFile: desktopFile,
+            
+        })
     }
 
     return allApps

@@ -10,7 +10,7 @@ function addIcon(appsTab, icon) {
     appIcon.style.gridRow = icon.y;
 
     let appImg = document.createElement("img")
-    appImg.src = imgPath
+    appImg.src = icon.info
 
     appIcon.appendChild(appImg)
     appsTab.appendChild(appIcon)
@@ -21,7 +21,7 @@ function addAppsTab(tabHost, tab=null) {
     appsTab.classList.add("appsTab")
 
     for (const icon of tab) {
-
+        addIcon(appsTab, icon)
     }
 
     tabHost.appendChild(appsTab)
