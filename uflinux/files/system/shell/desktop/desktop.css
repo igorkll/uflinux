@@ -8,18 +8,41 @@
 .desktopHeader {
     padding: 5px;
 
-    background-color: white;
+    backdrop-filter: blur(10px);
+    background-color: rgba(217, 217, 217, 0.288);
     height: 40px;
 
     display: flex;
     justify-items: flex-start;
     align-items: center;
+
+    position: relative;
+}
+
+.timelabel {
+}
+
+.systemlabel {
+    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    font-size: 40px;
 }
 
 .appsTabHost {
     overflow-x: auto;
     overflow-y: hidden;
     scroll-snap-type: x mandatory;
+
+    gap: 50px;
 
     display: flex;
     justify-content: flex-start;

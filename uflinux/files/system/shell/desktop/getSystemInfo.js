@@ -31,7 +31,7 @@ window.getAllApps = function() {
         allApps.push({
             desktopFile: desktopFile,
             appName: path.basename(desktopFile),
-            iconPath: "wallpapers/1.jpg"
+            iconPath: "wallpapers/18.jpg"
         })
     }
 
