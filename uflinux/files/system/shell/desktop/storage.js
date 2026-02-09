@@ -30,7 +30,7 @@ function storage_setWallpaperFile(file) {
 }
 
 function storage_loadDefaultWallpaper() {
-    if (!storage.background.defaultBackgroundLoaded) {
+    if (!storage.background.defaultBackgroundLoaded || !fs.existsSync(storage.background.file)) {
         storage_setWallpaperFile(path.join(__dirname, "wallpapers/1.jpg"))
         storage.background.defaultBackgroundLoaded = true;
     }
