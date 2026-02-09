@@ -35,8 +35,8 @@ function refreshDefaultApps() {
     let y = 1
     let appsGridSize = calcAppsGridSize()
     console.log(appsGridSize)
-    let sizeX = 4
-    let sizeY = 4
+    let sizeX = appsGridSize[0]
+    let sizeY = appsGridSize[1]
     let tab = []
 
     storage.desktop.appsTabs = []

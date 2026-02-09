@@ -27,5 +27,5 @@ function calcAppsGridSize() {
     const cellW = 100;
     const cellH = 100;
 
-    return [Math.floor((usableHeight + rowGap) / (cellH + rowGap)), Math.floor((usableWidth + colGap) / (cellW + colGap))]
+    return [Math.floor((usableWidth + colGap) / (cellW + colGap)), Math.floor((usableHeight + rowGap) / (cellH + rowGap))]
 }
