@@ -17,8 +17,6 @@
 }
 
 .appsTabHost {
-    flex: 1;
-
     overflow-x: auto;
     overflow-y: hidden;
 
@@ -30,6 +28,8 @@
 .appsTab {
     padding: 15px;
     gap: 15px;
+
+    width: 50vw;
 
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
