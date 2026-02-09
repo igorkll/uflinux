@@ -31,13 +31,23 @@ function addAppsTab(tabHost, tab=null) {
 function addMainAppTab(appsInfo, desktopFileName) {
     let appInfo
     for (const _appInfo of appsInfo) {
+        console.log(path.basename(_appInfo.desktopFile))
+        console.log(desktopFileName)
+        
         if (path.basename(_appInfo.desktopFile) == desktopFileName) {
             appInfo = _appInfo
             break
         }
     }
 
-    
+    if (appInfo) {
+        const icon = {
+            x: storage.desktop.mainAppsTab.length + 1,
+            y: 1,
+            info: appInfo
+        }
+        storage.desktop.mainAppsTab.push(icon)
+    }
 }
 
 function addMainAppsTab(appsInfo) {
@@ -52,7 +62,6 @@ function refreshDefaultApps() {
     let x = 1
     let y = 1
     let appsGridSize = calcAppsGridSize()
-    console.log(appsGridSize)
     let sizeX = appsGridSize[0]
     let sizeY = appsGridSize[1]
     let tab = []
@@ -79,7 +88,7 @@ function refreshDefaultApps() {
     }
 
     storage.desktop.mainAppsTab = []
-    addMainAppsTab(storage.desktop.mainAppsTab)
+    addMainAppsTab(appsInfo)
 
     storage.desktop.defaultAppsTabsLoaded = true
     storage_save()
