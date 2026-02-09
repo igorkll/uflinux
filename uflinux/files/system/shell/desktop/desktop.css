@@ -19,6 +19,7 @@
 .appsTabHost {
     overflow-x: auto;
     overflow-y: hidden;
+    scroll-snap-type: x mandatory;
 
     display: flex;
     justify-content: flex-start;
@@ -28,8 +29,8 @@
 .appsTab {
     padding: 15px;
     gap: 15px;
-
     width: 100%;
+    scroll-snap-align: start;
 
     display: grid;
     grid-template-columns: repeat(auto-fill, 100px);
