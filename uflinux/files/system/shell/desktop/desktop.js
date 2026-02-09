@@ -27,8 +27,10 @@ function addAppsTab(tabHost, tab=null) {
     let appsTab = document.createElement("div")
     appsTab.classList.add("appsTab")
 
-    for (const icon of tab) {
-        addIcon(appsTab, icon)
+    if (tab) {
+        for (const icon of tab) {
+            addIcon(appsTab, icon)
+        }
     }
 
     tabHost.appendChild(appsTab)
