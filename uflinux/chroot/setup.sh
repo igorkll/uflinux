@@ -96,7 +96,7 @@ systemctl mask plymouth.service
 
 if [ "$DEBUG" != "true" ]; then
     rm -f /usr/bin/sudo
-    rm -f /usr/libexec/sudo
+    rm -rf /usr/libexec/sudo
     rm -rf /etc/sudo*
     rm -rf /var/lib/sudo
 
@@ -131,3 +131,7 @@ rm -f /usr/sbin/usermod
 rm -f /usr/sbin/userdel
 rm -f /etc/default/useradd
 rm -rf /etc/skel
+
+# ------------
+
+touch /.chrootend
