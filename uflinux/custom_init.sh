@@ -791,6 +791,10 @@ if [ "${LOGOAUTOHIDE}" = "true" ]; then
 	plymouth quit
 fi
 
+if [ -n "$preinit" ] && [ -x "/root/${preinit}" ]; then
+	"/root/${preinit}"
+fi
+
 # Chain to real filesystem
 # shellcheck disable=SC2086,SC2094
 exec run-init ${drop_caps} "${rootmnt}" "${init}" "$@" <"${rootmnt}/dev/console" >"${rootmnt}/dev/console" 2>&1
