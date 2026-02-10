@@ -67,12 +67,12 @@
     //    "source": "custom-debian-initramfs-init",
     //    "path": "/custom_init.sh"
     //},
-    {
-        "type": "from-directory",
-        "name": "custom_init_hook.sh",
-        "export": false,
+    //{
+    //    "type": "from-directory",
+    //    "name": "custom_init_hook.sh",
+    //    "export": false,
 
-        "source": "custom-debian-initramfs-init",
-        "path": "/custom_init_hook.sh"
-    }
+    //    "source": "custom-debian-initramfs-init",
+    //    "path": "/custom_init_hook.sh"
+    //}
 ]
