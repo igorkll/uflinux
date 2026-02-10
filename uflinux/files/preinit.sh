@@ -1,6 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
-export PATH=/sbin:/usr/sbin:/bin:/usr/bin
-
-mount -o bind /realrootroot/storage/home /home
-mount -o bind /realrootroot/storage/data /data
+/nativemount -o bind /realrootroot/storage/home /root/home
+/nativemount -o bind /realrootroot/storage/data /root/data
