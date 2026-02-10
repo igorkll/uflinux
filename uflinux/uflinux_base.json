@@ -13,6 +13,7 @@
             // systemd
             "systemd",
             "systemd-sysv",
+            "systemd-resolved",
             "dbus",
             "dbus-user-session",
 
