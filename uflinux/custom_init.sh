@@ -658,10 +658,12 @@ if [ -n "$LOOP" ]; then
 	}
 fi
 
-
-
 mountroot
 log_end_msg
+
+if [ -n "$rootsubdirectory" ]; then
+	mount --bind "/root/${rootsubdirectory}" /root
+fi
 
 if read_fstab_entry /usr; then
 	log_begin_msg "Mounting /usr file system"
