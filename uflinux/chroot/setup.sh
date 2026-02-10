@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-DEBUG=false
+DEBUG=true
 
 mkdir -p -m 000 /uflinux.flag
 
