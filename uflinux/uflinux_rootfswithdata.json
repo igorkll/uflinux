@@ -24,7 +24,7 @@
         "export": false,
 
         "directories": [
-            ["/rootfs", [0, 0, "0755"]],
+            ["/rootfs", [0, 0, "0755"]], //нужно из rootfs УДАЛИТЬ НАХУЙ директорию /home/user, ибо нахер она если все равно поверх нее монтируется storage а через /readrootroot/rootfs/home/user можно тупо загадить диск
             ["/storage", [0, 0, "0755"]],
             ["/storage/home", [0, 0, "0755"]],
             ["/storage/data", [10000, 10000, "0700"]]
