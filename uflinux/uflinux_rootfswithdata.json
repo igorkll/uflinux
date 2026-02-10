@@ -1,5 +1,22 @@
 [
     {
+        "type": "from-directory",
+        "name": "storage_home",
+        "export": false,
+    
+        "source": "base rootfs directory",
+        "path": "/home"
+    },
+    {
+        "type": "from-directory",
+        "name": "storage_data",
+        "export": false,
+    
+        "source": "base rootfs directory",
+        "path": "/data"
+    },
+
+    {
         "type": "directory",
         "name": "rootfs directory with data",
         "export": false,
@@ -12,7 +29,9 @@
         ],
 
         "items": [
-            ["base rootfs directory", "/rootfs"]
+            ["base rootfs directory", "/rootfs"],
+            ["storage_home", "/storage/home"],
+            ["storage_data", "/storage/data"]
         ]
     }
 ]

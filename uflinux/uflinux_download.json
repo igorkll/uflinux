@@ -13,7 +13,7 @@
         "export": false,
 
         "git_url": "https://github.com/igorkll/custom-debian-initramfs-init",
-        "git_checkout": "1.4.0"
+        "git_checkout": "1.5.0"
     },
 
     // extract "linux-embedded-patchs"
@@ -59,20 +59,20 @@
     },
 
     // extract "custom-debian-initramfs-init"
-    //{
-    //    "type": "from-directory",
-    //    "name": "custom_init.sh",
-    //    "export": false,
-    //
-    //    "source": "custom-debian-initramfs-init",
-    //    "path": "/custom_init.sh"
-    //},
-    //{
-    //    "type": "from-directory",
-    //    "name": "custom_init_hook.sh",
-    //    "export": false,
+    {
+        "type": "from-directory",
+        "name": "custom_init.sh",
+        "export": false,
+    
+        "source": "custom-debian-initramfs-init",
+        "path": "/custom_init.sh"
+    },
+    {
+        "type": "from-directory",
+        "name": "custom_init_hook.sh",
+        "export": false,
 
-    //    "source": "custom-debian-initramfs-init",
-    //    "path": "/custom_init_hook.sh"
-    //}
+        "source": "custom-debian-initramfs-init",
+        "path": "/custom_init_hook.sh"
+    }
 ]
