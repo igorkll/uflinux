@@ -1,12 +1,14 @@
 [
     {
         "type": "directory",
-        "name": "base rootfs directory",
+        "name": "rootfs directory with data",
         "export": false,
 
         "directories": [
+            ["/rootfs", [0, 0, "0755"]],
             ["/data", [0, 0, "0755"]],
-            ["/rootfs", [0, 0, "0755"]]
+            ["/data/home", [0, 0, "0755"]],
+            ["/data/data", [10000, 10000, "0700"]]
         ],
 
         "items": [
