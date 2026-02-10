@@ -69,8 +69,6 @@ EOF
 
 # ------------ disable udisks2
 
-systemctl disable udisks2
-systemctl mask udisks2
 dpkg --purge --force-depends udisks2
 
 # ------------ install npm packages
