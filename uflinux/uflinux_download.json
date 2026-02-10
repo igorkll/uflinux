@@ -13,7 +13,7 @@
         "export": false,
 
         "git_url": "https://github.com/igorkll/custom-debian-initramfs-init",
-        "git_checkout": "1.5.0"
+        "git_checkout": "1.5.2"
     },
 
     // extract "linux-embedded-patchs"
