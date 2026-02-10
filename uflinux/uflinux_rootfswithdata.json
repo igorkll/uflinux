@@ -1,0 +1,16 @@
+[
+    {
+        "type": "directory",
+        "name": "base rootfs directory",
+        "export": false,
+
+        "directories": [
+            ["/data", [0, 0, "0755"]],
+            ["/rootfs", [0, 0, "0755"]]
+        ],
+
+        "items": [
+            ["base rootfs directory", "/rootfs"]
+        ]
+    }
+]

@@ -105,6 +105,8 @@
             ["/system", [0, 0, "0755"]],
             ["/system/media", [0, 0, "0700"]],
 
+            ["/realrootroot", [0, 0, "0755"]],
+
             ["/data", [10000, 10000, "0700"]],
             ["/home/user/.config", [10000, 10000, "0700"]]
         ],
@@ -119,7 +121,8 @@
             ["files/systemd_config", "/etc/systemd", [0, 0, "0644"]],
 
             ["custom_init.sh", "/usr/share/initramfs-tools/init", [0, 0, "0755"]],
-            ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]]
+            ["custom_init_hook.sh", "/etc/initramfs-tools/hooks/custom_init_hook.sh", [0, 0, "0755"]],
+            ["preinit.sh", "/preinit.sh", [0, 0, "0755"]]
         ]
     }
 ]

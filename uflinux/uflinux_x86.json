@@ -53,7 +53,7 @@
     // rootfs with kernel
     {
         "type": "directory",
-        "name": "rootfs directory x3",
+        "name": "base rootfs directory",
         "export": false,
 
         "items": [
@@ -64,11 +64,15 @@
         ]
     },
     {
+        "type": "include",
+        "file": "uflinux_rootfswithdata.json"
+    },
+    {
         "type": "filesystem",
         "name": "rootfs.img",
         "export": false,
 
-        "source": "rootfs directory x3",
+        "source": "rootfs directory with data",
 
         "fs_type": "ext4",
         "size": "(auto * 1.2) + (100 * 1024 * 1024)",
