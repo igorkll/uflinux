@@ -662,6 +662,9 @@ mountroot
 log_end_msg
 
 if [ -n "$rootsubdirectory" ]; then
+	if [ -d "/root/${rootsubdirectory}/realrootroot" ]; then
+		mount --bind /root "/root/${rootsubdirectory}/realrootroot"
+	fi
 	mount --bind "/root/${rootsubdirectory}" /root
 fi
 
