@@ -31,7 +31,7 @@
         ],
 
         "items": [
-            ["base rootfs directory", "/rootfs"], //я думаю стоит попробовать сделать все файлы тут 0, 0, 755 чтобы полностью избежать world writable директорий
+            ["base rootfs directory", "/rootfs"], //я думаю стоит попробовать сделать все файлы тут 0, 0, 755 чтобы полностью избежать world writable директорий. но при этом нужно как то не свернуть шею suid и sticky
             ["storage_home", "/storage/home"],
             ["storage_data", "/storage/data"]
         ]
