@@ -56,7 +56,7 @@ systemctl set-default graphical.target
 
 # ------------ enable pipewire
 
-sudo -u user systemctl --user enable pipewire pipewire-pulse wireplumber
+# sudo -u user systemctl --user enable pipewire pipewire-pulse wireplumber
 
 # ------------ setting the windows compatible time format
 ln -sf /usr/share/zoneinfo/UTC /etc/localtime
