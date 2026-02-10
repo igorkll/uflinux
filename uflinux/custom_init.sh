@@ -694,18 +694,18 @@ if [ -n "$rootsubdirectory" ]; then
 	mount -n -o move "${rootmnt}" "/realrootroot"
 
 	if [ "$rootsubdirectory_ro" = "y" ]; then
-		/nativemount/mount -o bind,ro "/realrootroot/${rootsubdirectory}" /root
-		/nativemount/mount -o remount,bind,ro "/root"
+		/nativemount -o bind,ro "/realrootroot/${rootsubdirectory}" /root
+		/nativemount -o remount,bind,ro "/root"
 	else
-		/nativemount/mount -o bind "/realrootroot/${rootsubdirectory}" /root
+		/nativemount -o bind "/realrootroot/${rootsubdirectory}" /root
 	fi
 
 	if [ -d "/root/realrootroot" ]; then
 		if [ "$realrootroot_ro" = "y" ]; then
-			/nativemount/mount -o bind,ro /realrootroot "/root/realrootroot"
-			/nativemount/mount -o remount,bind,ro "/root/realrootroot"
+			/nativemount -o bind,ro /realrootroot "/root/realrootroot"
+			/nativemount -o remount,bind,ro "/root/realrootroot"
 		else
-			/nativemount/mount -o bind /realrootroot "/root/realrootroot"
+			/nativemount -o bind /realrootroot "/root/realrootroot"
 		fi
 	fi
 
