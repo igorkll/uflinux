@@ -205,11 +205,16 @@ function createFakeHandIcon() {
     const 
 }
 
+function doUnhandleIcon() {
+    if (!currentHandleElement) return;
+
+}
+
 function doIcon(handleElement) {
     if (editMode) {
         currentHandleElement = handleElement
-        createFakeHandIcon()
         
+        createFakeHandIcon()
     } else {
 
     }
@@ -231,7 +236,7 @@ function disableEditMode() {
     if (!editMode) return;
     document.documentElement.classList.remove('editMode')
     document.removeEventListener('user_interaction', startDisableEditModeTimer)
-    currentHandleElement = null
+    doUnhandleIcon()
     editMode = false
 }
 
