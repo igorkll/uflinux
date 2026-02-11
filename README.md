@@ -14,6 +14,15 @@ i'm making this distribution to gain experience in linux before developing a mor
 * the log is not displayed on the screen during the boot
 * there is no bootloader menu and it is impossible to get into the bootloader somehow
 * at the first boot, the system increases the size of the data partition to the maximum possible. since the OS is being built in an image format for writing to disk, and I do not know what disk size it will be written to
+### filesystem
+* the filesystem here is immutable, but the data is actually on the same partition, just in a different directory
+* in fact, the file system has this structure:
+```
+/storage - directories for data that is connected using bindings
+/rootfs - an immutable rootfs from which the system is boot
+```
+* the "/" path actually allows you to access the "/rootfs" directory, and the real file system is accessed via the "/realrootroot" path.
+* you do not need to use "/realrootroot" directly, all binds have already been made and the storage directories are mounted in the filesystem directories
 ### userspace
 * there is no terminal
 * the "/var" directory is mounted as tmpfs and its contents are reset on shutdown
