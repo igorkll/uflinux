@@ -19,6 +19,11 @@ html {
     height: 100%;
 }
 
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -28,6 +33,8 @@ body {
 
     position: relative;
     user-select: none;
+
+    font-family: 'Roboto-Regular';
 }
 
 .layer {
