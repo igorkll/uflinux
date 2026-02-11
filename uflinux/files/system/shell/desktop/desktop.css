@@ -4,7 +4,7 @@
     --text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
-.grabbingOverride {
+.grabbingOverride * {
     cursor: grabbing !important;
 }
 
@@ -106,7 +106,9 @@
     justify-content: flex-start;
     align-items: stretch;
 
-    transition: transform 0.15s ease-out;
+    transition:
+        transform 0.15s ease-out,
+        filter 0.15s ease-out;
 }
 
 .appIcon > div {
@@ -136,11 +138,14 @@
 }
 
 .appIcon.fakeIcon {
-    transform: scale(1.2);
+    transform: scale(1.05);
+    position: absolute;
 }
 
 .appIcon.handle {
-    filter: sepia(100%);
+    transform: scale(0.95);
+    filter: saturate(0);
+    opacity: 0.6;
 }
 
 .editMode .desktopHeader {

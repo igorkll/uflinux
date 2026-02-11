@@ -207,6 +207,7 @@ function doHandleIcon(realIcon) {
     fakeIcon.realIcon = realIcon
     fakeIcon.classList.add("fakeIcon")
     currentHandleElement = fakeIcon
+    document.appendChild(fakeIcon)
 
     realIcon.classList.add("handle")
     document.body.classList.add('grabbingOverride')
@@ -216,7 +217,7 @@ function doUnhandleIcon(process=false) {
     if (!currentHandleElement) return;
     currentHandleElement.realIcon.classList.remove("handle")
     currentHandleElement = null
-    
+
     document.body.classList.remove('grabbingOverride')
 }
 
@@ -248,12 +249,17 @@ function disableEditMode() {
     editMode = false
 }
 
-document.addEventListener('pointerdown', () => {
+document.addEventListener('pointerup', () => {
     doUnhandleIcon(true)
 })
 
 document.addEventListener('pointermove', () => {
-    
+    if (currentHandleElement) {
+        const x = e.clientX
+        const y = e.clientY
+        //currentHandleElement.style.top = x + "px"
+        //currentHandleElement.style.left = y + "px"
+    }
 })
 
 }
