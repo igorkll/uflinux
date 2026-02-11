@@ -19,13 +19,26 @@ function refreshTabdotsSelect() {
     }
 }
 
+function selectTab(index) {
+    appsTabHost.scrollTo({
+        left: appsTabHost.clientWidth * index,
+        behavior: 'smooth'
+    })
+}
+
 function refreshTabdots() {
     tabdots.replaceChildren()
 
+    let index = 0
     for (const element of appsTabHost.children) {
+        const i = index
         const tabdot = document.createElement("div")
         tabdot.classList.add("tabdot")
+        tabdot.addEventListener('pointerdown', () => {
+            selectTab(i)
+        })
         tabdots.appendChild(tabdot)
+        index++
     }
 
     refreshTabdotsSelect()
