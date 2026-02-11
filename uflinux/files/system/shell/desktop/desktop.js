@@ -322,7 +322,7 @@ document.addEventListener('pointerup', () => {
     doUnhandleIcon(true)
 })
 
-let changeTabCheckArea = 10
+let changeTabCheckArea = 5
 
 document.addEventListener('pointermove', event => {
     if (currentHandleElement) {
@@ -332,7 +332,7 @@ document.addEventListener('pointermove', event => {
         editModeChangeTabTimer = setInterval(() => {
             const rect = appsTabHost.getBoundingClientRect()
 
-            changeTabCheckAreaPx = rect.width / changeTabCheckArea
+            changeTabCheckAreaPx = (rect.width / 100) * changeTabCheckArea
             if (event.x < changeTabCheckAreaPx) {
                 changeTab(-1)
                 startDisableEditModeTimer()
