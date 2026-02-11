@@ -1,4 +1,5 @@
 # uflinux: user-friendly linux
+# WORK IN PROCESS!! I'm just writing all this, IT'S NOT READY YET!
 this is the most userfriendly distribution  
 this will be the linux of the future  
 provides an android-like experience but is not android, the distribution is based on debian  
@@ -46,6 +47,8 @@ https://github.com/igorkll/syslbuild
 * when you close the laptop lid, the screen simply goes out, but it will never turn off on its own or go into sleep mode.
 * pressing the power button once turns off the screen
 * when you hold it down, the Power management menu appears
+### unique features
+* USB gadget support. Connect your laptop with type-c to your computer by wire and you can enable file transfer mode (only if the USB controller supports client mode)
 
 ## for whom is this distribution probably not suitable
 * i want complete freedom and flexibility in configuration: no, uflinux is specially designed so as not to give the user the opportunity to break anything, you will not be able to fine-tune anything here
