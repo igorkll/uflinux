@@ -221,7 +221,8 @@ function recreateVirtualIcon(cursorX, cursorY) {
 
         if (cell && getGridElement(cell.grid, cell.row, cell.col) == null) {
             const element = currentHandleElement.realIcon.cloneNode(true)
-            element.classList.add("virtual")
+            element.classList.remove("handle")
+            element.classList.add("virtualIcon")
             element.style.gridColumn = cell.col
             element.style.gridRow = cell.row
             cell.grid.appendChild(element)
