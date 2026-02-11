@@ -54,8 +54,8 @@ function refreshTabdots() {
 function addIcon(appsTab, icon) {
     let appIcon = document.createElement("div")
     appIcon.classList.add("appIcon")
-    appIcon.style.gridColumn = icon.x;
-    appIcon.style.gridRow = icon.y;
+    appIcon.style.gridColumn = icon.x
+    appIcon.style.gridRow = icon.y
     appIcon.icon = icon
 
     let appImgDiv = document.createElement("div")
@@ -207,7 +207,7 @@ function startDisableEditModeTimer() {
     autoDisableEditModeTimer = setTimeout(() => {
         disableEditMode()
         autoDisableEditModeTimer = null
-    }, 5000);
+    }, 5000)
 }
 
 function recreateVirtualIcon(cursorX, cursorY) {
@@ -217,10 +217,17 @@ function recreateVirtualIcon(cursorX, cursorY) {
     }
 
     if (currentHandleElement && cursorX != null) {
-        console.log(appsHosts)
         let cell = getGridCellAtCursor(appsHosts, cursorX, cursorY, 100, 100)
 
-        console.log(cell)
+        if (cell && getGridElement(cell.grid, cell.row, cell.col) == null) {
+            const element = document.createElement("div")
+            element.classList.add("virtual")
+            element.style.gridColumn = cell.col
+            element.style.gridRow = cell.row
+            cell.grid.appendChild(element)
+
+            currentVirtualElement = element
+        }
     }
 }
 
@@ -250,12 +257,20 @@ function doHandleIcon(event, realIcon) {
     document.body.classList.add('grabbingOverride')
 }
 
+function virtualIconToReal() {
+
+}
+
 function doUnhandleIcon(process=false) {
-    if (!currentHandleElement) return;
+    if (!currentHandleElement) return
 
     currentHandleElement.realIcon.classList.remove("handle")
     currentHandleElement.remove()
     currentHandleElement = null
+
+    if (process) {
+        virtualIconToReal()
+    }
 
     recreateVirtualIcon()
 
@@ -271,7 +286,7 @@ function doIcon(event, handleElement) {
 }
 
 function enableEditMode(event, handleElement) {
-    if (editMode) return;
+    if (editMode) return
     document.documentElement.classList.add('editMode')
     startDisableEditModeTimer()
     document.addEventListener('user_interaction', startDisableEditModeTimer)
@@ -283,7 +298,7 @@ function enableEditMode(event, handleElement) {
 }
 
 function disableEditMode() {
-    if (!editMode) return;
+    if (!editMode) return
     document.documentElement.classList.remove('editMode')
     document.removeEventListener('user_interaction', startDisableEditModeTimer)
     
