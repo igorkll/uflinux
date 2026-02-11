@@ -51,6 +51,7 @@ function addIcon(appsTab, icon) {
     appIcon.appendChild(titleObj)
 
     addLongPressHandle(appImgDiv, 1000, enableEditMode)
+    appImgDiv.addEventListener("pointerdown", doIcon)
 
     appsTab.appendChild(appIcon)
 }
@@ -169,6 +170,7 @@ appsTabHost.addEventListener('scroll', refreshTabdotsSelect)
 
 let editMode = false
 let autoDisableEditModeTimer = null
+let currentHandleElement = null
 
 function startDisableEditModeTimer() {
     if (autoDisableEditModeTimer) {
@@ -181,8 +183,12 @@ function startDisableEditModeTimer() {
     }, 5000);
 }
 
-function handleElement() {
-    
+function doIcon(handleElement) {
+    if (editMode) {
+        currentHandleElement = handleElement
+    } else {
+
+    }
 }
 
 function enableEditMode(handleElement) {
@@ -191,6 +197,10 @@ function enableEditMode(handleElement) {
     startDisableEditModeTimer()
     document.addEventListener('user_interaction', startDisableEditModeTimer)
     editMode = true
+
+    if (handleElement) {
+        doIcon(handleElement)
+    }
 }
 
 function disableEditMode() {

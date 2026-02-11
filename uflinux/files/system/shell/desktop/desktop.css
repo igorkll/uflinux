@@ -101,6 +101,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
+
+    transition: transform 0.15s ease-out;
 }
 
 .appIcon > div {
@@ -127,7 +129,6 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 10px 0 0 0;
-    transition: ;
 }
 
 .appIcon .grab {
