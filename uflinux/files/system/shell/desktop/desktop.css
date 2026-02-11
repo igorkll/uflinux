@@ -4,6 +4,10 @@
     --text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
+.grabbingOverride {
+    cursor: grabbing !important;
+}
+
 .desktopMain {
     display: flex;
     flex-direction: column;
@@ -131,9 +135,8 @@
     margin: 10px 0 0 0;
 }
 
-.appIcon.grab {
+.appIcon.fakeIcon {
     transform: scale(1.2);
-    cursor: grabbing;
 }
 
 .appIcon.handle {

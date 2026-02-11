@@ -205,15 +205,19 @@ function doHandleIcon(realIcon) {
     if (currentHandleElement) doUnhandleIcon()
     const fakeIcon = realIcon.cloneNode(true)
     fakeIcon.realIcon = realIcon
+    fakeIcon.classList.add("fakeIcon")
     currentHandleElement = fakeIcon
 
     realIcon.classList.add("handle")
+    document.body.classList.add('grabbingOverride')
 }
 
 function doUnhandleIcon(process=false) {
     if (!currentHandleElement) return;
     currentHandleElement.realIcon.classList.remove("handle")
     currentHandleElement = null
+    
+    document.body.classList.remove('grabbingOverride')
 }
 
 function doIcon(handleElement) {
@@ -243,5 +247,13 @@ function disableEditMode() {
     doUnhandleIcon()
     editMode = false
 }
+
+document.addEventListener('pointerdown', () => {
+    doUnhandleIcon(true)
+})
+
+document.addEventListener('pointermove', () => {
+    
+})
 
 }
