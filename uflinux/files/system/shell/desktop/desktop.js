@@ -90,6 +90,7 @@ function addIcon(appsTab, icon) {
 
 function addAppsTab(tabHost, tab=null) {
     let appsTab = document.createElement("div")
+    appsTab.tab = tab
     appsTab.classList.add("appsTab")
 
     if (tab) {
@@ -168,7 +169,7 @@ function refreshDefaultApps() {
     storage_save()
 }
 
-if (!storage.desktop.defaultAppsTabsLoaded || true) {
+if (!storage.desktop.defaultAppsTabsLoaded) {
     refreshDefaultApps()
 }
 
@@ -256,11 +257,13 @@ function recreateVirtualIcon(cursorX=null, cursorY=null) {
         element.classList.add("virtualIcon")
         element.style.gridColumn = cell.col
         element.style.gridRow = cell.row
+        element.grid = cell.grid
         element.col = cell.col
         element.row = cell.row
         cell.grid.appendChild(element)
 
         currentVirtualElement = element
+        console.log(currentVirtualElement)
     }
 }
 
@@ -280,13 +283,8 @@ function updateFakeIconPosition(event, fakeIcon) {
             sizeY = appsGridSize[1]
         }
 
-        console.log(cell)
-        console.log(sizeX)
-        console.log(sizeY)
         validPos = cell.col >= 1 && cell.col <= sizeX && cell.row >= 1 && cell.row <= sizeY
     }
-
-    console.log(validPos)
 
     if (validPos) {
         recreateVirtualIcon(event.clientX, event.clientY)
@@ -315,19 +313,29 @@ function doHandleIcon(event, realIcon) {
 }
 
 function virtualIconToReal() {
+    if (!currentVirtualElement || !currentHandleElement) return
 
+    let tab = currentVirtualElement.grid.tab
+    tab.push({
+        x: currentVirtualElement.col,
+        y: currentVirtualElement.row,
+        appInfo: currentHandleElement.realIcon.icon.appInfo
+    })
+    storage_save()
+
+    refreshAppsIcons()
 }
 
 function doUnhandleIcon(process=false) {
     if (!currentHandleElement) return
 
-    currentHandleElement.realIcon.classList.remove("handle")
-    currentHandleElement.remove()
-    currentHandleElement = null
-
     if (process) {
         virtualIconToReal()
     }
+
+    currentHandleElement.realIcon.classList.remove("handle")
+    currentHandleElement.remove()
+    currentHandleElement = null
 
     recreateVirtualIcon()
 
@@ -362,6 +370,7 @@ function disableChangeTabTimer() {
 function disableEditMode() {
     if (!editMode) return
     document.documentElement.classList.remove('editMode')
+    document.body.classList.remove('grabbingOverride')
     document.removeEventListener('user_interaction', startDisableEditModeTimer)
     
     disableChangeTabTimer()
