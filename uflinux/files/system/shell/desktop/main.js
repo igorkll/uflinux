@@ -6,15 +6,34 @@ window.addEventListener("keydown", e => {
     }
 });
 
+let timelabel = document.getElementById(".timelabel")
+
 window.updateTime = function () {
     const now = new Date()
     const hours = String(now.getHours()).padStart(2, "0")
     const minutes = String(now.getMinutes()).padStart(2, "0")
     const seconds = String(now.getSeconds()).padStart(2, "0")
-    
-    document.querySelectorAll(".timelabel").forEach(element => {
-        element.textContent = `${hours}:${minutes}:${seconds}`
-    })
+
+    // Добавляем дату
+    const day = String(now.getDate()).padStart(2, "0")
+    const month = String(now.getMonth() + 1).padStart(2, "0") // месяцы с 0
+    const year = now.getFullYear()
+
+    timelabel.innerHTML = `
+        ${hours}
+        <div class="spacer">:</div>
+        ${minutes}
+        <div class="spacer">:</div>
+        ${seconds}
+
+        <div class="spacer">/</div>
+
+        ${day}
+        <div class="spacer">.</div>
+        ${month}
+        <div class="spacer">.</div>
+        ${year}
+    `
 }
 
 //contain

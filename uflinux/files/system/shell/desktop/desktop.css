@@ -37,7 +37,15 @@
 
 .timelabel {
     color: white;
-    font-size: 20px;
+    font-size: 30px;
+    font-family: '7-segment';
+
+    display: flex;
+    gap: 2px;
+}
+
+.timelabel .spacer {
+    font-family: 'Roboto-Regular';
 }
 
 .systemlabel {

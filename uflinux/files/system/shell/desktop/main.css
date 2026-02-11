@@ -24,6 +24,11 @@ html {
     src: url('fonts/Roboto/Roboto-Regular.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: '7-segment';
+    src: url('fonts/7-segment.ttf') format('truetype');
+}
+
 body {
     margin: 0;
     padding: 0;
