@@ -91,6 +91,11 @@ systemctl mask plymouth-halt.service
 systemctl mask plymouth-log.service
 systemctl mask plymouth.service
 
+# ------------ install default apps
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub org.mozilla.Firefox
+
 # ------------ remove trash
 
 if [ "$DEBUG" != "true" ]; then
