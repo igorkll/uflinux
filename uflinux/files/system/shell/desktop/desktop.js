@@ -2,6 +2,7 @@
 
 const appsTabHost = document.getElementById("appsTabHost")
 const mainAppsHost = document.getElementById("mainAppsHost")
+const appsHosts = [...appsTabHost.children, mainAppsHost]
 const tabdots = document.getElementById("tabdots")
 
 // ---------------------------------- tabdots
@@ -218,7 +219,8 @@ function recreateVirtualIcon() {
         let gridX = currentHandleElement.style.gridColumn
         let gridY = currentHandleElement.style.gridRow
 
-
+        console.log(grid)
+        console.log(gridX + ":" + gridY)
     }
 }
 
@@ -226,6 +228,7 @@ function updateFakeIconPosition(event, fakeIcon) {
     const rect = fakeIcon.realIcon.getBoundingClientRect()
     fakeIcon.style.left = (event.clientX - (rect.width / 2)) + "px"
     fakeIcon.style.top = (event.clientY - (rect.height / 2)) + "px"
+    recreateVirtualIcon()
 }
 
 function doHandleIcon(event, realIcon) {

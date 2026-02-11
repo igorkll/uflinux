@@ -75,3 +75,14 @@ function addLongPressHandle(element, delay, callback) {
     element.addEventListener("pointerleave", cancel)
     element.addEventListener("pointercancel", cancel)
 }
+
+function getGridElement(grid, row, col) {
+    for (const el of grid.children) {
+        const style = getComputedStyle(el)
+        const elRow = parseInt(style.gridRowStart)
+        const elCol = parseInt(style.gridColumnStart)
+        if (elRow === row && elCol === col) {
+            return el
+        }
+    }
+}
