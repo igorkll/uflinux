@@ -168,7 +168,7 @@ function refreshDefaultApps() {
     storage_save()
 }
 
-if (!storage.desktop.defaultAppsTabsLoaded) {
+if (!storage.desktop.defaultAppsTabsLoaded || true) {
     refreshDefaultApps()
 }
 
@@ -269,11 +269,29 @@ function updateFakeIconPosition(event, fakeIcon) {
     fakeIcon.style.left = (event.clientX - (rect.width / 2)) + "px"
     fakeIcon.style.top = (event.clientY - (rect.height / 2)) + "px"
 
-    let invalidPos = 
-    if (invalidPos) {
-        recreateVirtualIcon()
-    } else {
+    let cell = getGridCellAtCursor(appsHosts, event.clientX, event.clientY, 100, 100)
+    let validPos = false
+    if (cell) {
+        let sizeX = appsGridSize[0]
+        let sizeY
+        if (cell.grid == mainAppsHost.firstElementChild) {
+            sizeY = 1
+        } else {
+            sizeY = appsGridSize[1]
+        }
+
+        console.log(cell)
+        console.log(sizeX)
+        console.log(sizeY)
+        validPos = cell.col >= 1 && cell.col <= sizeX && cell.row >= 1 && cell.row <= sizeY
+    }
+
+    console.log(validPos)
+
+    if (validPos) {
         recreateVirtualIcon(event.clientX, event.clientY)
+    } else {
+        recreateVirtualIcon()
     }
 }
 
