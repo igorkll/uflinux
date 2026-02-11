@@ -220,11 +220,14 @@ function recreateVirtualIcon(cursorX, cursorY) {
         let cell = getGridCellAtCursor(appsHosts, cursorX, cursorY, 100, 100)
 
         if (cell && getGridElement(cell.grid, cell.row, cell.col) == null) {
-            const element = document.createElement("div")
+            const element = currentHandleElement.realIcon.cloneNode(true)
             element.classList.add("virtual")
             element.style.gridColumn = cell.col
             element.style.gridRow = cell.row
             cell.grid.appendChild(element)
+
+            console.log(element.style.gridColumn)
+            console.log(element.style.gridRow)
 
             currentVirtualElement = element
         }
@@ -297,20 +300,24 @@ function enableEditMode(event, handleElement) {
     }
 }
 
+function disableChangeTabTimer() {
+    if (editModeChangeTabTimer) clearTimeout(editModeChangeTabTimer)
+    editModeChangeTabTimer = null
+}
+
 function disableEditMode() {
     if (!editMode) return
     document.documentElement.classList.remove('editMode')
     document.removeEventListener('user_interaction', startDisableEditModeTimer)
     
-    clearTimeout(editModeChangeTabTimer)
-    editModeChangeTabTimer = null
-
+    disableChangeTabTimer()
     doUnhandleIcon()
 
     editMode = false
 }
 
 document.addEventListener('pointerup', () => {
+    disableChangeTabTimer()
     doUnhandleIcon(true)
 })
 
@@ -320,7 +327,7 @@ document.addEventListener('pointermove', event => {
     if (currentHandleElement) {
         updateFakeIconPosition(event, currentHandleElement)
         
-        if (editModeChangeTabTimer) clearTimeout(editModeChangeTabTimer)
+        disableChangeTabTimer()
         editModeChangeTabTimer = setInterval(() => {
             const rect = appsTabHost.getBoundingClientRect()
 
