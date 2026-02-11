@@ -1,7 +1,34 @@
 {
 
-let appsTabHost = document.getElementById("appsTabHost")
-let mainAppsHost = document.getElementById("mainAppsHost")
+const appsTabHost = document.getElementById("appsTabHost")
+const mainAppsHost = document.getElementById("mainAppsHost")
+const tabdots = document.getElementById("tabdots")
+
+function refreshTabdotsSelect() {
+    const active = getActiveSnap(appsTabHost)[0]
+    let index = 0
+    for (const tabdot of tabdots.children) {
+        if (index == active) {
+            tabdot.classList.add("active")
+        } else {
+            tabdot.classList.remove("active")
+        }
+        index++
+    }
+}
+
+function refreshTabdots() {
+    tabdots.replaceChildren()
+
+    console.log(appsTabHost.children)
+    for (const element of appsTabHost.children) {
+        const tabdot = document.createElement("div")
+        tabdot.classList.add("tabdot")
+        tabdots.appendChild(tabdot)
+    }
+
+    refreshTabdotsSelect()
+}
 
 function addIcon(appsTab, icon) {
     let appIcon = document.createElement("div")
@@ -123,8 +150,12 @@ function refreshApps() {
     }
 
     addAppsTab(mainAppsHost, storage.desktop.mainAppsTab)
+
+    refreshTabdots()
 }
 
 refreshApps()
+
+appsTabHost.addEventListener('scroll', refreshTabdotsSelect)
 
 }

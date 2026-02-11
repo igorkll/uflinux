@@ -29,3 +29,30 @@ function calcAppsGridSize() {
 
     return [Math.floor((usableWidth + colGap) / (cellW + colGap)), Math.floor((usableHeight + rowGap) / (cellH + rowGap))]
 }
+
+function getActiveSnap(container) {
+    const center =
+        container.scrollLeft + container.clientWidth / 2
+
+    let best = null
+    let bestIndex = null
+    let bestDist = Infinity
+
+    let index = 0
+    for (const el of container.children) {
+        const elCenter =
+            el.offsetLeft + el.offsetWidth / 2
+
+        const dist = Math.abs(center - elCenter)
+
+        if (dist < bestDist) {
+            bestDist = dist
+            bestIndex = index
+            best = el
+        }
+
+        index++
+    }
+
+    return [bestIndex, best]
+}

@@ -1,0 +1,20 @@
+.tabdots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 10px;
+    gap: 5px;
+}
+
+.tabdot {
+    box-shadow: 0 0 3px #0000009a;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 100vh;
+    background: #424242;
+}
+
+.tabdot.active {
+    background: #a8a8a8;
+}

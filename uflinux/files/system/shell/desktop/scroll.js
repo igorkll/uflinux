@@ -9,11 +9,15 @@ document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft')
         appsTabHost.scrollBy({ left: -appsTabHost.clientWidth, behavior: 'smooth' })
 
-    if (e.key === 'ArrowDown')
-        appsTabHost.scrollBy({ top: appsTabHost.clientHeight, behavior: 'smooth' })
+    if (/^[0-9]$/.test(e.key)) {
+        let page = +e.key
+        if (page === 0) page = 10
 
-    if (e.key === 'ArrowUp')
-        appsTabHost.scrollBy({ top: -appsTabHost.clientHeight, behavior: 'smooth' })
+        appsTabHost.scrollTo({
+            left: appsTabHost.clientWidth * (page - 1),
+            behavior: 'smooth'
+        })
+    }
 
     e.preventDefault()
 })
