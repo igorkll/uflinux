@@ -1,5 +1,6 @@
 :root {
     --main-color: rgba(217, 217, 217, 0.288);
+    --edit-color: rgba(197, 21, 21, 0.288);
     --text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
 }
 
@@ -8,6 +9,12 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
+    gap: 10px;
+}
+
+.desktopDock {
+    backdrop-filter: blur(10px);
+    background-color: var(--main-color);
 }
 
 .desktopHeader {
@@ -114,6 +121,10 @@
     text-overflow: ellipsis;
 }
 
-.editMode . {
-    
+.editMode .desktopHeader {
+    background-color: var(--edit-color);
+}
+
+.desktopDock .desktopHeader {
+    background-color: var(--edit-color);
 }

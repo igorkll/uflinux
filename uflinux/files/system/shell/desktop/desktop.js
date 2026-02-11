@@ -168,9 +168,11 @@ appsTabHost.addEventListener('scroll', refreshTabdotsSelect)
 let editMode = false
 
 function enableEditMode() {
-
+    document.documentElement.classList.add('editMode')
 
     editMode = true
 }
+
+//enableEditMode()
 
 }
