@@ -60,8 +60,10 @@ function getActiveSnap(container) {
 function addLongPressHandle(element, delay, callback) {
     let timer = null
 
-    element.addEventListener("pointerdown", () => {
-        timer = setTimeout(callback, delay)
+    element.addEventListener("pointerdown", event => {
+        timer = setTimeout(() => {
+            callback(event)
+        }, delay)
     })
 
     const cancel = () => {

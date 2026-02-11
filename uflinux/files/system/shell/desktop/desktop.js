@@ -64,8 +64,8 @@ function addIcon(appsTab, icon) {
     titleObj.textContent = icon.appInfo.appName
     appIcon.appendChild(titleObj)
 
-    addLongPressHandle(appImgDiv, 1000, () => {
-        enableEditMode(appIcon)
+    addLongPressHandle(appImgDiv, 1000, event => {
+        enableEditMode(event, appIcon)
     })
     appImgDiv.addEventListener("pointerdown", () => {
         doIcon(appIcon)
@@ -207,7 +207,7 @@ function doHandleIcon(realIcon) {
     fakeIcon.realIcon = realIcon
     fakeIcon.classList.add("fakeIcon")
     currentHandleElement = fakeIcon
-    document.appendChild(fakeIcon)
+    document.body.appendChild(fakeIcon)
 
     realIcon.classList.add("handle")
     document.body.classList.add('grabbingOverride')
@@ -216,6 +216,7 @@ function doHandleIcon(realIcon) {
 function doUnhandleIcon(process=false) {
     if (!currentHandleElement) return;
     currentHandleElement.realIcon.classList.remove("handle")
+    currentHandleElement.remove()
     currentHandleElement = null
 
     document.body.classList.remove('grabbingOverride')
@@ -229,7 +230,7 @@ function doIcon(handleElement) {
     }
 }
 
-function enableEditMode(handleElement) {
+function enableEditMode(event, handleElement) {
     if (editMode) return;
     document.documentElement.classList.add('editMode')
     startDisableEditModeTimer()
@@ -238,6 +239,8 @@ function enableEditMode(handleElement) {
 
     if (handleElement) {
         doIcon(handleElement)
+        currentHandleElement.style.left = event.clientX + "px"
+        currentHandleElement.style.top = event.clientY + "px"
     }
 }
 
@@ -253,12 +256,10 @@ document.addEventListener('pointerup', () => {
     doUnhandleIcon(true)
 })
 
-document.addEventListener('pointermove', () => {
+document.addEventListener('pointermove', event => {
     if (currentHandleElement) {
-        const x = e.clientX
-        const y = e.clientY
-        //currentHandleElement.style.top = x + "px"
-        //currentHandleElement.style.left = y + "px"
+        currentHandleElement.style.left = event.clientX + "px"
+        currentHandleElement.style.top = event.clientY + "px"
     }
 })
 
