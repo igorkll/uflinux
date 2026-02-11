@@ -50,6 +50,8 @@ function addIcon(appsTab, icon) {
     titleObj.textContent = icon.appInfo.appName
     appIcon.appendChild(titleObj)
 
+    addLongPressHandle(appIcon, 1000, enableEditMode)
+
     appsTab.appendChild(appIcon)
 }
 

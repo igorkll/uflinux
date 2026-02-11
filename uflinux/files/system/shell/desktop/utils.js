@@ -1,6 +1,6 @@
-const path = require('path');
-const fs = require('fs');
-const { app } = require('electron');
+const path = require('path')
+const fs = require('fs')
+const { app } = require('electron')
 
 function mergeTables(tbl, def) {
     for (let key in def) {
@@ -13,19 +13,19 @@ function mergeTables(tbl, def) {
 }
 
 function calcAppsGridSize() {
-    const grid = document.getElementById('templateAppsTab');
-    const style = getComputedStyle(grid);
+    const grid = document.getElementById('templateAppsTab')
+    const style = getComputedStyle(grid)
 
-    const colGap = parseFloat(style.columnGap);
-    const rowGap = parseFloat(style.rowGap);
-    const padX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight);
-    const padY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+    const colGap = parseFloat(style.columnGap)
+    const rowGap = parseFloat(style.rowGap)
+    const padX = parseFloat(style.paddingLeft) + parseFloat(style.paddingRight)
+    const padY = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom)
 
-    const usableWidth = grid.clientWidth - padX;
-    const usableHeight = grid.clientHeight - padY;
+    const usableWidth = grid.clientWidth - padX
+    const usableHeight = grid.clientHeight - padY
 
-    const cellW = 100;
-    const cellH = 100;
+    const cellW = 100
+    const cellH = 100
 
     return [Math.floor((usableWidth + colGap) / (cellW + colGap)), Math.floor((usableHeight + rowGap) / (cellH + rowGap))]
 }
@@ -57,4 +57,19 @@ function getActiveSnap(container) {
     return [bestIndex, best]
 }
 
+function addLongPressHandle(element, delay, callback) {
+    let timer = null
 
+    element.addEventListener("pointerdown", () => {
+        timer = setTimeout(callback, delay)
+    })
+
+    const cancel = () => {
+        clearTimeout(timer)
+        timer = null
+    }
+
+    element.addEventListener("pointerup", cancel)
+    element.addEventListener("pointerleave", cancel)
+    element.addEventListener("pointercancel", cancel)
+}
