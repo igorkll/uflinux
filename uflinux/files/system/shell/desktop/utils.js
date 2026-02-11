@@ -90,16 +90,19 @@ function getGridElement(grid, row, col) {
 function getGridCellAtCursor(grids, cursorX, cursorY, cellWidth, cellHeight) {
     for (const grid of grids) {
         const rect = grid.getBoundingClientRect()
+        const style = getComputedStyle(grid)
+
+        const colGap = parseFloat(style.columnGap)
+        const rowGap = parseFloat(style.rowGap)
+
         if (
             cursorX >= rect.left &&
             cursorX <= rect.right &&
             cursorY >= rect.top &&
             cursorY <= rect.bottom
         ) {
-            const style = getComputedStyle(grid)
-
-            const col = Math.floor((cursorX - rect.left) / cellWidth) + 1
-            const row = Math.floor((cursorY - rect.top) / cellHeight) + 1
+            const col = Math.floor((cursorX - rect.left) / (cellWidth + colGap)) + 1
+            const row = Math.floor((cursorY - rect.top) / (cellHeight + rowGap)) + 1
 
             return { grid, row, col }
         }

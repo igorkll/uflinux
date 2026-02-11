@@ -5,6 +5,15 @@ const mainAppsHost = document.getElementById("mainAppsHost")
 let appsHosts = [...appsTabHost.children, mainAppsHost]
 const tabdots = document.getElementById("tabdots")
 
+let appsGridSize
+
+function onResize() {
+    appsGridSize = calcAppsGridSize()
+}
+
+onResize()
+window.addEventListener('resize', onResize)
+
 // ---------------------------------- tabdots
 
 function refreshTabdotsSelect() {
@@ -90,6 +99,7 @@ function addAppsTab(tabHost, tab=null) {
     }
 
     tabHost.appendChild(appsTab)
+    return appsTab
 }
 
 // ---------------------------------- register default apps
@@ -122,7 +132,6 @@ function refreshDefaultApps() {
 
     let x = 1
     let y = 1
-    let appsGridSize = calcAppsGridSize()
     let sizeX = appsGridSize[0]
     let sizeY = appsGridSize[1]
     let tab = []
@@ -171,9 +180,15 @@ function refreshAppsIcons() {
     })
 
     let tabAdded = false
+    let firstAppsTab = null
     for (const tab of storage.desktop.appsTabs) {
-        addAppsTab(appsTabHost, tab)
+        let appsTab = addAppsTab(appsTabHost, tab)
+        if (firstAppsTab == null) firstAppsTab = appsTab
         tabAdded = true
+    }
+
+    if (firstAppsTab) {
+        firstAppsTab.id = "templateAppsTab"
     }
 
     if (!tabAdded) {
