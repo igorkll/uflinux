@@ -131,9 +131,13 @@
     margin: 10px 0 0 0;
 }
 
-.appIcon .grab {
+.appIcon.grab {
     transform: scale(1.2);
     cursor: grabbing;
+}
+
+.appIcon.handle {
+    filter: sepia(100%);
 }
 
 .editMode .desktopHeader {

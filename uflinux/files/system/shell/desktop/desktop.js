@@ -202,14 +202,18 @@ function startDisableEditModeTimer() {
 }
 
 function doHandleIcon(realIcon) {
+    if (currentHandleElement) doUnhandleIcon()
     const fakeIcon = realIcon.cloneNode(true)
     fakeIcon.realIcon = realIcon
     currentHandleElement = fakeIcon
+
+    realIcon.classList.add("handle")
 }
 
 function doUnhandleIcon(process=false) {
     if (!currentHandleElement) return;
-
+    currentHandleElement.realIcon.classList.remove("handle")
+    currentHandleElement = null
 }
 
 function doIcon(handleElement) {
