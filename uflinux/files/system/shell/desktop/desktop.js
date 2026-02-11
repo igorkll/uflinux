@@ -4,6 +4,8 @@ const appsTabHost = document.getElementById("appsTabHost")
 const mainAppsHost = document.getElementById("mainAppsHost")
 const tabdots = document.getElementById("tabdots")
 
+// ---------------------------------- tabdots
+
 function refreshTabdotsSelect() {
     const active = getActiveSnap(appsTabHost)[0]
     let index = 0
@@ -20,7 +22,6 @@ function refreshTabdotsSelect() {
 function refreshTabdots() {
     tabdots.replaceChildren()
 
-    console.log(appsTabHost.children)
     for (const element of appsTabHost.children) {
         const tabdot = document.createElement("div")
         tabdot.classList.add("tabdot")
@@ -29,6 +30,8 @@ function refreshTabdots() {
 
     refreshTabdotsSelect()
 }
+
+// ---------------------------------- tabhost
 
 function addIcon(appsTab, icon) {
     let appIcon = document.createElement("div")
@@ -63,7 +66,8 @@ function addAppsTab(tabHost, tab=null) {
     tabHost.appendChild(appsTab)
 }
 
-// ----------------- register default apps
+// ---------------------------------- register default apps
+
 function addMainAppTab(appsInfo, desktopFileName) {
     let appInfo = getAppInfoFromDesktopFileName(appsInfo, desktopFileName)
 
@@ -129,12 +133,13 @@ function refreshDefaultApps() {
     storage_save()
 }
 
-if (!storage.desktop.defaultAppsTabsLoaded || true) {
+if (!storage.desktop.defaultAppsTabsLoaded) {
     refreshDefaultApps()
 }
 
-// ----------------- add tabs
-function refreshApps() {
+// ---------------------------------- add tabs
+
+function refreshAppsIcons() {
     document.querySelectorAll(".appsTab").forEach(element => {
         element.remove()
     })
@@ -154,8 +159,18 @@ function refreshApps() {
     refreshTabdots()
 }
 
-refreshApps()
+refreshAppsIcons()
 
 appsTabHost.addEventListener('scroll', refreshTabdotsSelect)
+
+// ---------------------------------- edit icons
+
+let editMode = false
+
+function enableEditMode() {
+
+
+    editMode = true
+}
 
 }
