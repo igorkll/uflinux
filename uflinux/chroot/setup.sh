@@ -87,7 +87,6 @@ dpkg --purge --force-depends udisks2
 # ------------ install npm packages
 
 npm install -g electron@39.2.7
-npm install -g evdev@0.3.0
 
 chmod 4755 /usr/local/lib/node_modules/electron/dist/chrome-sandbox
 

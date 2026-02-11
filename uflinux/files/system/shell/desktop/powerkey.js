@@ -1,4 +1,4 @@
-{
+if (false) {
 
 const evdev = globalRequire('evdev')
 
@@ -6,7 +6,8 @@ let pressedAt = null
 
 function listenDevice(device) {
     device.on('EV_KEY', (code, value) => {
-        if (code === evdev.codes.KEY_POWER) {
+        console.log("Q")
+        if (code === 116) {
             if (value === 1) {
                 pressedAt = Date.now()
             } else if (value === 0 && pressedAt) {
@@ -24,7 +25,7 @@ const devices = fs.readdirSync('/dev/input/').filter(f => f.startsWith('event'))
 
 devices.forEach(path => {
     try {
-        const device = new evdev(path)
+        const device = new evdev(path, { raw: false })
 
         console.log('Listening for KEY_POWER on', path)
         listenDevice(device)
