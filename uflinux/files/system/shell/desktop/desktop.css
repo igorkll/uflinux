@@ -106,6 +106,7 @@
 .appIcon > div {
     position: relative;
     flex: 1;
+    cursor: pointer;
 }
 
 .appIcon > div > img {
@@ -126,6 +127,12 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     margin: 10px 0 0 0;
+    transition: ;
+}
+
+.appIcon .grab {
+    transform: scale(1.2);
+    cursor: grabbing;
 }
 
 .editMode .desktopHeader {
@@ -138,4 +145,8 @@
 
 .editMode .appIcon > div > img {
     animation: shake 0.4s infinite;
+}
+
+.editMode .appIcon > div {
+    cursor: grab;
 }

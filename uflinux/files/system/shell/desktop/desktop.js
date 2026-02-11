@@ -50,7 +50,7 @@ function addIcon(appsTab, icon) {
     titleObj.textContent = icon.appInfo.appName
     appIcon.appendChild(titleObj)
 
-    addLongPressHandle(appIcon, 1000, enableEditMode)
+    addLongPressHandle(appImgDiv, 1000, enableEditMode)
 
     appsTab.appendChild(appIcon)
 }
@@ -181,18 +181,22 @@ function startDisableEditModeTimer() {
     }, 5000);
 }
 
-function enableEditMode() {
+function handleElement() {
+    
+}
+
+function enableEditMode(handleElement) {
     if (editMode) return;
     document.documentElement.classList.add('editMode')
     startDisableEditModeTimer()
+    document.addEventListener('user_interaction', startDisableEditModeTimer)
     editMode = true
 }
 
 function disableEditMode() {
     if (!editMode) return;
-    
     document.documentElement.classList.remove('editMode')
-
+    document.removeEventListener('user_interaction', startDisableEditModeTimer)
     editMode = false
 }
 
