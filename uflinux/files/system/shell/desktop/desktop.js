@@ -67,8 +67,8 @@ function addIcon(appsTab, icon) {
     addLongPressHandle(appImgDiv, 1000, event => {
         enableEditMode(event, appIcon)
     })
-    appImgDiv.addEventListener("pointerdown", () => {
-        doIcon(appIcon)
+    appImgDiv.addEventListener("pointerdown", event => {
+        doIcon(event, appIcon)
     })
 
     appsTab.appendChild(appIcon)
@@ -201,11 +201,19 @@ function startDisableEditModeTimer() {
     }, 5000);
 }
 
-function doHandleIcon(realIcon) {
+function doHandleIcon(event, realIcon) {
     if (currentHandleElement) doUnhandleIcon()
     const fakeIcon = realIcon.cloneNode(true)
     fakeIcon.realIcon = realIcon
     fakeIcon.classList.add("fakeIcon")
+
+    fakeIcon.style.left = event.clientX + "px"
+    fakeIcon.style.top = event.clientY + "px"
+
+    const rect = realIcon.getBoundingClientRect()
+    fakeIcon.style.width = rect.width + "px"
+    fakeIcon.style.height = rect.height + "px"
+
     currentHandleElement = fakeIcon
     document.body.appendChild(fakeIcon)
 
@@ -222,9 +230,9 @@ function doUnhandleIcon(process=false) {
     document.body.classList.remove('grabbingOverride')
 }
 
-function doIcon(handleElement) {
+function doIcon(event, handleElement) {
     if (editMode) {
-        doHandleIcon(handleElement)
+        doHandleIcon(event, handleElement)
     } else {
 
     }
@@ -238,9 +246,7 @@ function enableEditMode(event, handleElement) {
     editMode = true
 
     if (handleElement) {
-        doIcon(handleElement)
-        currentHandleElement.style.left = event.clientX + "px"
-        currentHandleElement.style.top = event.clientY + "px"
+        doIcon(event, handleElement)
     }
 }
 
