@@ -2,7 +2,7 @@
 
 const appsTabHost = document.getElementById("appsTabHost")
 const mainAppsHost = document.getElementById("mainAppsHost")
-let appsHosts = [...appsTabHost.children, mainAppsHost]
+let appsHosts = [...appsTabHost.children, mainAppsHost.firstElementChild]
 const tabdots = document.getElementById("tabdots")
 
 let appsGridSize
@@ -66,6 +66,9 @@ function addIcon(appsTab, icon) {
     appIcon.style.gridColumn = icon.x
     appIcon.style.gridRow = icon.y
     appIcon.icon = icon
+    appIcon.grid = appsTab
+    appIcon.col = icon.x
+    appIcon.row = icon.y
 
     let appImgDiv = document.createElement("div")
     appIcon.appendChild(appImgDiv)
@@ -198,7 +201,7 @@ function refreshAppsIcons() {
 
     addAppsTab(mainAppsHost, storage.desktop.mainAppsTab)
 
-    appsHosts = [...appsTabHost.children, mainAppsHost]
+    appsHosts = [...appsTabHost.children, mainAppsHost.firstElementChild]
 
     refreshTabdots()
 }
@@ -312,14 +315,31 @@ function doHandleIcon(event, realIcon) {
     document.body.classList.add('grabbingOverride')
 }
 
+function removeIcon(grid, x, y, refresh=true) {
+    for (let iconIndex = grid.tab.length - 1; iconIndex >= 0; iconIndex--) {
+        let icon = grid.tab[iconIndex]
+        if (icon.x == x && icon.y == y) {
+            grid.tab.splice(iconIndex, 1)
+            break
+        }
+    }
+
+    if (refresh) refreshAppsIcons()
+}
+
 function virtualIconToReal() {
     if (!currentVirtualElement || !currentHandleElement) return
+
+    let realIcon = currentHandleElement.realIcon
+    if (true) {
+        removeIcon(realIcon.grid, realIcon.col, realIcon.row, false)
+    }
 
     let tab = currentVirtualElement.grid.tab
     tab.push({
         x: currentVirtualElement.col,
         y: currentVirtualElement.row,
-        appInfo: currentHandleElement.realIcon.icon.appInfo
+        appInfo: realIcon.icon.appInfo
     })
     storage_save()
 
