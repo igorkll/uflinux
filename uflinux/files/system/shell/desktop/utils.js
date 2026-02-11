@@ -86,3 +86,32 @@ function getGridElement(grid, row, col) {
         }
     }
 }
+
+function getGridCellAtCursor(grids, cursorX, cursorY) {
+    for (const grid of grids) {
+        const rect = grid.getBoundingClientRect() // реальное положение и размер
+        if (
+            cursorX >= rect.left &&
+            cursorX <= rect.right &&
+            cursorY >= rect.top &&
+            cursorY <= rect.bottom
+        ) {
+            // нашли grid
+            const style = getComputedStyle(grid)
+
+            // получаем количество строк и колонок
+            const rowCount = style.gridTemplateRows.split(' ').length
+            const colCount = style.gridTemplateColumns.split(' ').length
+
+            const cellWidth = rect.width / colCount
+            const cellHeight = rect.height / rowCount
+
+            const col = Math.floor((cursorX - rect.left) / cellWidth) + 1 // grid начинается с 1
+            const row = Math.floor((cursorY - rect.top) / cellHeight) + 1
+
+            return { grid, row, col }
+        }
+    }
+
+    return null // курсор ни на одном grid
+}

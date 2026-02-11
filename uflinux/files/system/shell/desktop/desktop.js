@@ -2,7 +2,7 @@
 
 const appsTabHost = document.getElementById("appsTabHost")
 const mainAppsHost = document.getElementById("mainAppsHost")
-const appsHosts = [...appsTabHost.children, mainAppsHost]
+let appsHosts = [...appsTabHost.children, mainAppsHost]
 const tabdots = document.getElementById("tabdots")
 
 // ---------------------------------- tabdots
@@ -182,6 +182,8 @@ function refreshAppsIcons() {
 
     addAppsTab(mainAppsHost, storage.desktop.mainAppsTab)
 
+    appsHosts = [...appsTabHost.children, mainAppsHost]
+
     refreshTabdots()
 }
 
@@ -208,19 +210,17 @@ function startDisableEditModeTimer() {
     }, 5000);
 }
 
-function recreateVirtualIcon() {
+function recreateVirtualIcon(cursorX, cursorY) {
     if (currentVirtualElement) {
         currentVirtualElement.remove()
         currentVirtualElement = null
     }
 
-    if (currentHandleElement) {
-        let grid = currentHandleElement.realIcon.parentElement
-        let gridX = currentHandleElement.style.gridColumn
-        let gridY = currentHandleElement.style.gridRow
+    if (currentHandleElement && cursorX != null) {
+        console.log(appsHosts)
+        let cell = getGridCellAtCursor(appsHosts, cursorX, cursorY)
 
-        console.log(grid)
-        console.log(gridX + ":" + gridY)
+        console.log(cell)
     }
 }
 
@@ -228,7 +228,7 @@ function updateFakeIconPosition(event, fakeIcon) {
     const rect = fakeIcon.realIcon.getBoundingClientRect()
     fakeIcon.style.left = (event.clientX - (rect.width / 2)) + "px"
     fakeIcon.style.top = (event.clientY - (rect.height / 2)) + "px"
-    recreateVirtualIcon()
+    recreateVirtualIcon(event.clientX, event.clientY)
 }
 
 function doHandleIcon(event, realIcon) {
