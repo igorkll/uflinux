@@ -1,6 +1,6 @@
 {
 
-const evdev = require('evdev')
+const evdev = globalRequire('evdev')
 
 let pressedAt = null
 

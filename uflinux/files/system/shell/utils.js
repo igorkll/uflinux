@@ -1,6 +1,13 @@
 const path = require('path')
 const fs = require('fs')
 const { app } = require('electron')
+const { execSync } = require('child_process');
+
+const globalNodeModules = execSync('npm root -g').toString().trim();
+
+function globalRequire(name) {
+    return require(path.join(globalNodeModules, 'evdev'))
+}
 
 function mergeTables(tbl, def) {
     for (let key in def) {
