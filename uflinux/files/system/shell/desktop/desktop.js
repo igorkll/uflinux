@@ -91,6 +91,10 @@ function refreshDefaultApps() {
         }
     }
 
+    if (tab.length > 0) {
+        storage.desktop.appsTabs.push(tab)
+    }
+
     storage.desktop.mainAppsTab = []
     addMainAppsTab(appsInfo)
 
