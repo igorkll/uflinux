@@ -218,7 +218,7 @@ function recreateVirtualIcon(cursorX, cursorY) {
 
     if (currentHandleElement && cursorX != null) {
         console.log(appsHosts)
-        let cell = getGridCellAtCursor(appsHosts, cursorX, cursorY)
+        let cell = getGridCellAtCursor(appsHosts, cursorX, cursorY, 100, 100)
 
         console.log(cell)
     }
