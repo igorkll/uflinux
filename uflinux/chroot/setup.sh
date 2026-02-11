@@ -16,6 +16,17 @@ else
     usermod -s /usr/sbin/nologin root
 fi
 
+# ------------ install default apps
+
+export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:/usr/share:/usr/local/share
+export PATH=/usr/bin:/bin:/usr/local/bin:$PATH
+export FLATPAK_SYSTEM_DIR=/var/lib/flatpak
+export FLATPAK_USER_DIR=/root/.local/share/flatpak
+export HOME=/root
+
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub org.mozilla.Firefox
+
 # ------------ disable getty
 systemctl disable getty.target
 systemctl mask getty.target
@@ -90,11 +101,6 @@ systemctl mask plymouth-switch-root.service
 systemctl mask plymouth-halt.service
 systemctl mask plymouth-log.service
 systemctl mask plymouth.service
-
-# ------------ install default apps
-
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.mozilla.Firefox
 
 # ------------ remove trash
 
