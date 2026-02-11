@@ -10,29 +10,25 @@ let timelabel = document.getElementById("timelabel")
 
 window.updateTime = function () {
     const now = new Date()
-    const hours = String(now.getHours()).padStart(2, "0")
-    const minutes = String(now.getMinutes()).padStart(2, "0")
-    const seconds = String(now.getSeconds()).padStart(2, "0")
 
-    // Добавляем дату
-    const day = String(now.getDate()).padStart(2, "0")
-    const month = String(now.getMonth() + 1).padStart(2, "0")
-    const year = now.getFullYear()
+    // Время с нулями
+    const time = now.toLocaleTimeString('en-US', { hour12: false }) 
+    // "14:05:09"
+
+    // Дата с именем дня недели и месяца
+    const date = now.toLocaleDateString('en-US', {
+        weekday: 'long',    // "Wednesday"
+        year: 'numeric',    // "2026"
+        month: 'long',      // "February"
+        day: '2-digit'      // "11"
+    })
+    // "Wednesday, February 11, 2026"
 
     timelabel.innerHTML = `
-        ${hours}
-        <div class="spacer">:</div>
-        ${minutes}
-        <div class="spacer">:</div>
-        ${seconds}
-
-        <div class="spacer">/</div>
-
-        ${day}
-        <div class="spacer">.</div>
-        ${month}
-        <div class="spacer">.</div>
-        ${year}
+        <div class="spacer">
+            ${time}
+            <div class="normalFont">${date}</div>
+        </div>
     `
 }
 
