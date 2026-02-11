@@ -193,6 +193,7 @@ appsTabHost.addEventListener('scroll', refreshTabdotsSelect)
 let editMode = false
 let autoDisableEditModeTimer = null
 let currentHandleElement = null
+let currentVirtualElement = null
 let editModeChangeTabTimer = null
 
 function startDisableEditModeTimer() {
@@ -204,6 +205,21 @@ function startDisableEditModeTimer() {
         disableEditMode()
         autoDisableEditModeTimer = null
     }, 5000);
+}
+
+function recreateVirtualIcon() {
+    if (currentVirtualElement) {
+        currentVirtualElement.remove()
+        currentVirtualElement = null
+    }
+
+    if (currentHandleElement) {
+        let grid = currentHandleElement.realIcon.parentElement
+        let gridX = currentHandleElement.style.gridColumn
+        let gridY = currentHandleElement.style.gridRow
+
+
+    }
 }
 
 function updateFakeIconPosition(event, fakeIcon) {
@@ -233,9 +249,12 @@ function doHandleIcon(event, realIcon) {
 
 function doUnhandleIcon(process=false) {
     if (!currentHandleElement) return;
+
     currentHandleElement.realIcon.classList.remove("handle")
     currentHandleElement.remove()
     currentHandleElement = null
+
+    recreateVirtualIcon()
 
     document.body.classList.remove('grabbingOverride')
 }
