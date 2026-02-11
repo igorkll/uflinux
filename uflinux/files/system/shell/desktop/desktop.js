@@ -26,6 +26,10 @@ function selectTab(index) {
     })
 }
 
+function changeTab(delta) {
+    selectTab(getActiveSnap(appsTabHost)[0] + delta)
+}
+
 function refreshTabdots() {
     tabdots.replaceChildren()
 
@@ -189,6 +193,7 @@ appsTabHost.addEventListener('scroll', refreshTabdotsSelect)
 let editMode = false
 let autoDisableEditModeTimer = null
 let currentHandleElement = null
+let editModeChangeTabTimer = null
 
 function startDisableEditModeTimer() {
     if (autoDisableEditModeTimer) {
@@ -259,7 +264,12 @@ function disableEditMode() {
     if (!editMode) return;
     document.documentElement.classList.remove('editMode')
     document.removeEventListener('user_interaction', startDisableEditModeTimer)
+    
+    clearTimeout(editModeChangeTabTimer)
+    editModeChangeTabTimer = null
+
     doUnhandleIcon()
+
     editMode = false
 }
 
@@ -267,9 +277,26 @@ document.addEventListener('pointerup', () => {
     doUnhandleIcon(true)
 })
 
+let changeTabCheckArea = 10
+
 document.addEventListener('pointermove', event => {
     if (currentHandleElement) {
         updateFakeIconPosition(event, currentHandleElement)
+        
+        if (editModeChangeTabTimer) clearTimeout(editModeChangeTabTimer)
+        editModeChangeTabTimer = setInterval(() => {
+            const rect = appsTabHost.getBoundingClientRect()
+
+            changeTabCheckAreaPx = rect.width / changeTabCheckArea
+            if (event.x < changeTabCheckAreaPx) {
+                changeTab(-1)
+                startDisableEditModeTimer()
+            }
+            if (event.x > rect.width - changeTabCheckAreaPx) {
+                changeTab(1)
+                startDisableEditModeTimer()
+            }
+        }, 1000)
     }
 })
 
