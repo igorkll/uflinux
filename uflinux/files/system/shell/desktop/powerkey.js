@@ -37,6 +37,4 @@ devices.forEach(path => {
 
 {
 
-
-
 }

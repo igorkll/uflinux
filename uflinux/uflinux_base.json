@@ -70,6 +70,7 @@
             "uuid-runtime",
             "kexec-tools",
             "less",
+            "evtest",
             "sudo",
             "nano"
         ],
