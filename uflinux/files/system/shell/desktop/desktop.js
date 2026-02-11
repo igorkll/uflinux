@@ -201,18 +201,23 @@ function startDisableEditModeTimer() {
     }, 5000);
 }
 
+function updateFakeIconPosition(event, fakeIcon) {
+    const rect = fakeIcon.realIcon.getBoundingClientRect()
+    fakeIcon.style.left = (event.clientX - (rect.width / 2)) + "px"
+    fakeIcon.style.top = (event.clientY - (rect.height / 2)) + "px"
+}
+
 function doHandleIcon(event, realIcon) {
     if (currentHandleElement) doUnhandleIcon()
     const fakeIcon = realIcon.cloneNode(true)
     fakeIcon.realIcon = realIcon
     fakeIcon.classList.add("fakeIcon")
 
-    fakeIcon.style.left = event.clientX + "px"
-    fakeIcon.style.top = event.clientY + "px"
-
     const rect = realIcon.getBoundingClientRect()
     fakeIcon.style.width = rect.width + "px"
     fakeIcon.style.height = rect.height + "px"
+
+    updateFakeIconPosition(event, fakeIcon)
 
     currentHandleElement = fakeIcon
     document.body.appendChild(fakeIcon)
@@ -264,8 +269,7 @@ document.addEventListener('pointerup', () => {
 
 document.addEventListener('pointermove', event => {
     if (currentHandleElement) {
-        currentHandleElement.style.left = event.clientX + "px"
-        currentHandleElement.style.top = event.clientY + "px"
+        updateFakeIconPosition(event, currentHandleElement)
     }
 })
 
