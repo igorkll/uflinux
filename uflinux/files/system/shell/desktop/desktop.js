@@ -51,6 +51,7 @@ function addIcon(appsTab, icon) {
     appIcon.classList.add("appIcon")
     appIcon.style.gridColumn = icon.x;
     appIcon.style.gridRow = icon.y;
+    appIcon.icon = icon
 
     let appImgDiv = document.createElement("div")
     appIcon.appendChild(appImgDiv)
@@ -63,8 +64,12 @@ function addIcon(appsTab, icon) {
     titleObj.textContent = icon.appInfo.appName
     appIcon.appendChild(titleObj)
 
-    addLongPressHandle(appImgDiv, 1000, enableEditMode)
-    appImgDiv.addEventListener("pointerdown", doIcon)
+    addLongPressHandle(appImgDiv, 1000, () => {
+        enableEditMode(appIcon)
+    })
+    appImgDiv.addEventListener("pointerdown", () => {
+        doIcon(appIcon)
+    })
 
     appsTab.appendChild(appIcon)
 }
@@ -196,9 +201,15 @@ function startDisableEditModeTimer() {
     }, 5000);
 }
 
+function createFakeHandIcon() {
+    const 
+}
+
 function doIcon(handleElement) {
     if (editMode) {
         currentHandleElement = handleElement
+        createFakeHandIcon()
+        
     } else {
 
     }
@@ -220,6 +231,7 @@ function disableEditMode() {
     if (!editMode) return;
     document.documentElement.classList.remove('editMode')
     document.removeEventListener('user_interaction', startDisableEditModeTimer)
+    currentHandleElement = null
     editMode = false
 }
 
