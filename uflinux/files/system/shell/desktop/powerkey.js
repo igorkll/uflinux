@@ -24,8 +24,7 @@ const devices = fs.readdirSync('/dev/input/').filter(f => f.startsWith('event'))
 
 devices.forEach(path => {
     try {
-        const device = new Evdev(path)
-        if (!device.has(Evdev.codes.KEY_POWER)) return
+        const device = new evdev(path)
 
         console.log('Listening for KEY_POWER on', path)
         listenDevice(device)
