@@ -125,6 +125,7 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    margin: 10px 0 0 0;
 }
 
 .editMode .desktopHeader {

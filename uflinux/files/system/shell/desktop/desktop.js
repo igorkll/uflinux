@@ -168,13 +168,32 @@ appsTabHost.addEventListener('scroll', refreshTabdotsSelect)
 // ---------------------------------- edit icons
 
 let editMode = false
+let autoDisableEditModeTimer = null
+
+function startDisableEditModeTimer() {
+    if (autoDisableEditModeTimer) {
+        clearTimeout(autoDisableEditModeTimer)
+    }
+
+    autoDisableEditModeTimer = setTimeout(() => {
+        disableEditMode()
+        autoDisableEditModeTimer = null
+    }, 5000);
+}
 
 function enableEditMode() {
+    if (editMode) return;
     document.documentElement.classList.add('editMode')
-
+    startDisableEditModeTimer()
     editMode = true
 }
 
-//enableEditMode()
+function disableEditMode() {
+    if (!editMode) return;
+    
+    document.documentElement.classList.remove('editMode')
+
+    editMode = false
+}
 
 }
