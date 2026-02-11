@@ -225,7 +225,7 @@ function startDisableEditModeTimer() {
     }, 5000)
 }
 
-function recreateVirtualIcon(cursorX, cursorY) {
+function recreateVirtualIcon(cursorX=null, cursorY=null) {
     let allow1 = currentHandleElement && cursorX != null
     let allow2 = false
     let cell = null
@@ -268,7 +268,13 @@ function updateFakeIconPosition(event, fakeIcon) {
     const rect = fakeIcon.realIcon.getBoundingClientRect()
     fakeIcon.style.left = (event.clientX - (rect.width / 2)) + "px"
     fakeIcon.style.top = (event.clientY - (rect.height / 2)) + "px"
-    recreateVirtualIcon(event.clientX, event.clientY)
+
+    let invalidPos = 
+    if (invalidPos) {
+        recreateVirtualIcon()
+    } else {
+        recreateVirtualIcon(event.clientX, event.clientY)
+    }
 }
 
 function doHandleIcon(event, realIcon) {
