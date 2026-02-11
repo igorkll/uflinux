@@ -201,20 +201,20 @@ function startDisableEditModeTimer() {
     }, 5000);
 }
 
-function createFakeHandIcon() {
-    const 
+function doHandleIcon(realIcon) {
+    const fakeIcon = realIcon.cloneNode(true)
+    fakeIcon.realIcon = realIcon
+    currentHandleElement = fakeIcon
 }
 
-function doUnhandleIcon() {
+function doUnhandleIcon(process=false) {
     if (!currentHandleElement) return;
 
 }
 
 function doIcon(handleElement) {
     if (editMode) {
-        currentHandleElement = handleElement
-        
-        createFakeHandIcon()
+        doHandleIcon(handleElement)
     } else {
 
     }
