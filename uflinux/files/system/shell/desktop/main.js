@@ -6,7 +6,7 @@ window.addEventListener("keydown", e => {
     }
 });
 
-let timelabel = document.getElementById(".timelabel")
+let timelabel = document.getElementById("timelabel")
 
 window.updateTime = function () {
     const now = new Date()
@@ -16,7 +16,7 @@ window.updateTime = function () {
 
     // Добавляем дату
     const day = String(now.getDate()).padStart(2, "0")
-    const month = String(now.getMonth() + 1).padStart(2, "0") // месяцы с 0
+    const month = String(now.getMonth() + 1).padStart(2, "0")
     const year = now.getFullYear()
 
     timelabel.innerHTML = `
