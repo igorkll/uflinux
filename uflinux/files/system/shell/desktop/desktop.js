@@ -211,27 +211,41 @@ function startDisableEditModeTimer() {
 }
 
 function recreateVirtualIcon(cursorX, cursorY) {
+    let allow1 = currentHandleElement && cursorX != null
+    let allow2 = false
+    let cell = null
+    if (allow1) {
+        cell = getGridCellAtCursor(appsHosts, cursorX, cursorY, 100, 100)
+        if (cell) {
+            let gridItem = getGridElement(cell.grid, cell.row, cell.col)
+            allow2 = gridItem == null || gridItem.classList.contains("virtualIcon")
+        }
+    }
+
+    if (allow1 && allow2) {
+        if (currentVirtualElement &&
+            currentVirtualElement.col == cell.col &&
+            currentVirtualElement.row == cell.row) {
+            return
+        }
+    }
+
     if (currentVirtualElement) {
         currentVirtualElement.remove()
         currentVirtualElement = null
     }
 
-    if (currentHandleElement && cursorX != null) {
-        let cell = getGridCellAtCursor(appsHosts, cursorX, cursorY, 100, 100)
+    if (allow1 && allow2) {
+        const element = currentHandleElement.realIcon.cloneNode(true)
+        element.classList.remove("handle")
+        element.classList.add("virtualIcon")
+        element.style.gridColumn = cell.col
+        element.style.gridRow = cell.row
+        element.col = cell.col
+        element.row = cell.row
+        cell.grid.appendChild(element)
 
-        if (cell && getGridElement(cell.grid, cell.row, cell.col) == null) {
-            const element = currentHandleElement.realIcon.cloneNode(true)
-            element.classList.remove("handle")
-            element.classList.add("virtualIcon")
-            element.style.gridColumn = cell.col
-            element.style.gridRow = cell.row
-            cell.grid.appendChild(element)
-
-            console.log(element.style.gridColumn)
-            console.log(element.style.gridRow)
-
-            currentVirtualElement = element
-        }
+        currentVirtualElement = element
     }
 }
 

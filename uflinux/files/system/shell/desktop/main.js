@@ -25,9 +25,9 @@ window.updateTime = function () {
     // "Wednesday, February 11, 2026"
 
     timelabel.innerHTML = `
-        <div class="spacer">
-            ${time}
-            <div class="normalFont">${date}</div>
+        <div class="columnBox">
+            <div>${time}</div>
+            <div>${date}</div>
         </div>
     `
 }

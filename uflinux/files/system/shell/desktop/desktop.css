@@ -38,7 +38,6 @@
 .timelabel {
     color: white;
     font-size: 20px;
-    font-family: '7-segment';
 
     display: flex;
     align-items: center;
@@ -49,15 +48,6 @@
     display: flex;
     flex-direction: column;
     gap: 1px;
-}
-
-.timelabel .spacer {
-    font-family: 'Roboto-Regular';
-}
-
-.timelabel .normalFont {
-    font-size: 15px;
-    font-family: 'Roboto-Regular';
 }
 
 .systemlabel {
