@@ -25,9 +25,7 @@ export FLATPAK_USER_DIR=/root/.local/share/flatpak
 export HOME=/root
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install --system -y flathub org.mozilla.firefox
-flatpak install --system -y flathub dev.project516.titledgames.microwave-man
-flatpak install --system -y flathub com.github.sixpounder.GameOfLife
+# flatpak install --system -y flathub org.mozilla.firefox
 
 # ------------ disable getty
 systemctl disable getty.target

@@ -41,6 +41,7 @@
             "flatpak",
 
             // apps
+            "firefox-esr",
 
             // libs
             "libnspr4",

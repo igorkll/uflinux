@@ -47,6 +47,7 @@ https://github.com/igorkll/syslbuild
 * when you close the laptop lid, the screen simply goes out, but it will never turn off on its own or go into sleep mode.
 * pressing the power button once turns off the screen
 * when you hold it down, the Power management menu appears
+* If you press the power button twice, the power management menu will also appear, as it is impossible to detect a long press on some devices.
 ### unique features
 * USB gadget support. Connect your laptop with type-c to your computer by wire and you can enable file transfer mode (only if the USB controller supports client mode)
 
