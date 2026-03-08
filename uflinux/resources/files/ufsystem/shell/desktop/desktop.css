@@ -1,0 +1,178 @@
+:root {
+    --main-color: rgba(217, 217, 217, 0.288);
+    --edit-color: rgba(197, 21, 21, 0.288);
+    --text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.grabbingOverride * {
+    cursor: grabbing !important;
+}
+
+.desktopMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.desktopDock {
+    backdrop-filter: blur(10px);
+    background-color: var(--main-color);
+}
+
+.desktopHeader {
+    padding: 5px;
+
+    backdrop-filter: blur(10px);
+    background-color: var(--main-color);
+    height: 60px;
+
+    display: flex;
+    justify-items: flex-start;
+    align-items: center;
+
+    position: relative;
+}
+
+.timelabel {
+    color: white;
+    font-size: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.timelabel .columnBox {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.systemlabel {
+    text-align: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-shadow: var(--text-shadow);
+    font-size: 40px;
+}
+
+.appsTabHost {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+
+    gap: 50px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.appsTabHost.disableSnap {
+    scroll-snap-type: unset;
+}
+
+.appsTab {
+    padding: 15px;
+    gap: 15px;
+    width: 100%;
+    scroll-snap-align: start;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-auto-rows: 100px;
+
+    flex-shrink: 0;
+    overflow: hidden;
+
+    min-height: 130px;
+}
+
+@keyframes shake {
+    0%,100% { transform: rotate(0); }
+    25% { transform: rotate(-6deg); }
+    75% { transform: rotate(6deg); }
+}
+
+.appIcon {
+    grid-column: 1;
+    grid-row: 1;
+
+    flex-shrink: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+
+    transition:
+        transform 0.15s ease-out,
+        filter 0.15s ease-out;
+}
+
+.appIcon > div {
+    position: relative;
+    flex: 1;
+    cursor: pointer;
+}
+
+.appIcon > div > img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,1));
+}
+
+.appIcon > p {
+    color: white;
+    text-shadow: var(--text-shadow);
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    margin: 10px 0 0 0;
+}
+
+.appIcon.fakeIcon {
+    transform: scale(1.05);
+    position: absolute;
+}
+
+.appIcon.virtualIcon {
+    transform: scale(1.5);
+    opacity: 0.4;
+}
+
+.appIcon.handle {
+    transform: scale(0.95);
+    filter: saturate(0);
+    opacity: 0.6;
+}
+
+.editMode .desktopHeader {
+    background-color: var(--edit-color);
+}
+
+.editMode .desktopDock {
+    background-color: var(--edit-color);
+}
+
+.editMode .appIcon > div > img {
+    animation: shake 0.4s infinite;
+}
+
+.editMode .appIcon > div {
+    cursor: grab;
+}
