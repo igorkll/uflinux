@@ -8,7 +8,7 @@ the distribution can be comfortably used by people who have no idea what linux i
 i'm making this distribution to gain experience in linux before developing a more scalable SkyOS project that should completely lose compatibility with gnu/linux software and switch to an electron applications and its own framework
 
 ## build system
-https://github.com/igorkll/syslbuild
+https://github.com/igorkll/Gnubox-Maker
 
 ## what has been changed compared to traditional linux
 ### kernel / boot
