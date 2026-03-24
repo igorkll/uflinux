@@ -19,6 +19,9 @@
 .desktopDock {
     backdrop-filter: blur(10px);
     background-color: var(--main-color);
+    border-radius: 30px;
+    border: 2px solid rgba(80, 80, 80, 0.459);
+    margin: 0px 10px 10px 10px;
 }
 
 .desktopHeader {
