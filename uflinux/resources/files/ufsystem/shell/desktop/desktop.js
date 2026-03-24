@@ -29,15 +29,24 @@ function refreshTabdotsSelect() {
     }
 }
 
-function selectTab(index) {
+function selectTab(index, behavior) {
     appsTabHost.scrollTo({
         left: appsTabHost.clientWidth * index,
-        behavior: 'smooth'
+        behavior: behavior || 'smooth'
     })
 }
 
-function changeTab(delta) {
-    selectTab(getActiveSnap(appsTabHost)[0] + delta)
+function changeTab(delta, behavior) {
+    const currentIndex = getActiveSnap(appsTabHost)[0];
+    const newIndex = currentIndex + delta;
+    const maxIndex = appsTabHost.children.length - 1;
+
+    if (newIndex < 0 || newIndex > maxIndex) {
+        return false;
+    }
+
+    selectTab(newIndex, behavior);
+    return true;
 }
 
 function refreshTabdots() {
@@ -163,6 +172,10 @@ function refreshDefaultApps() {
 
     if (tab.length > 0) {
         storage.desktop.appsTabs.push(tab)
+    }
+
+    if (storage.desktop.appsTabs.length == 0) {
+        storage.desktop.appsTabs.push([])
     }
 
     storage.desktop.mainAppsTab = []
@@ -399,6 +412,10 @@ function disableEditMode() {
     editMode = false
 }
 
+function isCurrentTabEmpty() {
+    return storage.desktop.appsTabs[getActiveSnap(appsTabHost)[0]].length == 0;
+}
+
 document.addEventListener('pointerup', () => {
     disableChangeTabTimer()
     doUnhandleIcon(true)
@@ -416,11 +433,20 @@ document.addEventListener('pointermove', event => {
 
             changeTabCheckAreaPx = (rect.width / 100) * changeTabCheckArea
             if (event.x < changeTabCheckAreaPx) {
-                changeTab(-1)
+                if (!changeTab(-1) && !isCurrentTabEmpty()) {
+                    storage.desktop.appsTabs.unshift([])
+                    refreshAppsIcons()
+                    selectTab(1, "auto")
+                    changeTab(-1)
+                }
                 startDisableEditModeTimer()
             }
             if (event.x > rect.width - changeTabCheckAreaPx) {
-                changeTab(1)
+                if (!changeTab(1) && !isCurrentTabEmpty()) {
+                    storage.desktop.appsTabs.push([])
+                    refreshAppsIcons()
+                    changeTab(1)
+                }
                 startDisableEditModeTimer()
             }
         }, 1000)
