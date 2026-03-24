@@ -11,25 +11,15 @@ let timelabel = document.getElementById("timelabel")
 window.updateTime = function () {
     const now = new Date()
 
-    // Время с нулями
-    const time = now.toLocaleTimeString('en-US', { hour12: false }) 
-    // "14:05:09"
-
-    // Дата с именем дня недели и месяца
+    const time = now.toLocaleTimeString('en-US', { hour12: false })     
     const date = now.toLocaleDateString('en-US', {
         weekday: 'long',    // "Wednesday"
         year: 'numeric',    // "2026"
         month: 'long',      // "February"
         day: '2-digit'      // "11"
     })
-    // "Wednesday, February 11, 2026"
 
-    timelabel.innerHTML = `
-        <div class="columnBox">
-            <div>${time}</div>
-            <div>${date}</div>
-        </div>
-    `
+    timelabel.innerText = time
 }
 
 //contain
