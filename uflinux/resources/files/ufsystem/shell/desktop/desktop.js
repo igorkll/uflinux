@@ -29,11 +29,15 @@ function refreshTabdotsSelect() {
     }
 }
 
-function selectTab(index, behavior) {
-    appsTabHost.scrollTo({
-        left: appsTabHost.clientWidth * index,
-        behavior: behavior || 'smooth'
-    })
+function selectTab(index, behavior = 'smooth') {
+    const tabElement = appsTabHost.children[index]; // предполагая, что вкладки — прямые дети
+    if (tabElement) {
+        tabElement.scrollIntoView({
+            behavior: behavior,
+            block: 'nearest',
+            inline: 'start'
+        });
+    }
 }
 
 function changeTab(delta, behavior) {
