@@ -1,7 +1,8 @@
 :root {
     --main-color: rgba(217, 217, 217, 0.288);
-    --edit-color: rgba(197, 21, 21, 0.288);
     --text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    --border: 1px solid rgba(80, 80, 80, 0.459);
+    --box-shadow: 0px 0px 8px black;
 }
 
 .grabbingOverride * {
@@ -19,17 +20,20 @@
 .desktopDock {
     backdrop-filter: blur(10px);
     background-color: var(--main-color);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+
     border-radius: 30px;
-    border: 2px solid rgba(80, 80, 80, 0.459);
     margin: 0px 10px 10px 10px;
 }
 
 .desktopHeader {
     padding: 5px;
+    height: 30px;
 
     backdrop-filter: blur(10px);
     background-color: var(--main-color);
-    height: 30px;
+    box-shadow: var(--box-shadow);
 
     display: flex;
     justify-items: flex-start;
@@ -164,18 +168,39 @@
     opacity: 0.6;
 }
 
-.editMode .desktopHeader {
-    background-color: var(--edit-color);
-}
-
-.editMode .desktopDock {
-    background-color: var(--edit-color);
-}
-
 .editMode .appIcon > div > img {
     animation: shake 0.4s infinite;
 }
 
 .editMode .appIcon > div {
     cursor: grab;
+}
+
+.edit-panel {
+    position: absolute;
+    translate: -50% -50%;
+    left: 50%;
+    top: -100px;
+    transition: top 0.3s ease;
+}
+
+.edit-panel-show {
+    top: 75px;
+}
+
+.edit-icon {
+    backdrop-filter: blur(10px);
+    background-color: var(--main-color);
+    box-shadow: var(--box-shadow);
+    border: var(--border);
+
+    width: 50px;
+    height: 50px;
+    border-radius: 100vh;
+
+    transition: top 0.3s ease;
+}
+
+.edit-icon-active {
+    transform: scale(1.1);
 }

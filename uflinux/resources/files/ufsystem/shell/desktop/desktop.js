@@ -4,6 +4,7 @@ const appsTabHost = document.getElementById("appsTabHost")
 const mainAppsHost = document.getElementById("mainAppsHost")
 let appsHosts = [...appsTabHost.children, mainAppsHost.firstElementChild]
 const tabdots = document.getElementById("tabdots")
+const editpanel = document.getElementById("edit-panel")
 
 let appsGridSize
 
@@ -389,13 +390,14 @@ function doIcon(event, handleElement) {
     if (editMode) {
         doHandleIcon(event, handleElement)
     } else {
-
+        
     }
 }
 
 function enableEditMode(event, handleElement) {
     if (editMode) return
     document.documentElement.classList.add('editMode')
+    editpanel.classList.add('edit-panel-show')
     startDisableEditModeTimer()
     document.addEventListener('active_interaction', startDisableEditModeTimer)
     editMode = true
@@ -414,6 +416,7 @@ function disableEditMode() {
     if (!editMode) return
     document.documentElement.classList.remove('editMode')
     document.body.classList.remove('grabbingOverride')
+    editpanel.classList.remove('edit-panel-show')
     document.removeEventListener('active_interaction', startDisableEditModeTimer)
     
     disableChangeTabTimer()
