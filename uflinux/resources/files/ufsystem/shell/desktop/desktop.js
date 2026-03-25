@@ -468,10 +468,30 @@ document.addEventListener('pointermove', event => {
 
 // ---------------------------------- hover
 
-function addUniHover(element) {
+let unihoverElements = []
 
+function unihoverHandle(event) {
+    unihoverElements.forEach(element => {
+        if (isEventInsideBox(event, element)) {
+            element.classList.add("edit-icon-active")
+        } else {
+            element.classList.remove("edit-icon-active")
+        }
+    })
 }
 
-document.addEventListener("")
+function unihoverDisable(event) {
+    unihoverElements.forEach(element => {
+        element.classList.remove("edit-icon-active")
+    })
+}
+
+document.addEventListener("pointerdown", unihoverHandle)
+document.addEventListener("pointermove", unihoverHandle)
+document.addEventListener("pointerup", unihoverHandle)
+
+document.querySelectorAll(".edit-icon").forEach(element => {
+    unihoverElements.push(element)
+})
 
 }

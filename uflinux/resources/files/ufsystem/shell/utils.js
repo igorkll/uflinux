@@ -117,3 +117,11 @@ function getGridCellAtCursor(grids, cursorX, cursorY, cellWidth, cellHeight) {
 
     return null // курсор ни на одном grid
 }
+
+function isEventInsideBox(event, boxElement) {
+    if (!event || !boxElement) return false;
+    const rect = boxElement.getBoundingClientRect();
+    const x = event.clientX ?? (event.touches ? event.touches[0].clientX : 0);
+    const y = event.clientY ?? (event.touches ? event.touches[0].clientY : 0);
+    return x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+}
