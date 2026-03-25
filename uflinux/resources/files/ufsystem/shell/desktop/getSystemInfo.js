@@ -1,6 +1,7 @@
 {
 
-const ini = globalRequire('ini');
+const ini = globalRequire('ini')
+const fs = require('fs')
 
 const applicationsDirs = [
     "/usr/share/applications",
@@ -25,16 +26,27 @@ window.getAllDesktopFiles = function() {
     return desktopFiles;
 }
 
+windows.getAppInfoFromDesktopFile = function(path) {
+    const content = fs.readFileSync(path, 'utf-8');
+    const config = ini.parse(content);
+
+    const desktopEntry = config['Desktop Entry']
+    console.log(desktopEntry.Name)
+    console.log(desktopEntry.Exec)
+
+    return {
+        desktopFile: path,
+        appName: path.basename(path),
+        iconPath: "wallpapers/18.jpg"
+    }
+}
+
 window.getAllAppsInfo = function() {
     const desktopFiles = getAllDesktopFiles()
     const allApps = []
 
     for (const desktopFile of desktopFiles) {
-        allApps.push({
-            desktopFile: desktopFile,
-            appName: path.basename(desktopFile),
-            iconPath: "wallpapers/18.jpg"
-        })
+        allApps.push(getAppInfoFromDesktopFile(desktopFile))
     }
 
     return allApps
