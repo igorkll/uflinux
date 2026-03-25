@@ -466,7 +466,7 @@ document.addEventListener('pointermove', event => {
     }
 })
 
-// ---------------------------------- hover
+// ---------------------------------- unihover
 
 let unihoverElements = []
 
@@ -489,6 +489,11 @@ function unihoverDisable(event) {
 document.addEventListener("pointerdown", unihoverHandle)
 document.addEventListener("pointermove", unihoverHandle)
 document.addEventListener("pointerup", unihoverHandle)
+
+document.addEventListener("touchstart", unihoverHandle)
+document.addEventListener("touchmove", unihoverHandle)
+document.addEventListener("touchend", unihoverDisable)
+document.addEventListener("touchcancel", unihoverDisable)
 
 document.querySelectorAll(".edit-icon").forEach(element => {
     unihoverElements.push(element)
