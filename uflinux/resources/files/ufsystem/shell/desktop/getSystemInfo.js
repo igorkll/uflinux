@@ -1,12 +1,32 @@
 {
 
 const ini = globalRequire('ini')
-const fs = require('fs')
 
 const applicationsDirs = [
     "/usr/share/applications",
     "/usr/local/share/applications",
     path.join(process.env.HOME || "", ".local/share/applications")
+];
+
+function getAllDirs(dirpath) {
+    let paths = []
+
+    paths.push(dirpath)
+    const files = fs.readdirSync(dirpath);
+    files.forEach(file => {
+        if (file.endsWith(".desktop")) {
+            paths.push(path.join(dirpath, file));
+        }
+    });
+
+    return paths
+}
+
+const iconsDirs = getAllDirs('/usr/share/icons/hicolor/scalable') + getAllDirs('/usr/share/icons/hicolor/1024x1024') + getAllDirs('/usr/share/icons/hicolor/512x512') + [
+    '/usr/share/app-install/icons',
+    '/usr/share/pixmaps',
+    path.join(process.env.HOME || "", '.local/share/icons'),
+    path.join(process.env.HOME || "", '.icons')
 ];
 
 window.getAllDesktopFiles = function() {
@@ -26,18 +46,34 @@ window.getAllDesktopFiles = function() {
     return desktopFiles;
 }
 
-windows.getAppInfoFromDesktopFile = function(path) {
-    const content = fs.readFileSync(path, 'utf-8');
+window.getIconPathFromIconName = function (iconName) {
+    const extensions = ['.png', '.svg', '.xpm'];
+    
+    for (const basePath of iconsDirs) {
+        for (const ext of extensions) {
+            const fullPath = path.join(basePath, iconName + ext);
+            if (fs.existsSync(fullPath)) {
+                return fullPath;
+            }
+        }
+    }
+    
+    return iconName;
+}
+
+window.getAppInfoFromDesktopFile = function(desktopFile) {
+    const content = fs.readFileSync(desktopFile, 'utf-8');
     const config = ini.parse(content);
 
     const desktopEntry = config['Desktop Entry']
-    console.log(desktopEntry.Name)
-    console.log(desktopEntry.Exec)
+    console.log(desktopEntry)
 
     return {
-        desktopFile: path,
-        appName: path.basename(path),
-        iconPath: "wallpapers/18.jpg"
+        desktopEntry: desktopEntry,
+        desktopFile: desktopFile,
+        appName: desktopEntry.Name,
+        runCommand: desktopEntry.Exec,
+        iconPath: getIconPathFromIconName(desktopEntry.Icon)
     }
 }
 
