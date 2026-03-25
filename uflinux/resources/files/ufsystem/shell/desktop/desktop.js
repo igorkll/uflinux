@@ -73,6 +73,12 @@ function refreshTabdots() {
 
 // ---------------------------------- tabhost
 
+let mainLayer = document.getElementById("mainLayer")
+
+addLongPressHandle(mainLayer, 1000, event => {
+    enableEditMode(event, null)
+})
+
 function addIcon(appsTab, icon) {
     let appIcon = document.createElement("div")
     appIcon.classList.add("appIcon")
@@ -391,7 +397,7 @@ function enableEditMode(event, handleElement) {
     if (editMode) return
     document.documentElement.classList.add('editMode')
     startDisableEditModeTimer()
-    document.addEventListener('user_interaction', startDisableEditModeTimer)
+    document.addEventListener('active_interaction', startDisableEditModeTimer)
     editMode = true
 
     if (handleElement) {
@@ -408,7 +414,7 @@ function disableEditMode() {
     if (!editMode) return
     document.documentElement.classList.remove('editMode')
     document.body.classList.remove('grabbingOverride')
-    document.removeEventListener('user_interaction', startDisableEditModeTimer)
+    document.removeEventListener('active_interaction', startDisableEditModeTimer)
     
     disableChangeTabTimer()
     doUnhandleIcon()
