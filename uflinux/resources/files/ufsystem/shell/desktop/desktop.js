@@ -129,7 +129,7 @@ function addAppsTab(tabHost, tab=null) {
 // ---------------------------------- register default apps
 
 function addMainAppTab(appsInfo, desktopFileName) {
-    let appInfo = getAppInfoFromDesktopFileName(appsInfo, desktopFileName)
+    let appInfo = getAppInfo(appsInfo, desktopFileName)
 
     if (appInfo) {
         const icon = {
@@ -152,7 +152,7 @@ function addMainAppsTab(appsInfo) {
 }
 
 function refreshDefaultApps() {
-    const appsInfo = getAllApps()
+    const appsInfo = getAllAppsInfo()
 
     let x = 1
     let y = 1

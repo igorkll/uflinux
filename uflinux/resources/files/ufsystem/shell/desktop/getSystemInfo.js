@@ -23,7 +23,7 @@ window.getAllDesktopFiles = function() {
     return desktopFiles;
 }
 
-window.getAllApps = function() {
+window.getAllAppsInfo = function() {
     const desktopFiles = getAllDesktopFiles()
     const allApps = []
 
@@ -38,7 +38,7 @@ window.getAllApps = function() {
     return allApps
 }
 
-window.getAppInfoFromDesktopFileName = function(allApps, desktopFileName) {
+window.getAppInfo = function(allApps, desktopFileName) {
     for (const appInfo of allApps) {
         if (path.basename(appInfo.desktopFile) == desktopFileName) {
             return appInfo
