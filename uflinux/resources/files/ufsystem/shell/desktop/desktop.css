@@ -189,13 +189,15 @@
     height: 50px;
     border-radius: 100vh;
 
-    transition: top 0.3s ease;
+    transition: top 0.3s ease, transform 0.1s ease;
 
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
     font-size: 40px;
+
+    cursor: pointer;
 }
 
 .edit-icon-active {

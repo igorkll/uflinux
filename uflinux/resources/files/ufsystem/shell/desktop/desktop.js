@@ -337,6 +337,8 @@ function doHandleIcon(event, realIcon) {
 
     realIcon.classList.add("handle")
     document.body.classList.add('grabbingOverride')
+
+    disableTouchAction(true)
 }
 
 function removeIcon(grid, x, y, refresh=true) {
@@ -394,6 +396,21 @@ function doIcon(event, handleElement) {
     }
 }
 
+let disableTouchActionStyle
+
+function disableTouchAction(state) {
+    if (state) {
+        if (disableTouchActionStyle) return
+        disableTouchActionStyle = document.createElement('style')
+        disableTouchActionStyle.textContent = `* { touch-action: none; }`
+        document.head.appendChild(disableTouchActionStyle)
+    } else {
+        if (!disableTouchActionStyle) return
+        disableTouchActionStyle.remove()
+        disableTouchActionStyle = null
+    }
+}
+
 function enableEditMode(event, handleElement) {
     if (editMode) return
     document.documentElement.classList.add('editMode')
@@ -421,6 +438,7 @@ function disableEditMode() {
     
     disableChangeTabTimer()
     doUnhandleIcon()
+    disableTouchAction(false)
 
     editMode = false
 }
@@ -432,6 +450,7 @@ function isCurrentTabEmpty() {
 document.addEventListener('pointerup', () => {
     disableChangeTabTimer()
     doUnhandleIcon(true)
+    disableTouchAction(false)
 })
 
 let changeTabCheckArea = 5

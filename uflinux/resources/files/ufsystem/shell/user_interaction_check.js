@@ -49,4 +49,5 @@
     }
 
     document.addEventListener('pointermove', handle)
+    document.addEventListener('pointerdown', handle)
 })();
