@@ -11,7 +11,6 @@ const applicationsDirs = [
 function getAllDirs(dirpath) {
     let paths = []
 
-    paths.push(dirpath)
     const files = fs.readdirSync(dirpath);
     files.forEach(file => {
         if (file.endsWith(".desktop")) {
@@ -22,7 +21,20 @@ function getAllDirs(dirpath) {
     return paths
 }
 
-const iconsDirs = getAllDirs('/usr/share/icons/hicolor/scalable') + getAllDirs('/usr/share/icons/hicolor/1024x1024') + getAllDirs('/usr/share/icons/hicolor/512x512') + [
+const theme = "hicolor"
+const themeDir = path.join('/usr/share/icons', theme)
+
+
+const iconsDirs = 
+getAllDirs(path.join(themeDir, "scalable")) + 
+getAllDirs(path.join(themeDir, "1024x1024")) + 
+getAllDirs(path.join(themeDir, "512x512")) + 
+getAllDirs(path.join(themeDir, "256x256")) + 
+getAllDirs(path.join(themeDir, "128x128")) + 
+getAllDirs(path.join(themeDir, "64x64")) + 
+getAllDirs(path.join(themeDir, "32x32")) + 
+getAllDirs(path.join(themeDir, "symbolic")) + 
+[
     '/usr/share/app-install/icons',
     '/usr/share/pixmaps',
     path.join(process.env.HOME || "", '.local/share/icons'),
