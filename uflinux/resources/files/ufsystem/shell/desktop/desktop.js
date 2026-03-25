@@ -466,4 +466,12 @@ document.addEventListener('pointermove', event => {
     }
 })
 
+// ---------------------------------- hover
+
+function addUniHover(element) {
+
+}
+
+document.addEventListener("")
+
 }
