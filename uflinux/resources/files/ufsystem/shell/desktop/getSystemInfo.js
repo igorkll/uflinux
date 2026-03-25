@@ -1,5 +1,7 @@
 {
 
+const ini = globalRequire('ini');
+
 const applicationsDirs = [
     "/usr/share/applications",
     "/usr/local/share/applications",

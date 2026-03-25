@@ -6,7 +6,7 @@ const { execSync } = require('child_process');
 const globalNodeModules = execSync('npm root -g').toString().trim();
 
 function globalRequire(name) {
-    return require(path.join(globalNodeModules, 'evdev'))
+    return require(path.join(globalNodeModules, name))
 }
 
 function mergeTables(tbl, def) {

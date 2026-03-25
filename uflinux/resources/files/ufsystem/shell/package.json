@@ -1,5 +1,8 @@
 {
     "name": "shell",
     "version": "1.0.0",
-    "main": "main.js"
+    "main": "main.js",
+    "dependencies": {
+        "ini": "^6.0.0"
+    }
 }
