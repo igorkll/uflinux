@@ -31,7 +31,8 @@
     "libgtk-3-0",
     "nano",
     "flatpak",
-    "wget"
+    "wget",
+    "gcc"
   ],
   "debian_variant": "minbase",
   "debian_suite": "trixie",

@@ -55,4 +55,9 @@ rm -rf liamounts-2.0
 
 # -------------------------------- cleanup
 
+apt purge gcc -y
+apt autoremove
+
+# --------------------------------
+
 touch /.chrootend
