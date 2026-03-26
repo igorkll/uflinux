@@ -207,7 +207,7 @@ function refreshDefaultApps() {
     storage_save()
 }
 
-if (!storage.desktop.defaultAppsTabsLoaded) {
+if (!storage.desktop.defaultAppsTabsLoaded || true) {
     refreshDefaultApps()
 }
 
