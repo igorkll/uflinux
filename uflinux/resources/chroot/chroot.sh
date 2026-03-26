@@ -33,7 +33,7 @@ dpkg --add-architecture i386
 apt update
 apt install wine
 
-# --------------------------------
+# -------------------------------- setup user
 
 reset
 echo setup user
