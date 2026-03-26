@@ -17,12 +17,12 @@ chmod 4755 /usr/local/lib/node_modules/electron/dist/chrome-sandbox
 reset
 echo install waydroid
 
-apt install curl ca-certificates -y
-curl -s https://repo.waydro.id | bash
-apt update
-apt install waydroid -y
-waydroid init
-waydroid init -s GAPPS
+# apt install curl ca-certificates -y
+# curl -s https://repo.waydro.id | bash
+# apt update
+# apt install waydroid -y
+# waydroid init
+# waydroid init -s GAPPS
 
 # -------------------------------- install wine
 
