@@ -110,16 +110,22 @@ window.getAllDesktopFiles = function() {
 window.getIconPathFromIconName = function (iconName) {
     const extensions = ['.png', '.svg', '.xpm'];
     
-    for (const basePath of iconsDirs) {
-        for (const ext of extensions) {
-            const fullPath = path.join(basePath, iconName + ext);
-            if (fs.existsSync(fullPath)) {
-                return fullPath;
+    if (iconName) {
+        for (const basePath of iconsDirs) {
+            for (const ext of extensions) {
+                const fullPath = path.join(basePath, iconName + ext);
+                if (fs.existsSync(fullPath)) {
+                    return fullPath;
+                }
             }
         }
+        
+        if (iconName.startsWith("/")) {
+            return iconName
+        }
     }
-    
-    return iconName;
+
+    return "icons/defaultapp.png"
 }
 
 window.getAppInfoFromDesktopFile = function(desktopFile) {
