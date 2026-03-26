@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+apt update
+
 # -------------------------------- node packages
 
 npm install -g electron@39.2.7
@@ -9,7 +11,7 @@ chmod 4755 /usr/local/lib/node_modules/electron/dist/chrome-sandbox
 
 # -------------------------------- install waydroid
 
-apt install ca-certificates -y
+apt install curl ca-certificates -y
 curl -s https://repo.waydro.id | bash
 apt update
 apt install waydroid -y
