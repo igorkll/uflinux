@@ -31,7 +31,7 @@ echo install wine
 
 dpkg --add-architecture i386
 apt update
-apt install wine
+apt install wine -y
 
 # -------------------------------- setup user
 
