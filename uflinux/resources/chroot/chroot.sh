@@ -45,17 +45,19 @@ echo setup user
 reset
 echo install liamounts
 
-wget https://github.com/igorkll/liamounts/archive/refs/tags/2.0.tar.gz
-tar -xzf 2.0.tar.gz
-cd liamounts-2.0
+wget https://github.com/igorkll/liamounts/archive/refs/tags/2.1.tar.gz
+tar -xzf 2.1.tar.gz
+cd liamounts-2.1
 chmod +x install.sh
 ./install.sh
 cd ..
-rm -rf liamounts-2.0
+rm -rf liamounts-2.1
 
 # -------------------------------- cleanup
 
 apt purge gcc -y
+apt purge build-essential -y
+apt purge libc6-dev -y
 apt autoremove
 
 # --------------------------------
