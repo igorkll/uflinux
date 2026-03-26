@@ -3,6 +3,20 @@ set -e
 
 apt update
 
+# -------------------------------- debug
+
+if [ -e /uflinux_debug.flag ]; then
+    apt install sudo -y
+    usermod -aG sudo user
+    cat > /usr/share/applications/weston-terminal.desktop <<EOF
+[Desktop Entry]
+Name=Terminal
+Exec=weston-terminal
+Terminal=false
+Type=Application
+EOF
+fi
+
 # -------------------------------- node packages
 
 reset
