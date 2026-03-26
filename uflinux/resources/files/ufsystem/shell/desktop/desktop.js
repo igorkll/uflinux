@@ -106,8 +106,17 @@ function addIcon(appsTab, icon) {
     addLongPressHandle(appImgDiv, 1000, event => {
         enableEditMode(event, appIcon)
     })
+
     appImgDiv.addEventListener("pointerdown", event => {
-        doIcon(event, appIcon)
+        if (editMode) {
+            doHandleIcon(event, appIcon)
+        }
+    })
+
+    appImgDiv.addEventListener("pointerup", event => {
+        if (!editMode) {
+            execIcon(appIcon)
+        }
     })
 
     appsTab.appendChild(appIcon)
@@ -390,15 +399,11 @@ function doUnhandleIcon(process=false) {
     document.body.classList.remove('grabbingOverride')
 }
 
-function doIcon(event, handleElement) {
-    if (editMode) {
-        doHandleIcon(event, handleElement)
-    } else {
-        const appInfo = getAppInfoFromDesktopFile(handleElement.icon.desktopFile)
-        exec(appInfo.runCommand, (error, stdout, stderr) => {
-            
-        });
-    }
+function execIcon(handleElement) {
+    const appInfo = getAppInfoFromDesktopFile(handleElement.icon.desktopFile)
+    exec(appInfo.runCommand, (error, stdout, stderr) => {
+
+    });
 }
 
 let disableTouchActionStyle
