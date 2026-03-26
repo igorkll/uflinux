@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const { app } = require('electron')
-const { execSync } = require('child_process');
+const { exec, execSync } = require('child_process');
 
 const globalNodeModules = execSync('npm root -g').toString().trim();
 

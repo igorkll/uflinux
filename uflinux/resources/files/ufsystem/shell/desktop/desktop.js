@@ -93,12 +93,14 @@ function addIcon(appsTab, icon) {
     let appImgDiv = document.createElement("div")
     appIcon.appendChild(appImgDiv)
 
+    const appInfo = getAppInfoFromDesktopFile(icon.desktopFile)
+
     let appImg = document.createElement("img")
-    appImg.src = icon.appInfo.iconPath
+    appImg.src = appInfo.iconPath
     appImgDiv.appendChild(appImg)
 
     let titleObj = document.createElement("p")
-    titleObj.textContent = icon.appInfo.appName
+    titleObj.textContent = appInfo.appName
     appIcon.appendChild(titleObj)
 
     addLongPressHandle(appImgDiv, 1000, event => {
@@ -128,31 +130,31 @@ function addAppsTab(tabHost, tab=null) {
 
 // ---------------------------------- register default apps
 
-function addMainAppTab(appsInfo, desktopFileName) {
-    let appInfo = getAppInfo(appsInfo, desktopFileName)
+function addMainAppTab(desktopFiles, desktopFile) {
+    const desktopFilePath = getDesktopFilePath(desktopFiles, desktopFile)
 
-    if (appInfo) {
+    if (desktopFilePath) {
         const icon = {
             x: storage.desktop.mainAppsTab.length + 1,
             y: 1,
-            appInfo
+            desktopFile: desktopFilePath
         }
         storage.desktop.mainAppsTab.push(icon)
     }
 }
 
-function addMainAppsTab(appsInfo) {
-    addMainAppTab(appsInfo, "org.telegram.desktop.Discord")
-    addMainAppTab(appsInfo, "com.discordapp.Discord")
-    addMainAppTab(appsInfo, "com.valvesoftware.Steam.desktop")
-    addMainAppTab(appsInfo, "org.mozilla.firefox.desktop")
+function addMainAppsTab(desktopFiles) {
+    addMainAppTab(desktopFiles, "org.telegram.desktop.Discord")
+    addMainAppTab(desktopFiles, "com.discordapp.Discord")
+    addMainAppTab(desktopFiles, "com.valvesoftware.Steam.desktop")
+    addMainAppTab(desktopFiles, "org.mozilla.firefox.desktop")
 
-    addMainAppTab(appsInfo, "telegram.desktop")
-    addMainAppTab(appsInfo, "discord.desktop")
+    addMainAppTab(desktopFiles, "telegram.desktop")
+    addMainAppTab(desktopFiles, "discord.desktop")
 }
 
 function refreshDefaultApps() {
-    const appsInfo = getAllAppsInfo()
+    const desktopFiles = getAllDesktopFiles()
 
     let x = 1
     let y = 1
@@ -161,11 +163,11 @@ function refreshDefaultApps() {
     let tab = []
 
     storage.desktop.appsTabs = []
-    for (const appInfo of appsInfo) {
+    for (const desktopFile of desktopFiles) {
         const icon = {
             x,
             y,
-            appInfo
+            desktopFile
         }
         tab.push(icon)
         
@@ -190,13 +192,13 @@ function refreshDefaultApps() {
     }
 
     storage.desktop.mainAppsTab = []
-    addMainAppsTab(appsInfo)
+    addMainAppsTab(desktopFiles)
 
     storage.desktop.defaultAppsTabsLoaded = true
     storage_save()
 }
 
-if (!storage.desktop.defaultAppsTabsLoaded || true) {
+if (!storage.desktop.defaultAppsTabsLoaded) {
     refreshDefaultApps()
 }
 
@@ -365,7 +367,7 @@ function virtualIconToReal() {
     tab.push({
         x: currentVirtualElement.col,
         y: currentVirtualElement.row,
-        appInfo: realIcon.icon.appInfo
+        desktopFile: realIcon.icon.desktopFile
     })
     storage_save()
 
@@ -392,7 +394,10 @@ function doIcon(event, handleElement) {
     if (editMode) {
         doHandleIcon(event, handleElement)
     } else {
-        
+        const appInfo = getAppInfoFromDesktopFile(handleElement.icon.desktopFile)
+        exec(appInfo.runCommand, (error, stdout, stderr) => {
+            
+        });
     }
 }
 

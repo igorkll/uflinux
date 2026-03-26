@@ -2,12 +2,6 @@
 
 const ini = globalRequire('ini')
 
-const applicationsDirs = [
-    "/usr/share/applications",
-    "/usr/local/share/applications",
-    path.join(process.env.HOME || "", ".local/share/applications")
-];
-
 function getAllDirs(dirpath) {
     let paths = []
 
@@ -19,10 +13,18 @@ function getAllDirs(dirpath) {
     return paths
 }
 
+// ------------------------------- application dirs
+
+const applicationsDirs = [
+    "/usr/share/applications",
+    "/usr/local/share/applications",
+    path.join(process.env.HOME || "", ".local/share/applications")
+];
+
+// ------------------------------- icons dirs
+
 const theme = "hicolor"
 const themeDir = path.join('/usr/share/icons', theme)
-
-console.log(getAllDirs(path.join(themeDir, "256x256")))
 
 const iconsDirs = [
 ...getAllDirs(path.join(themeDir, "symbolic")),
@@ -61,7 +63,7 @@ const iconsDirs = [
     path.join(process.env.HOME || "", '.icons')
 ]];
 
-console.log(iconsDirs)
+// -------------------------------
 
 window.getAllDesktopFiles = function() {
     const desktopFiles = [];
@@ -100,7 +102,6 @@ window.getAppInfoFromDesktopFile = function(desktopFile) {
     const config = ini.parse(content);
 
     const desktopEntry = config['Desktop Entry']
-    console.log(desktopEntry)
 
     return {
         desktopEntry: desktopEntry,
@@ -111,21 +112,10 @@ window.getAppInfoFromDesktopFile = function(desktopFile) {
     }
 }
 
-window.getAllAppsInfo = function() {
-    const desktopFiles = getAllDesktopFiles()
-    const allApps = []
-
-    for (const desktopFile of desktopFiles) {
-        allApps.push(getAppInfoFromDesktopFile(desktopFile))
-    }
-
-    return allApps
-}
-
-window.getAppInfo = function(allApps, desktopFileName) {
-    for (const appInfo of allApps) {
-        if (path.basename(appInfo.desktopFile) == desktopFileName) {
-            return appInfo
+window.getDesktopFilePath = function(desktopFiles, desktopFile) {
+    for (const checkDesktopFile of desktopFiles) {
+        if (path.basename(checkDesktopFile) == desktopFile) {
+            return checkDesktopFile
         }
     }
 }
