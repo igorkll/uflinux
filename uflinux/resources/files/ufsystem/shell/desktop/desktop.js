@@ -430,7 +430,7 @@ function enableEditMode(event, handleElement) {
     editMode = true
 
     if (handleElement) {
-        doIcon(event, handleElement)
+        doHandleIcon(event, handleElement)
     }
 }
 
