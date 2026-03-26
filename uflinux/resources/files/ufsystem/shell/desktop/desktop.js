@@ -291,7 +291,7 @@ function recreateVirtualIcon(cursorX=null, cursorY=null) {
 
     if (allow1 && allow2) {
         const element = currentHandleElement.realIcon.cloneNode(true)
-        element.classList.remove("handle")
+        element.classList.remove("handledIcon")
         element.classList.add("virtualIcon")
         element.style.gridColumn = cell.col
         element.style.gridRow = cell.row
@@ -301,7 +301,6 @@ function recreateVirtualIcon(cursorX=null, cursorY=null) {
         cell.grid.appendChild(element)
 
         currentVirtualElement = element
-        console.log(currentVirtualElement)
     }
 }
 
@@ -335,7 +334,7 @@ function doHandleIcon(event, realIcon) {
     if (currentHandleElement) doUnhandleIcon()
     const fakeIcon = realIcon.cloneNode(true)
     fakeIcon.realIcon = realIcon
-    fakeIcon.classList.add("fakeIcon")
+    fakeIcon.classList.add("cursorIcon")
 
     const rect = realIcon.getBoundingClientRect()
     fakeIcon.style.width = rect.width + "px"
@@ -346,7 +345,7 @@ function doHandleIcon(event, realIcon) {
     currentHandleElement = fakeIcon
     document.body.appendChild(fakeIcon)
 
-    realIcon.classList.add("handle")
+    realIcon.classList.add("handledIcon")
     document.body.classList.add('grabbingOverride')
 
     disableTouchAction(true)
@@ -390,7 +389,7 @@ function doUnhandleIcon(process=false) {
         virtualIconToReal()
     }
 
-    currentHandleElement.realIcon.classList.remove("handle")
+    currentHandleElement.realIcon.classList.remove("handledIcon")
     currentHandleElement.remove()
     currentHandleElement = null
 

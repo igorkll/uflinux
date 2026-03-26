@@ -7,4 +7,4 @@ else
 fi
 
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak override "$SCOPE" --unshare=network --disallow=all
+flatpak override "$SCOPE" --unshare=network
