@@ -60,7 +60,7 @@ rm -rf liamounts-2.1
 apt purge gcc -y
 apt purge build-essential -y
 apt purge libc6-dev -y
-apt autoremove
+apt autoremove -y
 
 # --------------------------------
 
