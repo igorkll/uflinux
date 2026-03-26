@@ -268,10 +268,11 @@ function recreateVirtualIcon(cursorX=null, cursorY=null) {
     let allow1 = currentHandleElement && cursorX != null
     let allow2 = false
     let cell = null
+    let gridItem = null
     if (allow1) {
         cell = getGridCellAtCursor(appsHosts, cursorX, cursorY, 100, 100)
         if (cell) {
-            let gridItem = getGridElement(cell.grid, cell.row, cell.col)
+            gridItem = getGridElement(cell.grid, cell.row, cell.col)
             allow2 = gridItem == null || gridItem.classList.contains("virtualIcon")
         }
     }
@@ -301,6 +302,14 @@ function recreateVirtualIcon(cursorX=null, cursorY=null) {
         cell.grid.appendChild(element)
 
         currentVirtualElement = element
+    }
+
+    if (allow1) {
+        if (!gridItem || !gridItem.classList.contains("handledIcon")) {
+            currentHandleElement.realIcon.classList.remove("handledIconSelected")
+        } else {
+            currentHandleElement.realIcon.classList.add("handledIconSelected")
+        }
     }
 }
 
@@ -346,6 +355,7 @@ function doHandleIcon(event, realIcon) {
     document.body.appendChild(fakeIcon)
 
     realIcon.classList.add("handledIcon")
+    realIcon.classList.add("handledIconSelected")
     document.body.classList.add('grabbingOverride')
 
     disableTouchAction(true)
@@ -390,6 +400,7 @@ function doUnhandleIcon(process=false) {
     }
 
     currentHandleElement.realIcon.classList.remove("handledIcon")
+    currentHandleElement.realIcon.classList.remove("handledIconSelected")
     currentHandleElement.remove()
     currentHandleElement = null
 

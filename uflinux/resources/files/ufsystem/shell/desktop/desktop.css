@@ -162,6 +162,12 @@
     opacity: 0.6;
 }
 
+.appIcon.handledIconSelected {
+    transform: scale(1.1);
+    filter: unset;
+    opacity: 0.4;
+}
+
 .editMode .appIcon > div > img {
     animation: shake 0.4s infinite;
 }
