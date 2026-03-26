@@ -49,7 +49,9 @@ wget https://github.com/igorkll/liamounts/archive/refs/tags/2.1.tar.gz
 tar -xzf 2.1.tar.gz
 cd liamounts-2.1
 chmod +x install.sh
+set +e
 ./install.sh
+set -e
 cd ..
 rm -rf liamounts-2.1
 
