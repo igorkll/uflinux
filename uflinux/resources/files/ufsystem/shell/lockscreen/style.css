@@ -8,6 +8,7 @@
 
 .lockscreen-layout {
     padding-top: 50px;
+    padding-bottom: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -45,3 +46,18 @@
     font-size: clamp(0px, 5vw, calc(1vh * 5));
 }
 
+.lockscreen-swipe {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 5px;
+
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.lockscreen-swipe-img {
+    height: 50px;
+    width: 50px;
+}
