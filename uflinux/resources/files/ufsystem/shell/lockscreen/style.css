@@ -1,0 +1,41 @@
+.blur1 {
+    backdrop-filter: blur(50px);
+}
+
+.blur2 {
+    backdrop-filter: blur(10px);
+}
+
+.lockscreen-layout {
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.lockscreen-clock-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+}
+
+.lockscreen-clock-top {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.lockscreen-clock-time {
+    color: #ffffff;
+    font-size: 20vw;
+}
+
+.lockscreen-clock-seconds {
+    color: #ffffff;
+    font-size: 10vw;
+}

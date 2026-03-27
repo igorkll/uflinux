@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="layer size-normalizer" id="wallpaperBase">
@@ -11,9 +12,25 @@
         <video id="wallpaperVideo" autoplay muted loop playsinline></video>
     </div>
 
+    <div class="layer blur1">
+        <div class="lockscreen-layout">
+            <div class="lockscreen-clock-main">
+                <div class="lockscreen-clock-top">
+                    <div class="lockscreen-clock-time">
+                        10:22
+                    </div>
+                    <div class="lockscreen-clock-seconds">
+                        :40
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="../utils.js"></script>
     <script src="../storage.js"></script>
     <script src="../render.js"></script>
+    <script src="render.js"></script>
     <script src="../user_interaction_check.js"></script>
 </body>
 </html>
