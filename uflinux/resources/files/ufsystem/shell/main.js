@@ -6,13 +6,32 @@ const fs = require('fs');
 
 if (fs.existsSync("/ufsystem") && !fs.existsSync("/uflinux_debug.flag")) DEBUG = false;
 
-function createWindow () {
+function createWindow() {
     const win = new BrowserWindow({
         frame: DEBUG,
         fullscreen: !DEBUG,
         backgroundColor: "#000000",
         width: 1280,
         height: 720,
+        webPreferences: {
+            nodeIntegration: true,
+            contextIsolation: false,
+            devTools: DEBUG
+        }
+    });
+
+    globalShortcut.register('F11', () => {});
+    win.loadFile(path.join(__dirname, 'desktop/main.html'));
+    if (DEBUG) {
+        win.webContents.openDevTools();
+    }
+}
+
+function createWindow_lockScreen() {
+    const win = new BrowserWindow({
+        frame: false,
+        fullscreen: true,
+        backgroundColor: "#000000",
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,

@@ -34,7 +34,9 @@
     "wget",
     "gcc",
     "build-essential",
-    "libc6-dev"
+    "libc6-dev",
+
+    "firefox-esr"
   ],
   "debian_variant": "minbase",
   "debian_suite": "trixie",

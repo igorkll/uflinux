@@ -94,10 +94,13 @@ window.getAllDesktopFiles = function() {
                 if (file.endsWith(".desktop")) {
                     const desktopFilePath = path.join(dir, file)
                     const appInfo = getAppInfoFromDesktopFile(desktopFilePath)
-                    console.log(appInfo)
 
-                    if (!appInfo.desktopEntry.NoDisplay && !appInfo.desktopEntry.Hidden && !appInfo.desktopEntry.OnlyShowIn) {
-                        desktopFiles.push(desktopFilePath);
+                    if (appInfo.desktopEntry.Type === "Application") {
+                        console.log(appInfo)
+
+                        if (!appInfo.desktopEntry.NoDisplay && !appInfo.desktopEntry.Hidden && !appInfo.desktopEntry.OnlyShowIn) {
+                            desktopFiles.push(desktopFilePath);
+                        }
                     }
                 }
             });
