@@ -92,7 +92,7 @@
 .password-button {
     border-radius: 9999vh;
     backdrop-filter: blur(50px);
-    background: rgba(255, 255, 255, 0.479);
+    background: rgba(255, 255, 255, 0.4);
     height: min(20vw, 15vh);
     width: min(20vw, 15vh);
 
@@ -103,5 +103,10 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    
+
+    transition: background-color 0.1s ease;
+}
+
+.password-button:active {
+    background-color: rgba(255, 255, 255, 0.8);
 }
