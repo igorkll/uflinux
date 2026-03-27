@@ -32,16 +32,16 @@
 
 .lockscreen-clock-time {
     color: #ffffff;
-    font-size: 25vw;
+    font-size: clamp(0px, 25vw, calc(25px * 4));
 }
 
 .lockscreen-clock-seconds {
     color: #ffffff;
-    font-size: 12vw;
+    font-size: clamp(0px, 10vw, calc(10px * 4));
 }
 
 .lockscreen-clock-date {
     color: #ffffff;
-    font-size: 5vw;
+    font-size: clamp(0px, 5vw, calc(5px * 4));
 }
 
