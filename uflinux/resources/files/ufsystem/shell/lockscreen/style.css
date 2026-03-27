@@ -64,3 +64,44 @@
     height: 50px;
     width: 50px;
 }
+
+.password-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.password-inline-layout {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.password-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.password-button {
+    border-radius: 9999vh;
+    backdrop-filter: blur(50px);
+    background: rgba(255, 255, 255, 0.479);
+    height: min(20vw, 15vh);
+    width: min(20vw, 15vh);
+
+    color: #ffffff;
+    font-size: calc(min(20vw, 15vh) * 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
