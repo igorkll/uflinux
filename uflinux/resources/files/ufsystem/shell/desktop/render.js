@@ -1,11 +1,5 @@
 {
 
-window.addEventListener("keydown", e => {
-    if (e.key === "Tab") {
-        e.preventDefault();
-    }
-});
-
 let timelabel = document.getElementById("timelabel")
 
 window.updateTime = function () {
