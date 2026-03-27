@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="tabdots.css">
+    <link rel="stylesheet" href="desktop.css">
+</head>
+<body>
+    <div class="layer size-normalizer" id="wallpaperBase">
+        <img id="wallpaperImg"></img>
+        <video id="wallpaperVideo" autoplay muted loop playsinline></video>
+    </div>
+
+    <div class="layer desktopMain" id="mainLayer">
+        <div class="desktopHeader">
+            <div class="timelabel" id="timelabel"></div>
+        </div>
+
+        <div class="appsTabHost" id="appsTabHost" style="flex: 1;">
+            <div class="appsTab" id="templateAppsTab">
+            </div>
+        </div>
+
+        <div class="tabdots" id="tabdots">
+        </div>
+
+        <div class="appsTabHost desktopDock" id="mainAppsHost" style="height: fit-content;">
+            <div class="appsTab">
+            </div>
+        </div>
+    </div>
+
+    <div class="edit-panel" id="edit-panel">
+        <div class="edit-icon">
+            ✕
+        </div>
+    </div>
+
+    <script src="../utils.js"></script>
+    <script src="../user_interaction_check.js"></script>
+</body>
+</html>

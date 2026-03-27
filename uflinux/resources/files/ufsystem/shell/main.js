@@ -27,7 +27,7 @@ function createWindow() {
     }
 }
 
-function createWindow_lockScreen() {
+function createWindow_lockscreen() {
     const win = new BrowserWindow({
         frame: false,
         fullscreen: true,
@@ -40,10 +40,20 @@ function createWindow_lockScreen() {
     });
 
     globalShortcut.register('F11', () => {});
-    win.loadFile(path.join(__dirname, 'desktop/main.html'));
+    win.loadFile(path.join(__dirname, 'lockscreen/main.html'));
     if (DEBUG) {
         win.webContents.openDevTools();
     }
 }
 
-app.whenReady().then(createWindow);
+console.log(process.argv[2])
+
+switch (process.argv[2]) {
+    case "lockscreen":
+        app.whenReady().then(createWindow_lockscreen);
+        break;
+
+    default:
+        app.whenReady().then(createWindow);
+        break;
+}
