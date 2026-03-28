@@ -113,6 +113,7 @@
 
 .curtain {
     transition: transform 0.3s ease;
+    touch-action: none;
 }
 
 .curtain-active {

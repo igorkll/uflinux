@@ -1,4 +1,4 @@
-let DEBUG = false;
+let DEBUG = true;
 
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
