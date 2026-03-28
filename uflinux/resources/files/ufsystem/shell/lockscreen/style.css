@@ -104,11 +104,16 @@
     align-items: center;
     text-align: center;
 
-    transition: background-color 0.1s ease;
+    opacity: 0;
+    transition: background-color 0.1s ease, opacity 0.3s ease;
 }
 
 .password-button:active {
     background-color: rgba(255, 255, 255, 0.8);
+}
+
+.password-buttons-no-opacity-animation .password-button {
+    transition: background-color 0.1s ease;
 }
 
 .curtain {
