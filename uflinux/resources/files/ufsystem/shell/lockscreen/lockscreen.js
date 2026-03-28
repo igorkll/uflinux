@@ -23,6 +23,7 @@ curtain.addEventListener("pointermove", (e) => {
 })
 
 document.addEventListener("pointerup", () => {
+    if (!pointerdown) return
     pointerdown = false
 
     curtain.classList.remove("curtain-disable-transition")
