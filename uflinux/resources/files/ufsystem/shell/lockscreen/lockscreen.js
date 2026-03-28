@@ -2,13 +2,13 @@
 
 const curtain = document.getElementById("curtain")
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
         curtain.classList.remove("curtain-active")
         event.preventDefault()
     }
     
-    if (event.key === ' ') {
+    if (event.key === " ") {
         curtain.classList.add("curtain-active")
         event.preventDefault()
     }
@@ -17,17 +17,26 @@ document.addEventListener('keydown', function(event) {
 let startY = null
 let deltaY = null
 
-element.addEventListener('pointerdown', (e) => {
+curtain.addEventListener("pointerdown", (e) => {
     startY = e.clientY
-    element.setPointerCapture(e.pointerId)
+    curtain.setPointerCapture(e.pointerId)
 })
 
-element.addEventListener('pointermove', (e) => {
+curtain.addEventListener("pointermove", (e) => {
     if (startY == null) return
     deltaY = e.clientY - startY
+    curtain.style.transform = "translateY(" + deltaY + "px)"
 })
 
-document.addEventListener('pointerup', () => {
+document.addEventListener("pointerup", () => {
+    if (deltaY < -200) {
+        curtain.classList.add("curtain-active")
+    } else {
+        curtain.classList.remove("curtain-active")
+    }
+
+    curtain.style.transform = null
+
     startY = null
     deltaY = null
 })
