@@ -29,7 +29,7 @@ curtain.addEventListener("pointermove", (e) => {
 })
 
 document.addEventListener("pointerup", () => {
-    if (deltaY < -200) {
+    if (deltaY < -(window.innerHeight / 4)) {
         curtain.classList.add("curtain-active")
     } else {
         curtain.classList.remove("curtain-active")
