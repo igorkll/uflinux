@@ -116,6 +116,10 @@
     touch-action: none;
 }
 
+.curtain-disable-transition {
+    transition: unset;
+}
+
 .curtain-active {
     transform: translateY(-100%);
 }
