@@ -1,4 +1,4 @@
-let DEBUG = true;
+let DEBUG = false;
 
 const { app, BrowserWindow, globalShortcut } = require('electron');
 const path = require('path');
@@ -32,6 +32,7 @@ function createWindow_lockscreen() {
         frame: false,
         fullscreen: true,
         backgroundColor: "#000000",
+        alwaysOnTop: true,
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false,

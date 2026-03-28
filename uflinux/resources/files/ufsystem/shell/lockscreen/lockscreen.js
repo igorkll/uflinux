@@ -2,7 +2,6 @@
 
 const curtain = document.getElementById("curtain")
 
-
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         curtain.classList.remove("curtain-active")
