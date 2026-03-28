@@ -88,6 +88,10 @@ body {
     filter: var(--drop-shadow);
 }
 
+.box-shadow {
+    box-shadow: var(--box-shadow);
+}
+
 .wave-up {
     position: absolute;
     top: 0;
