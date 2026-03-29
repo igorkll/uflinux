@@ -8,6 +8,7 @@ let startY = null
 let deltaY = null
 
 curtain.addEventListener("pointerdown", (e) => {
+    if (curtain.classList.contains("curtain-active")) return
     pointerdown = true
     startY = e.clientY
     curtain.setPointerCapture(e.pointerId)
@@ -16,7 +17,7 @@ curtain.addEventListener("pointerdown", (e) => {
 })
 
 curtain.addEventListener("pointermove", (e) => {
-    if (startY == null) return
+    if (startY == null || !pointerdown) return
     deltaY = e.clientY - startY
     if (deltaY > 0) deltaY = 0
     requestAnimationFrame(() => {
