@@ -33,9 +33,9 @@ function storage_setWallpaperFile(file) {
     storage.background.file = filePath
 }
 
-function storage_loadDefaultWallpaper() {
+function storage_check() {
     if (!storage.background.defaultBackgroundLoaded || !fs.existsSync(storage.background.file)) {
-        storage_setWallpaperFile(path.join(__dirname, "wallpapers/1.jpg"))
+        storage_setWallpaperFile(path.join(process.cwd(), "static/wallpapers/1.jpg"))
         storage.background.defaultBackgroundLoaded = true;
     }
 }
@@ -53,8 +53,7 @@ function storage_load() {
     }
 
     mergeTables(storage, defaultStorage)
-
-    storage_loadDefaultWallpaper()
+    storage_check()
 }
 
 function storage_save() {

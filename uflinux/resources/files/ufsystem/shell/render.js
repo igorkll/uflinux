@@ -45,7 +45,6 @@ window.updateWallpaper = function () {
 }
 
 storage_load()
-
 updateWallpaper()
 
 }

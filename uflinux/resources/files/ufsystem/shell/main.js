@@ -21,7 +21,7 @@ function createWindow() {
     });
 
     globalShortcut.register('F11', () => {});
-    win.loadFile(path.join(__dirname, 'desktop/main.html'));
+    win.loadFile(path.join(__dirname, 'applets/desktop/main.html'));
     if (DEBUG) {
         win.webContents.openDevTools();
     }
@@ -41,7 +41,7 @@ function createWindow_lockscreen() {
     });
 
     globalShortcut.register('F11', () => {});
-    win.loadFile(path.join(__dirname, 'lockscreen/main.html'));
+    win.loadFile(path.join(__dirname, 'applets/lockscreen/main.html'));
     if (DEBUG) {
         win.webContents.openDevTools();
     }
