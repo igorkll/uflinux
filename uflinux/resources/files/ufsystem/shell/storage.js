@@ -35,7 +35,7 @@ function storage_setWallpaperFile(file) {
 
 function storage_check() {
     if (!storage.background.defaultBackgroundLoaded || !fs.existsSync(storage.background.file)) {
-        storage_setWallpaperFile(path.join(process.cwd(), "static/wallpapers/1.jpg"))
+        storage_setWallpaperFile(path.join(__dirname, "../../static/wallpapers/1.jpg"))
         storage.background.defaultBackgroundLoaded = true;
     }
 }
