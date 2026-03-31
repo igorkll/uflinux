@@ -71,10 +71,6 @@ rm -rf liamounts-2.1
 
 # -------------------------------- cleanup
 
-cp -a /home /data/
-rm -rf /home
-mkdir -m 755 /home
-
 apt purge gcc -y
 apt purge build-essential -y
 apt purge libc6-dev -y

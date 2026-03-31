@@ -1,11 +1,5 @@
 #!/bin/bash
 
-if [ ! -d /data/home ]; then
-    cp -a /home /data/home
-fi
-
-mount --bind /data/home /home
-
 if [ ! -f /data/init.flag ]; then
     /ufsystem/setup_user.sh
     touch /data/init.flag
