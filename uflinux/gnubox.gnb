@@ -75,7 +75,7 @@
   "minlogotime": 10,
   "cmdline": "",
   "exclude_cmdline": [],
-  "integrate_liamounts": false,
+  "integrate_liamounts": true,
   "integrate_xwayland": true,
   "export_x86_64": true,
   "export_x86": false,
