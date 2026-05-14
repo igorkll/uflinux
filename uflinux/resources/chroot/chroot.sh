@@ -19,10 +19,10 @@ fi
 
 # -------------------------------- weston lua shell
 
-wget -O weston-based-custom-shell.zip https://github.com/igorkll/weston-based-custom-shell/archive/refs/tags/0.1.zip
+wget -O weston-based-custom-shell.zip https://github.com/igorkll/weston-based-custom-shell/archive/refs/tags/0.3.zip
 
 mkdir -p weston-based-custom-shell
-bsdtar -xf weston-based-custom-shell.zip --strip-components=1
+bsdtar -xf weston-based-custom-shell.zip -C weston-based-custom-shell --strip-components=1
 cd weston-based-custom-shell
 
 ./install_weston_configuration.sh
