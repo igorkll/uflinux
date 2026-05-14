@@ -17,6 +17,20 @@ Type=Application
 EOF
 fi
 
+# -------------------------------- weston lua shell
+
+wget -O weston-based-custom-shell.zip https://github.com/igorkll/weston-based-custom-shell/archive/refs/tags/0.1.zip
+
+mkdir -p weston-based-custom-shell
+bsdtar -xf weston-based-custom-shell.zip --strip-components=1
+cd weston-based-custom-shell
+
+./install_weston_configuration.sh
+
+cd ..
+rm weston-based-custom-shell.zip
+rm -rf weston-based-custom-shell
+
 # -------------------------------- node packages
 
 reset
