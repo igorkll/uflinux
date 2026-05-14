@@ -41,7 +41,7 @@
   "exclude_packages": [],
   "debian_variant": "minbase",
   "debian_suite": "trixie",
-  "debian_snapshot": "https://snapshot.debian.org/archive/debian/20260514T142722Z/",
+  "debian_snapshot": "http://snapshot.debian.org/archive/debian/20260514T142722Z",
   "screen_idle_time": 0,
   "HandlePowerKey": "ignore",
   "HandleRebootKey": "ignore",
