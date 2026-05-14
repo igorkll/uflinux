@@ -68,7 +68,7 @@
   "minsize_boot_partition": "64MB",
   "minsize_efi_partition": "64MB",
   "minsize_root_partition": "64MB",
-  "minsize_data_partition": "64MB",
+  "minsize_data_partition": "256MB",
   "weston_shell": "kiosk",
   "session_user": "user",
   "session_mode": "wayland",
